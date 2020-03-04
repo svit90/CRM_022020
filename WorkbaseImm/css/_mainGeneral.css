@@ -17,7 +17,7 @@ a {
 a:hover, a:focus, a:active {
     color: #18a689
 }
-#top-search {
+#inputToSearch {
     min-width: 370px;
 }
 table.dataTable thead .sorting:after, 
