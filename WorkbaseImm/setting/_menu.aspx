@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/crm.Master" AutoEventWireup="true" CodeBehind="_menu.aspx.cs" Inherits="WorkbaseImm.setting.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/crm.Master" AutoEventWireup="true" CodeBehind="_menu.aspx.cs" Inherits="WorkbaseImm.setting._menu" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
