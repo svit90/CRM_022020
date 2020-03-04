@@ -1,0 +1,7 @@
+﻿    .ui-widget-content {
+        background: #fff;
+    }
+
+    .ui-widget-content .ui-menu-item:hover {
+        cursor: pointer;
+    }
