@@ -98,7 +98,7 @@ function load_control_menu() {
         format: "json"
     }).done(function (data) {
         var str = "";
-        str = create_menu_control("0", "0", data);
+        str = create_menu_control("0","Trang chủ", "0", data);
         $("#side-menu").append(str);
         str = "";
 
@@ -110,19 +110,19 @@ function load_control_menu() {
 
 }
 
-function create_menu_control(mode, level, data) {
+function create_menu_control(mode, parent, level, data) {
     if(level === "0") {level = "first";}else if(level === "first") {level = "second";}else if(level === "second") {level = "third";}
     var str = "";
     if (mode === "0") {
         jQuery.each(data, function (i, val) {
             var arrow = "<span class=\"fa arrow\"></span>";
             if (val.ParentKey === "0") {
-                var str_sub = create_menu_control(val.PriKey, level, data);
+                var str_sub = create_menu_control(val.PriKey, parent +"/"+ val.MenuName, level, data);
                 if (str_sub === "") {
                     arrow = "";
                 }
-                str += "<li id=\"li_" + val.PriKey + "\">";
-                str += "<a href=\"" + val.MenuUrl + "\"><i class=\"fa fa-sitemap\"></i> <span class=\"nav-label\">" + val.MenuName + "</span> " + arrow;
+                str += "<li id=\"li_" + val.PriKey + "\" data-header=\"" + parent +"\">";
+                str += "<a href=\"" + val.MenuUrl + "\" ><i class=\"fa fa-sitemap\"></i> <span class=\"nav-label\">" + val.MenuName + "</span> " + arrow;
                 str += "</a> ";
                 str += str_sub;
                 str += "</li>";
@@ -134,12 +134,12 @@ function create_menu_control(mode, level, data) {
         jQuery.each(data, function (i, val) {
             var arrow = "<span class=\"fa arrow\"></span>";
             if (val.ParentKey === mode) {
-                var str_sub_child = create_menu_control(val.PriKey, level, data);
+                var str_sub_child = create_menu_control(val.PriKey, parent + "/" + val.MenuName, level, data);
                 if (str_sub_child === "") {
                     arrow = "";
                 }
-                str_sub += "<li>";
-                str_sub += "<a href=\"" + val.MenuUrl + "\"> <span class=\"nav-label\">" + val.MenuName + " </span> " + arrow;
+                str_sub += "<li id=\"li_" + val.PriKey + "\" data-header=\"" + parent + "\"  >";
+                str_sub += "<a href=\"" + val.MenuUrl + "\"> <span class=\"nav-label\" onclick=\"showHeaderPage('" + parent + "','" + val.MenuName +"')\">" + val.MenuName + " </span> " + arrow;
                 str_sub += "</a > ";
                 str_sub += str_sub_child;
                 str_sub += "</li>";
@@ -150,4 +150,17 @@ function create_menu_control(mode, level, data) {
         }        
     }
     return str;
+}
+
+function showHeaderPage(parent, curent) {
+    var str = "";
+    var arr = parent.split("/");
+    $("#pageHeading").empty();
+    $("#pageHeading").append("<h2>" + curent + "</h2>");
+    var ol = "<ol class=\"breadcrumb\">";
+    $.each(arr, function (index, value) {
+        str += "<li class=\"breadcrumb-item\"><a href=\"#\">" + value + "</a></li>";
+    });
+    str += "<li class=\"breadcrumb-item active\"><strong>" + curent + "</strong></li>";
+    $("#pageHeading").append(ol + str + "</ol>");
 }

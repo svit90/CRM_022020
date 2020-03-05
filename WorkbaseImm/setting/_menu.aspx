@@ -1,33 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/crm.Master" AutoEventWireup="true" CodeBehind="_menu.aspx.cs" Inherits="WorkbaseImm.setting._menu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/crm.Master" AutoEventWireup="true" CodeBehind="_menu.aspx.cs" Inherits="WorkbaseImm.setting._menu" EnableEventValidation="false" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>CRM SYSTEM | Setting Menu </title>
-    <link href="../css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-    <link href="../css/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
+    <link href="../css/plugins/dataTables/datatables.min.css" rel="stylesheet">    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-12">
-            <h2>Setting Menu</h2>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a>Admin</a>
-                </li>
-                <li class="breadcrumb-item active">
-                    <strong>Menu</strong>
-                </li>
-            </ol>
-        </div>
-    </div>
+   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
+<form id="_form" runat="server">
     <div class="ibox ">
         <div class="ibox-title">
-            <h5>Add New Menu</h5>
+            <h5>Thêm mới menu</h5>
             <a class="btn btn-white btn-bitbucket" data-toggle="modal" data-target="#addCodeMain"><i class="fa fa-plus"></i></a>
             <div class="ibox-tools">
                 <a class="collapse-link">
@@ -37,42 +23,20 @@
         </div>
         <div class="ibox-content">
             <div class="table-responsive">
-               <table id="example" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Code</th>
-                            <th>Tên</th>
-                            <th>Link</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                   <tbody>
-                                  
-                    </tbody>
-                   
-                </table>
-
                 <table class="table table-striped table-bordered table-hover dataTables-example">
-                    <thead>
+                    <thead>     
                         <tr>
-                            <th>Code</th>
-                            <th>Tên</th>
-                            <th>Link</th>
-                            <th>Edit</th>
-                        </tr>
+							<th>Menu Code</th>
+							<th>Menu Parent Code</th>
+							<th>Tên hiển thị</th>
+							<th>Link</th>
+							<th>Trạng thái</th>
+							<th>Ghi chú</th>
+                            <th>Action</th>
+						</tr>
                     </thead>
-                    <tbody>
-                                  
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Code</th>
-                            <th>Tên</th>
-                            <th>Link</th>
-                            <th>Edit</th>
-                        </tr>
-                    </tfoot>
+                    <tbody>                                  
+                    </tbody>                 
                 </table>
             </div>
 
@@ -84,22 +48,30 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <i class="fa fa-pencil modal-icon"></i>
-                    <h4 class="modal-title">Edit Code Main</h4>
+                    <h4 class="modal-title">Chỉnh sửa Menu</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group d-none">
+                        <label>Menu Code</label>
+                        <asp:TextBox ID="_txt_menuCode_edit" runat="server" class="form-control" placeholder="Nhập Code Menu" autocorrect="off" autocomplete="off"></asp:TextBox>
+                    </div>
                     <div class="form-group">
-                        <label>Tên Menu</label>
-                        <input type="text" placeholder="Nhập Tên Menu" class="form-control"></div>
+                        <label>Tên Menu</label>                        
+                        <asp:TextBox ID="_txt_menuName_edit" runat="server" class="form-control" placeholder="Nhập Tên Menu" autocorrect="off" autocomplete="off"></asp:TextBox> </div>
                     <div class="form-group">
                         <label>Link</label>
-                        <input type="text" placeholder="Nhập Link" class="form-control"></div>
+                        <asp:TextBox ID="_txt_menuLink_edit" runat="server" class="form-control" placeholder="Nhập Link" autocorrect="off" autocomplete="off"></asp:TextBox></div>                   
                     <div class="form-group">
-                        <label>Phân Cấp Menu</label>
-                        <input type="text" placeholder="Phân Cấp Menu" class="form-control"></div>  
+                        <label>Là sub Menu của:</label> <asp:TextBox ID="_txt_parentCode_selected_edit" runat="server" CssClass="d-none"></asp:TextBox>
+                        <select id="select_parent_menu_edit" runat="server" class="form-control">                          
+                            <option value="0">Không phải sub menu</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="ladda-button ladda-button-demo btn btn-primary" data-style="zoom-out">Lưu</button>
+                <div class="modal-footer"> 
+                    <button type="button" class="btn btn-primary block m-b m-r btn-white" data-dismiss="modal">Đóng</button>
+                    <asp:LinkButton ID="btn_DeactiveMenu" runat="server" class="btn btn-danger block m-b m-r" data-style="zoom-out" OnClick="btn_DeactiveMenu_Click">De-active</asp:LinkButton>
+                    <asp:LinkButton ID="btn_SaveNewMenu" runat="server" class="btn btn-primary block m-b m-r" data-style="zoom-out" OnClick="btn_SaveNewMenu_Click">Lưu</asp:LinkButton>
                 </div>
             </div>
         </div>
@@ -113,84 +85,95 @@
                     <h4 class="modal-title">Thêm mới menu</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group d-none">
+                        <label>Menu Code</label>
+                        <asp:TextBox ID="_txt_menuCode" runat="server" class="form-control" placeholder="Nhập Code Menu" autocorrect="off" autocomplete="off"></asp:TextBox>                
+                    </div>
                     <div class="form-group">
                         <label>Tên Menu</label>
-                        <input type="text" placeholder="Nhập Tên Menu" class="form-control"></div>
+                        <asp:TextBox ID="_txt_menuName" runat="server" class="form-control" placeholder="Nhập Tên Menu" autocorrect="off" autocomplete="off"></asp:TextBox> 
+                    </div>
                     <div class="form-group">
                         <label>Link</label>
-                        <input type="text" placeholder="Nhập Link" class="form-control"></div>
+                        <asp:TextBox ID="_txt_menuLink" runat="server" class="form-control" placeholder="Nhập Link" autocorrect="off" autocomplete="off"></asp:TextBox>
+                    </div>
                     <div class="form-group">
-                        <label>Phân Cấp Menu</label>
-                        <select class="form-control m-b" name="account">
-                            <option>--Chọn--</option>
-                            <option>template1</option>
-                            <option>template2</option>
+                        <label>Là sub Menu của:</label> <asp:TextBox ID="_txt_parentCode_selected" runat="server" CssClass="d-none">0</asp:TextBox>
+                        <select id="select_parent_menu" runat="server" class="form-control">                          
+                            <option value="0">Không phải sub menu</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Đóng</button>
-                    <button class="ladda-button ladda-button-demo btn btn-primary" data-style="zoom-out">Thêm</button>
+                    <button type="button" class="btn btn-primary block m-b m-r btn-white" data-dismiss="modal">Đóng</button>
+                    <asp:LinkButton ID="btn_addNewMenu" runat="server" class="btn btn-primary block m-b m-r" data-style="zoom-out" OnClick="btn_addNewMenu_Click">Thêm</asp:LinkButton>
                 </div>
             </div>
         </div>
     </div>
+</form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
     <script src="../js/plugins/dataTables/datatables.min.js"></script>
     <script src="../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
-    <!-- Ladda -->
-    <script src="../js/plugins/ladda/spin.min.js"></script>
-    <script src="../js/plugins/ladda/ladda.min.js"></script>
-    <script src="../js/plugins/ladda/ladda.jquery.min.js"></script>
+        
+
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function () {
-            $('#example').DataTable({
-                "data": "https://api.immgroup.com/crm/menu/all/",
-                "columns": [
-                    { "data": "PriKey" },
-                    { "data": "ParentKey" },
-                    { "data": "MenuName" },
-                    { "data": "MenuUrl" }
-                ]
+            var flickerAPI = "https://api.immgroup.com/crm/menu/all";
+            $.getJSON(flickerAPI, {
+                format: "json"
+            }).done(function (data) {
+                //return data
+                var stringified = JSON.stringify(data);
+                var parsedObj = JSON.parse(stringified);
+                $('.dataTables-example').DataTable({
+                    "data": parsedObj,
+                    "columns": [
+                        { "data": "PriKey" },
+                        { "data": "ParentKey" },
+                        { "data": "MenuName" },
+                        { "data": "MenuUrl" },
+                        { "data": "Flag" },
+                        { "data": "MenuNote" },
+                        { "data": "MenuAction" }
+                    ]
+                });
+                //Biding Parent menu
+                var str = "";
+                jQuery.each(data, function (i, val) {
+                    str += "<option value=\"" + val.PriKey + "\">" + val.MenuName+"</option>";
+                });  
+                $("#ContentAll_select_parent_menu").append(str);
+                $("#ContentAll_select_parent_menu_edit").append(str);
             });
 
            
 
-            // Bind normal buttons
-            Ladda.bind('.ladda-button', { timeout: 2000 });
-
-            // Bind progress buttons and simulate loading progress
-            Ladda.bind('.progress-demo .ladda-button', {
-                callback: function (instance) {
-                    var progress = 0;
-                    var interval = setInterval(function () {
-                        progress = Math.min(progress + Math.random() * 0.1, 1);
-                        instance.setProgress(progress);
-
-                        if (progress === 1) {
-                            instance.stop();
-                            clearInterval(interval);
-                        }
-                    }, 200);
-                }
-            });
-
-            var l = $('.ladda-button-demo').ladda();
-            l.click(function () {
-                // Start loading
-                l.ladda('start');
-
-                // Timeout example
-                // Do something in backend and then stop ladda
-                setTimeout(function () {
-                    l.ladda('stop');
-                }, 12000)
-
-            });
-
+           
         });
 
+        $("#ContentAll_select_parent_menu").change(function () {
+            var val = (this.value);
+            $("#ContentAll__txt_parentCode_selected").text(val);
+            $("#ContentAll__txt_parentCode_selected").val(val);
+        });
+        $("#ContentAll_select_parent_menu_edit").change(function () {
+            var val = (this.value);
+            $("#ContentAll__txt_parentCode_selected_edit").text(val);
+            $("#ContentAll__txt_parentCode_selected_edit").val(val);
+        });
+
+        function funceditCodeMain(prikey,parent,name,flag,url){
+            $("#ContentAll__txt_menuCode_edit").text(prikey);
+            $("#ContentAll__txt_menuCode_edit").val(prikey);
+            $("#ContentAll__txt_menuName_edit").val(name);
+            $("#ContentAll__txt_menuLink_edit").val(url);
+            $("#ContentAll__txt_parentCode_selected_edit").val(parent);
+            $('#editCodeMain').modal('show');
+        }
+
+      
     </script>
 </asp:Content>

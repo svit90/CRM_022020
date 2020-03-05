@@ -2,22 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-12">
-            <h2>Admin Dashboard</h2>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a>Admin</a>
-                </li>
-                <li class="breadcrumb-item active">
-                    <strong>Manager Code Main</strong>
-                </li>
-            </ol>
-        </div>
-    </div>
+   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
       <div class="ibox ">
