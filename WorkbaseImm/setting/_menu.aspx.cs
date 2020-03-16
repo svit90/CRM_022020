@@ -25,10 +25,11 @@ namespace WorkbaseImm.setting
             string @p_MenuParentCode = _txt_parentCode_selected.Text;
             string @p_MenuName = _txt_menuName.Text;
             string @p_MenuLink = _txt_menuLink.Text;
+            string @p_MenuIcon = _txt_menuIcon.Text;
             string sql = "";
             sql += "INSERT INTO [dbo].[M_MENU] ( [MENU_KEY] ,[MENU_PARENT_KEY] ,[MENU_NAME] ,[MENU_URL] ,[FLAG_ACTIVE] ,[MENU_NOTE] )";
             sql += " VALUES";
-            sql += "('" + @p_MenuCode + "','" + @p_MenuParentCode + "',N'" + @p_MenuName + "','" + @p_MenuLink + "',1,'')";
+            sql += "('" + @p_MenuCode + "','" + @p_MenuParentCode + "',N'" + @p_MenuName + "','" + @p_MenuLink + "',1,'" + @p_MenuIcon + "')";
             DBHelper.ExecuteQuery(sql);
             Response.Redirect(Request.RawUrl);
         }
@@ -49,13 +50,15 @@ namespace WorkbaseImm.setting
             string @p_MenuParentCode = _txt_parentCode_selected_edit.Text;
             string @p_MenuName = _txt_menuName_edit.Text;
             string @p_MenuLink = _txt_menuLink_edit.Text;
+            string @p_MenuIcon = _txt_menuIcon_edit.Text;
             string sql = "";
             sql += "UPDATE [dbo].[M_MENU] ";
             sql += "SET ";
             sql += "  MENU_PARENT_KEY = N'" + @p_MenuParentCode + "'";
             sql += " ,MENU_NAME = N'" + @p_MenuName + "'";
             sql += " ,MENU_URL = N'" + p_MenuLink + "'";
-            sql += " WHERE MENU_KEY = '" + p_MenuCode +"'";
+            sql += " ,MENU_NOTE = N'" + @p_MenuIcon + "'";
+            sql += " WHERE MENU_KEY = '" + p_MenuCode.Replace("\"",;
             DBHelper.ExecuteQuery(sql);
             Response.Redirect(Request.RawUrl);
         }

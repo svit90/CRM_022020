@@ -31,7 +31,7 @@
 							<th>Tên hiển thị</th>
 							<th>Link</th>
 							<th>Trạng thái</th>
-							<th>Ghi chú</th>
+							<th>Icon</th>
                             <th>Action</th>
 						</tr>
                     </thead>
@@ -54,6 +54,10 @@
                     <div class="form-group d-none">
                         <label>Menu Code</label>
                         <asp:TextBox ID="_txt_menuCode_edit" runat="server" class="form-control" placeholder="Nhập Code Menu" autocorrect="off" autocomplete="off"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label>Menu icon</label>
+                        <asp:TextBox ID="_txt_menuIcon_edit" runat="server" class="form-control" placeholder="Nhập Code Icon" autocorrect="off" autocomplete="off"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Tên Menu</label>                        
@@ -88,6 +92,10 @@
                     <div class="form-group d-none">
                         <label>Menu Code</label>
                         <asp:TextBox ID="_txt_menuCode" runat="server" class="form-control" placeholder="Nhập Code Menu" autocorrect="off" autocomplete="off"></asp:TextBox>                
+                    </div>
+                    <div class="form-group">
+                        <label>Menu icon</label>
+                        <asp:TextBox ID="_txt_menuIcon" runat="server" class="form-control" placeholder="Nhập Code Icon" autocorrect="off" autocomplete="off"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label>Tên Menu</label>
@@ -136,7 +144,7 @@
                         { "data": "MenuName" },
                         { "data": "MenuUrl" },
                         { "data": "Flag" },
-                        { "data": "MenuNote" },
+                        { "data": "MenuIcon" },
                         { "data": "MenuAction" }
                     ]
                 });
@@ -165,11 +173,12 @@
             $("#ContentAll__txt_parentCode_selected_edit").val(val);
         });
 
-        function funceditCodeMain(prikey,parent,name,flag,url){
+        function funceditCodeMain(prikey,parent,name,flag,url,icon){
             $("#ContentAll__txt_menuCode_edit").text(prikey);
             $("#ContentAll__txt_menuCode_edit").val(prikey);
             $("#ContentAll__txt_menuName_edit").val(name);
             $("#ContentAll__txt_menuLink_edit").val(url);
+            $("#ContentAll__txt_menuIcon_edit").val(icon);
             $("#ContentAll__txt_parentCode_selected_edit").val(parent);
             $('#editCodeMain').modal('show');
         }

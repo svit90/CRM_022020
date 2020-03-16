@@ -33,6 +33,15 @@ namespace WorkbaseImm.setting
         protected global::System.Web.UI.WebControls.TextBox _txt_menuCode_edit;
 
         /// <summary>
+        /// _txt_menuIcon_edit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _txt_menuIcon_edit;
+
+        /// <summary>
         /// _txt_menuName_edit control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace WorkbaseImm.setting
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox _txt_menuCode;
+
+        /// <summary>
+        /// _txt_menuIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _txt_menuIcon;
 
         /// <summary>
         /// _txt_menuName control.

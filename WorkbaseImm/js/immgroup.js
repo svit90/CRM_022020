@@ -121,7 +121,7 @@ function create_menu_control(mode, parent, level, data) {
                 if (str_sub === "") {
                     arrow = "";
                 }
-                str += "<li id=\"li_" + val.PriKey + "\" data-header=\"" + parent +"\">";
+                str += "<li id=\"li_" + val.PriKey + "\">";
                 str += "<a href=\"" + val.MenuUrl + "\" ><i class=\"fa fa-sitemap\"></i> <span class=\"nav-label\">" + val.MenuName + "</span> " + arrow;
                 str += "</a> ";
                 str += str_sub;
@@ -138,8 +138,8 @@ function create_menu_control(mode, parent, level, data) {
                 if (str_sub_child === "") {
                     arrow = "";
                 }
-                str_sub += "<li id=\"li_" + val.PriKey + "\" data-header=\"" + parent + "\"  >";
-                str_sub += "<a href=\"" + val.MenuUrl + "\"> <span class=\"nav-label\" onclick=\"showHeaderPage('" + parent + "','" + val.MenuName +"')\">" + val.MenuName + " </span> " + arrow;
+                str_sub += "<li id=\"li_" + val.PriKey + "\">";
+                str_sub += "<a href=\"" + val.MenuUrl + "\" onclick=\"showHeaderPage('" + parent + "','" + val.MenuName +"')\">" + val.MenuName + arrow;
                 str_sub += "</a > ";
                 str_sub += str_sub_child;
                 str_sub += "</li>";
