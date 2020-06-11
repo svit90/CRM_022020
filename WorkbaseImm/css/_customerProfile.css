@@ -1,7 +1,31 @@
-﻿.edit-icon .fa{
-    font-size:16px;
+﻿.edit-icon .fa {
+    font-size: 16px;
 }
+
 .line-title {
     border-bottom: 1px solid #1ab394;
-    padding-bottom:5px;
+    padding-bottom: 5px;
+}
+
+.field-group {
+    position: relative;
+}
+
+    .field-group:hover .edit-field {
+        opacity: 1
+    }
+
+.edit-field {
+    opacity: 0
+}
+
+.field-group .btn-white {
+    border-color: rgba(0,0,0,.3);
+}
+
+.edit-panel {
+    top: -25px;
+    left: 0;
+    z-index: 3;
+    position: relative
 }
