@@ -1409,6 +1409,8 @@
     <Content Include="report\_reportListCusSaleReback.aspx" />
     <Content Include="report\_reportListCusSaleReDelete.aspx" />
     <Content Include="report\_reportTeamSaleIsBlocked.aspx" />
+    <Content Include="setting\_menu.aspx" />
+    <Content Include="setting\_menuPermission.aspx" />
     <Content Include="user\_dashboardChangePassword.aspx" />
     <Content Include="user\_dashboardEditInfo.aspx" />
     <Content Include="user\_dashboardForgetPassword.aspx" />
@@ -1726,6 +1728,20 @@
     </Compile>
     <Compile Include="report\_reportTeamSaleIsBlocked.aspx.designer.cs">
       <DependentUpon>_reportTeamSaleIsBlocked.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="setting\_menu.aspx.cs">
+      <DependentUpon>_menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="setting\_menu.aspx.designer.cs">
+      <DependentUpon>_menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="setting\_menuPermission.aspx.cs">
+      <DependentUpon>_menuPermission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="setting\_menuPermission.aspx.designer.cs">
+      <DependentUpon>_menuPermission.aspx</DependentUpon>
     </Compile>
     <Compile Include="user\_dashboardChangePassword.aspx.cs">
       <DependentUpon>_dashboardChangePassword.aspx</DependentUpon>
