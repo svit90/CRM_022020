@@ -222,6 +222,7 @@
     <Content Include="department\_departCaseProcessingReminderTools.aspx" />
     <Content Include="department\_departCecListCusSaleReback.aspx" />
     <Content Include="department\_departCecListCusSaleReDelete.aspx" />
+    <Content Include="DRM\hardware\_hardwareEmployees.aspx" />
     <Content Include="email\inbox.aspx" />
     <Content Include="email_templates\action.html" />
     <Content Include="email_templates\alert.html" />
@@ -1561,6 +1562,13 @@
     </Compile>
     <Compile Include="department\_departCecListCusSaleReDelete.aspx.designer.cs">
       <DependentUpon>_departCecListCusSaleReDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DRM\hardware\_hardwareEmployees.aspx.cs">
+      <DependentUpon>_hardwareEmployees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DRM\hardware\_hardwareEmployees.aspx.designer.cs">
+      <DependentUpon>_hardwareEmployees.aspx</DependentUpon>
     </Compile>
     <Compile Include="email\inbox.aspx.cs">
       <DependentUpon>inbox.aspx</DependentUpon>
