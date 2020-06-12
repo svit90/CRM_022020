@@ -68,9 +68,10 @@
             <hr/>
             <div class="row">
                 <div class="col-md-12">                    
-                   <i class="fa fa-sitemap"></i> <asp:Label ID="lb_IPAddress" runat="server" Text="Ip Truy cập"></asp:Label>
+                   <i class="fa fa-sitemap"></i> <asp:TextBox ID="TextBox1" runat="server" class="form-control required email" placeholder="Nhập email của bạn.." ></asp:TextBox>
+                         <asp:Label ID="lb_IPAddress" runat="server" ClientIDMode="Static"></asp:Label>
                     <br />
-                   <i class="fa fa-map-marker"></i> <asp:Label ID="lb_Location" runat="server" Text="Vị trí hiện tại của bạn"></asp:Label>
+                   <i class="fa fa-map-marker"></i> <asp:Label ID="lb_Location" runat="server" ClientIDMode="Static"></asp:Label>
                     <div id="mapholder"></div>
 
                 </div>           

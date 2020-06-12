@@ -83,8 +83,13 @@ function getUserLocation() {
                 if (json.ip === "118.70.171.215") {
                     str = "Lotte Center, 54 Liễu Giai, Quận Ba Đình, Hà Nội";
                 }
-                document.getElementById("lb_IPAddress").innerText = json.ip;
-                document.getElementById("lb_Location").innerText = str;
+
+                $("#TextBox1").innerText = json.ip;
+                $("#lb_Location").innerText = str;
+                $("#TextBox1").text(json.ip);
+                $("#lb_Location").text(str);
+                $("#TextBox1").val(json.ip);
+                $("#lb_Location").val(str);
             }
         });
     });
