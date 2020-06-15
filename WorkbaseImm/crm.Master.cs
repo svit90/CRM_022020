@@ -41,7 +41,6 @@ namespace WorkbaseImm
 
         protected void loadInfoUser_masterpage()
         {
-            bool flg = false;
             foreach (var u in db._012020_CRM_V3_FUNC_User_Login(Server.UrlDecode(Request.Cookies["USER_ROLE"].Value), Server.UrlDecode(Request.Cookies["USER_EMAIL"].Value), Server.UrlDecode(Request.Cookies["USER_PASS"].Value)))
             {
                 lb_userName.InnerText = u.FullName;

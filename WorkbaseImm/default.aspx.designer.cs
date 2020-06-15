@@ -42,13 +42,22 @@ namespace WorkbaseImm
         protected global::System.Web.UI.WebControls.Button btn_signin;
 
         /// <summary>
-        /// lb_IPAddress control.
+        /// label_IPAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_IPAddress;
+        protected global::System.Web.UI.WebControls.Label label_IPAddress;
+
+        /// <summary>
+        /// txt_IPAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_IPAddress;
 
         /// <summary>
         /// lb_Location control.

@@ -6,20 +6,20 @@
 
 <head runat="server">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>CRM SYSTEM | Login </title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
 
     
     <!-- Toastr style -->
-    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 
         <!-- Mainly scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -28,7 +28,12 @@
     <script src="js/plugins/toastr/toastr.min.js"></script>
     <!-- ImmGroup script -->
     <script src="js/immgroup.js"></script>
-
+    <style>
+        .fake-label{
+            border: 0;
+            background: #f3f3f4;
+        }
+    </style>
 </head>
 
 <body class="gray-bg">
@@ -55,7 +60,7 @@
                 </div>
                 <div class="col-md-6 align-self-center text-center">
                     <div class="ibox-content">
-                        <img src="https://crm.imm.group/images/logo-no-padding.png" alt="Logo" style="height: 45px;padding: 5px;">
+                        <img src="https://crm.imm.group/images/logo-no-padding.png" alt="Logo" style="height: 45px;padding: 5px;" />
                         
                         <div class="form-group">                            
                             <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control required email" placeholder="Nhập email của bạn.." ></asp:TextBox>
@@ -68,9 +73,11 @@
             <hr/>
             <div class="row">
                 <div class="col-md-12">                    
-                   <i class="fa fa-sitemap"></i> <asp:Label ID="lb_IPAddress" runat="server" Text="Ip Truy cập"></asp:Label>
+                   <i class="fa fa-sitemap"></i> 
+                        <asp:Label ID="label_IPAddress" runat="server" ClientIDMode="Static"></asp:Label>
+                        <asp:TextBox ID="txt_IPAddress" runat="server" ClientIDMode="Static" CssClass="d-none"></asp:TextBox>
                     <br />
-                   <i class="fa fa-map-marker"></i> <asp:Label ID="lb_Location" runat="server" Text="Vị trí hiện tại của bạn"></asp:Label>
+                   <i class="fa fa-map-marker"></i> <asp:Label ID="lb_Location" runat="server" ClientIDMode="Static"></asp:Label>
                     <div id="mapholder"></div>
 
                 </div>           
