@@ -12,10 +12,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/_mainGeneral.css" rel="stylesheet" />
-    <link href="css/_masterPage.css" rel="stylesheet" />
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/style.css") %>">
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/animate.css") %>">
+
+    <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_mainGeneral.css") %>">
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_masterPage.css") %>">
 </head>
 <body>
    <div id="wrapper">
@@ -209,26 +210,29 @@
         
     </div>
 </body>
+
+
+     
+
     <!-- Mainly scripts -->
-    <script src="../js/jquery-3.1.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+     <script src="<%= ResolveClientUrl("~/js/jquery-3.1.1.min.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/bootstrap.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/plugins/metisMenu/jquery.metisMenu.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/plugins/slimscroll/jquery.slimscroll.min.js") %>"></script>
+
     <!-- Custom and plugin javascript -->
-    
-    <script src="../js/plugins/pace/pace.min.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/jquery-ui.min.js"></script>    
-    <script src="../js/inspinia.js"></script>
-    <script src="../js/immgroup.js"></script>
+    <script src="<%= ResolveClientUrl("~/js/plugins/pace/pace.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/jquery-ui.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/jquery-ui.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/inspinia.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/immgroup.js") %>"></script>
     <asp:ContentPlaceHolder ID="Footer" runat="server">
 
        
     </asp:ContentPlaceHolder>
     
     <!-- Typehead -->
-    <script src="../js/plugins/typehead/bootstrap3-typeahead.min.js"></script>
+    <script src="<%= ResolveClientUrl("~/js/plugins/typehead/bootstrap3-typeahead.min.js") %>"></script>
     <script type="text/javascript">
         $().ready(function() {   
             load_control_menu();
