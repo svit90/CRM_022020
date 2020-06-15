@@ -34,7 +34,6 @@ namespace WorkbaseImm
             FC_Common FC = new FC_Common();
             try
             {
-                var flag = false;
                 foreach (var per in db.wb_FUNCTION_Login(email, pass))
                 {
                     str = "true";

@@ -49,7 +49,7 @@ namespace WorkbaseImm
             string mday = mmday.ToString(format);
             string _email = email.Text;
             string _appPass = FC.GetUniqueKey(8);
-            string _ipAdress = TextBox1.Text;
+            string _ipAdress = txt_IPAddress.Text;
             try
             {
                 if(_email != "")

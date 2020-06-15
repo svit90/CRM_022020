@@ -58,7 +58,7 @@ namespace WorkbaseImm.setting
             sql += " ,MENU_NAME = N'" + @p_MenuName + "'";
             sql += " ,MENU_URL = N'" + p_MenuLink + "'";
             sql += " ,MENU_NOTE = N'" + @p_MenuIcon + "'";
-            sql += " WHERE MENU_KEY = '" + p_MenuCode.Replace("\"","");
+            sql += " WHERE MENU_KEY = '" + p_MenuCode.Replace("\"","") + "'";
             DBHelper.ExecuteQuery(sql);
             Response.Redirect(Request.RawUrl);
         }

@@ -84,12 +84,9 @@ function getUserLocation() {
                     str = "Lotte Center, 54 Liễu Giai, Quận Ba Đình, Hà Nội";
                 }
 
-                $("#TextBox1").innerText = json.ip;
-                $("#lb_Location").innerText = str;
-                $("#TextBox1").text(json.ip);
+                $("#label_IPAddress").text(json.ip);
                 $("#lb_Location").text(str);
-                $("#TextBox1").val(json.ip);
-                $("#lb_Location").val(str);
+                $("#txt_IPAddress").val(json.ip);
             }
         });
     });
@@ -127,7 +124,7 @@ function create_menu_control(mode, parent, level, data) {
                     arrow = "";
                 }
                 str += "<li id=\"li_" + val.PriKey + "\">";
-                str += "<a href=\"" + val.MenuUrl + "\" ><i class=\"fa fa-sitemap\"></i> <span class=\"nav-label\">" + val.MenuName + "</span> " + arrow;
+                str += "<a href=\"" + val.MenuUrl + "\" ><i class=\""+ val.MenuIcon +"\"></i> <span class=\"nav-label\">" + val.MenuName + "</span> " + arrow;
                 str += "</a> ";
                 str += str_sub;
                 str += "</li>";
@@ -144,7 +141,7 @@ function create_menu_control(mode, parent, level, data) {
                     arrow = "";
                 }
                 str_sub += "<li id=\"li_" + val.PriKey + "\">";
-                str_sub += "<a href=\"" + val.MenuUrl + "\" onclick=\"showHeaderPage('" + parent + "','" + val.MenuName +"')\">" + val.MenuName + arrow;
+                str_sub += "<a href=\"" + val.MenuUrl + "\" onclick=\"showHeaderPage('" + parent + "','" + val.MenuName + "')\"> <i class=\"" + val.MenuIcon +"\"></i>" + val.MenuName + arrow;
                 str_sub += "</a > ";
                 str_sub += str_sub_child;
                 str_sub += "</li>";
