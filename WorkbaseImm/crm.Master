@@ -9,8 +9,8 @@
     <meta name="robots" content="noindex, nofollow" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link href="/favicon.ico" rel="apple-touch-icon"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+      <link rel="stylesheet" href="<%= ResolveClientUrl("~/font-awesome/css/font-awesome.css") %>">
+      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/bootstrap.min.css") %>">
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/style.css") %>">
      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/animate.css") %>">
@@ -216,6 +216,7 @@
 
     <!-- Mainly scripts -->
      <script src="<%= ResolveClientUrl("~/js/jquery-3.1.1.min.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/popper.min.js") %>"></script>
      <script src="<%= ResolveClientUrl("~/js/bootstrap.js") %>"></script>
      <script src="<%= ResolveClientUrl("~/js/plugins/metisMenu/jquery.metisMenu.js") %>"></script>
      <script src="<%= ResolveClientUrl("~/js/plugins/slimscroll/jquery.slimscroll.min.js") %>"></script>
