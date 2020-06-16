@@ -129,6 +129,9 @@ namespace WorkbaseImm
     partial void InsertM_PARTNER(M_PARTNER instance);
     partial void UpdateM_PARTNER(M_PARTNER instance);
     partial void DeleteM_PARTNER(M_PARTNER instance);
+    partial void InsertM_DEVICE(M_DEVICE instance);
+    partial void UpdateM_DEVICE(M_DEVICE instance);
+    partial void DeleteM_DEVICE(M_DEVICE instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -513,6 +516,14 @@ namespace WorkbaseImm
 			}
 		}
 		
+		public System.Data.Linq.Table<M_DEVICE> M_DEVICEs
+		{
+			get
+			{
+				return this.GetTable<M_DEVICE>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[2019_LOAD_FUNCTION_STAFF]")]
 		public ISingleResult<_2019_LOAD_FUNCTION_STAFFResult> _2019_LOAD_FUNCTION_STAFF([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_StaffId", DbType="NVarChar(50)")] string p_StaffId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_Function", DbType="NVarChar(MAX)")] string p_Function)
 		{
@@ -560,6 +571,13 @@ namespace WorkbaseImm
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mode, userEmail, userPass);
 			return ((ISingleResult<_012020_CRM_V3_FUNC_User_LoginResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.ADD_NEW_DEVICE")]
+		public int ADD_NEW_DEVICE([global::System.Data.Linq.Mapping.ParameterAttribute(Name="DV_BARCODE", DbType="NVarChar(200)")] string dV_BARCODE, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DV_USER_ID", DbType="NVarChar(200)")] string dV_USER_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DV_CATALORY", DbType="NVarChar(200)")] string dV_CATALORY, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DV_NAME", DbType="NVarChar(MAX)")] string dV_NAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DV_INFO", DbType="NVarChar(MAX)")] string dV_INFO, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DV_NOTE", DbType="NVarChar(MAX)")] string dV_NOTE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), dV_BARCODE, dV_USER_ID, dV_CATALORY, dV_NAME, dV_INFO, dV_NOTE);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -13681,6 +13699,284 @@ namespace WorkbaseImm
 					this._ROWID = value;
 					this.SendPropertyChanged("ROWID");
 					this.OnROWIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.M_DEVICE")]
+	public partial class M_DEVICE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DV_ID;
+		
+		private string _DV_BARCODE;
+		
+		private string _DV_USER_ID;
+		
+		private string _DV_CATALORY;
+		
+		private string _DV_NAME;
+		
+		private string _DV_INFO;
+		
+		private string _DV_NOTE;
+		
+		private string _FLAG_ACTIVE;
+		
+		private System.Nullable<System.DateTime> _CREATE_DATE;
+		
+		private System.Nullable<System.DateTime> _UPDATE_DATE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDV_IDChanging(int value);
+    partial void OnDV_IDChanged();
+    partial void OnDV_BARCODEChanging(string value);
+    partial void OnDV_BARCODEChanged();
+    partial void OnDV_USER_IDChanging(string value);
+    partial void OnDV_USER_IDChanged();
+    partial void OnDV_CATALORYChanging(string value);
+    partial void OnDV_CATALORYChanged();
+    partial void OnDV_NAMEChanging(string value);
+    partial void OnDV_NAMEChanged();
+    partial void OnDV_INFOChanging(string value);
+    partial void OnDV_INFOChanged();
+    partial void OnDV_NOTEChanging(string value);
+    partial void OnDV_NOTEChanged();
+    partial void OnFLAG_ACTIVEChanging(string value);
+    partial void OnFLAG_ACTIVEChanged();
+    partial void OnCREATE_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnCREATE_DATEChanged();
+    partial void OnUPDATE_DATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnUPDATE_DATEChanged();
+    #endregion
+		
+		public M_DEVICE()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DV_ID
+		{
+			get
+			{
+				return this._DV_ID;
+			}
+			set
+			{
+				if ((this._DV_ID != value))
+				{
+					this.OnDV_IDChanging(value);
+					this.SendPropertyChanging();
+					this._DV_ID = value;
+					this.SendPropertyChanged("DV_ID");
+					this.OnDV_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_BARCODE", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string DV_BARCODE
+		{
+			get
+			{
+				return this._DV_BARCODE;
+			}
+			set
+			{
+				if ((this._DV_BARCODE != value))
+				{
+					this.OnDV_BARCODEChanging(value);
+					this.SendPropertyChanging();
+					this._DV_BARCODE = value;
+					this.SendPropertyChanged("DV_BARCODE");
+					this.OnDV_BARCODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_USER_ID", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string DV_USER_ID
+		{
+			get
+			{
+				return this._DV_USER_ID;
+			}
+			set
+			{
+				if ((this._DV_USER_ID != value))
+				{
+					this.OnDV_USER_IDChanging(value);
+					this.SendPropertyChanging();
+					this._DV_USER_ID = value;
+					this.SendPropertyChanged("DV_USER_ID");
+					this.OnDV_USER_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_CATALORY", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string DV_CATALORY
+		{
+			get
+			{
+				return this._DV_CATALORY;
+			}
+			set
+			{
+				if ((this._DV_CATALORY != value))
+				{
+					this.OnDV_CATALORYChanging(value);
+					this.SendPropertyChanging();
+					this._DV_CATALORY = value;
+					this.SendPropertyChanged("DV_CATALORY");
+					this.OnDV_CATALORYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_NAME", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string DV_NAME
+		{
+			get
+			{
+				return this._DV_NAME;
+			}
+			set
+			{
+				if ((this._DV_NAME != value))
+				{
+					this.OnDV_NAMEChanging(value);
+					this.SendPropertyChanging();
+					this._DV_NAME = value;
+					this.SendPropertyChanged("DV_NAME");
+					this.OnDV_NAMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_INFO", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string DV_INFO
+		{
+			get
+			{
+				return this._DV_INFO;
+			}
+			set
+			{
+				if ((this._DV_INFO != value))
+				{
+					this.OnDV_INFOChanging(value);
+					this.SendPropertyChanging();
+					this._DV_INFO = value;
+					this.SendPropertyChanged("DV_INFO");
+					this.OnDV_INFOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DV_NOTE", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string DV_NOTE
+		{
+			get
+			{
+				return this._DV_NOTE;
+			}
+			set
+			{
+				if ((this._DV_NOTE != value))
+				{
+					this.OnDV_NOTEChanging(value);
+					this.SendPropertyChanging();
+					this._DV_NOTE = value;
+					this.SendPropertyChanged("DV_NOTE");
+					this.OnDV_NOTEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_ACTIVE", DbType="NVarChar(1) NOT NULL", CanBeNull=false)]
+		public string FLAG_ACTIVE
+		{
+			get
+			{
+				return this._FLAG_ACTIVE;
+			}
+			set
+			{
+				if ((this._FLAG_ACTIVE != value))
+				{
+					this.OnFLAG_ACTIVEChanging(value);
+					this.SendPropertyChanging();
+					this._FLAG_ACTIVE = value;
+					this.SendPropertyChanged("FLAG_ACTIVE");
+					this.OnFLAG_ACTIVEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATE_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CREATE_DATE
+		{
+			get
+			{
+				return this._CREATE_DATE;
+			}
+			set
+			{
+				if ((this._CREATE_DATE != value))
+				{
+					this.OnCREATE_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._CREATE_DATE = value;
+					this.SendPropertyChanged("CREATE_DATE");
+					this.OnCREATE_DATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPDATE_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UPDATE_DATE
+		{
+			get
+			{
+				return this._UPDATE_DATE;
+			}
+			set
+			{
+				if ((this._UPDATE_DATE != value))
+				{
+					this.OnUPDATE_DATEChanging(value);
+					this.SendPropertyChanging();
+					this._UPDATE_DATE = value;
+					this.SendPropertyChanged("UPDATE_DATE");
+					this.OnUPDATE_DATEChanged();
 				}
 			}
 		}

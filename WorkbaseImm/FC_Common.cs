@@ -212,8 +212,9 @@ namespace WorkbaseImm
 
         }
 
-        public static void ExecuteQuery(string Query)
+        public static bool ExecuteQuery(string Query)
         {
+            bool flg = false;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -222,16 +223,19 @@ namespace WorkbaseImm
                     using (cmd = new SqlCommand(Query, connection))
                     {
                         cmd.ExecuteNonQuery();
+                        flg = true;
                     }
                 }
                 catch
                 {
+                    return false;
                 }
                 finally
                 {
                     connection.Close();
                 }
             }
+            return flg;
         }
 
         public static string GetColumnVal(string Query, string ColumnName)

@@ -266,5 +266,11 @@
         <elementListCompartment Id="6886ba4c-9f73-4604-98f1-75ab82e1f00c" absoluteBounds="0.63999999999999968, 18.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="3b70cd02-2be0-4ed2-88a8-8b26677f034f" absoluteBounds="10.5, 3.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DataClassesDataContext/M_DEVICE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b1625eae-a441-424c-9cc8-8ed91acd237f" absoluteBounds="10.515, 3.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

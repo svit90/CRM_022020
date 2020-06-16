@@ -95,12 +95,12 @@ namespace WorkbaseImm
                 }                
                 if(_error != "OK")
                 {
-                    Response.Redirect("/default.aspx?error=" + _error + "&e=" + _email, false);
+                    Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email, false);
                 }
             }
             catch (Exception ex)
             {
-                Response.Redirect("/default.aspx?error=" + ex.Message, false);
+                Response.Redirect("/default.aspx?mes=" + ex.Message, false);
             }
         }
 
