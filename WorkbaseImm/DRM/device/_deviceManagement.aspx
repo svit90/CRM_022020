@@ -197,27 +197,25 @@
                 var idbarcode = $("#ContentAll__txt_BarCode_Device").val();
                 $("#ContentAll__txt_BarCode_Device").attr("disabled", "disabled"); 
 
-                //var fbarcodeAPI = "https://api.immgroup.com/crm/get/staff/all";
-                //$.getJSON(fbarcodeAPI, {
-                //    format: "json"
-                //}).done(function (data) {
-                //    //return data
-                //    var stringified = JSON.stringify(data);
-                //    var parsedObj = JSON.parse(stringified);
-                //    //Biding Parent menu
+                var fbarcodeAPI = "https://api.immgroup.com/crm/get/device/" + idbarcode;
+                $.getJSON(fbarcodeAPI, {
+                    format: "json"
+                }).done(function (data) {
+                    //return data
+                    var stringified = JSON.stringify(data);
+                    var parsedObj = JSON.parse(stringified);
+                    //Biding Parent menu
              
-
-                //    $("#listStaff").val();
-                //    $("#ContentAll__txt_STAFF_ID_selected").val();
-                   
-                //    $("#listCategory").val();
-                //    $("#ContentAll__txt_Category_selected").val();
-
-                //    $("#ContentAll__txt_Name_Device").text(data);
-                //    $("#ContentAll__txt_Info_Device").val(prikey);
-                //    $("#ContentAll__txt_Note_Device").val(name);
+                    jQuery.each(data, function (i, val) {
+                        $("#ContentAll__txt_STAFF_ID_selected").val(val.StaffId);
+                        $("#ContentAll__txt_Category_selected").val(val.Catalogy);
+                        $("#ContentAll__txt_Name_Device").val(val.DeviceNAme);
+                        $("#ContentAll__txt_Info_Device").val(val.DeviceInfo);
+                        $("#ContentAll__txt_Note_Device").val(val.DeviceNote);
+                    });                   
                     
-                //});
+                    
+                });
             });
 
             //change select staff
