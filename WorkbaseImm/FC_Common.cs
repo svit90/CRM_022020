@@ -524,7 +524,7 @@ namespace WorkbaseImm
     }
 
     public static class Error
-    {
+    {       
         public static string Show(string _language, string _ErrorCode)
         {
             string mes = "";

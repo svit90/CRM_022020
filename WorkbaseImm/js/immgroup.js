@@ -166,3 +166,21 @@ function showHeaderPage(parent, curent) {
     str += "<li class=\"breadcrumb-item active\"><strong>" + curent + "</strong></li>";
     $("#pageHeading").append(ol + str + "</ol>");
 }
+
+
+function setCookie(key, value) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+}
+
+function clearCookie(key) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() - 1);
+    document.cookie = key + '=' + "" + ';expires=' + expires.toUTCString();
+}

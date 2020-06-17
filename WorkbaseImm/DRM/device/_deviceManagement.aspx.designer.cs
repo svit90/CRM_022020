@@ -24,6 +24,15 @@ namespace WorkbaseImm.DRM.device
         protected global::System.Web.UI.HtmlControls.HtmlForm _form;
 
         /// <summary>
+        /// _txt_BarCode_DeviceShow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _txt_BarCode_DeviceShow;
+
+        /// <summary>
         /// _txt_BarCode_Device control.
         /// </summary>
         /// <remarks>
@@ -78,57 +87,21 @@ namespace WorkbaseImm.DRM.device
         protected global::System.Web.UI.WebControls.TextBox _txt_Note_Device;
 
         /// <summary>
-        /// btn_addNewDivice control.
+        /// btn_mofNewDivice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_addNewDivice;
+        protected global::System.Web.UI.WebControls.Button btn_mofNewDivice;
 
         /// <summary>
-        /// _txt_namedevice_edit control.
+        /// btn_deleteDivice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _txt_namedevice_edit;
-
-        /// <summary>
-        /// _txt_device_edit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _txt_device_edit;
-
-        /// <summary>
-        /// _txt_note_edit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _txt_note_edit;
-
-        /// <summary>
-        /// btn_DeactiveMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_DeactiveMenu;
-
-        /// <summary>
-        /// btn_SaveNewMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btn_SaveNewMenu;
+        protected global::System.Web.UI.WebControls.Button btn_deleteDivice;
     }
 }
