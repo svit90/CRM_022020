@@ -222,6 +222,7 @@
     <Content Include="department\_departCaseProcessingReminderTools.aspx" />
     <Content Include="department\_departCecListCusSaleReback.aspx" />
     <Content Include="department\_departCecListCusSaleReDelete.aspx" />
+    <Content Include="DRM\device\barcode-random.html" />
     <Content Include="DRM\device\_deviceManagement.aspx" />
     <Content Include="DRM\hardware\_hardwareEmployees.aspx" />
     <Content Include="email\inbox.aspx" />
@@ -1060,6 +1061,7 @@
     <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\JsBarcode.all.min.js" />
     <Content Include="js\plugins\blueimp\jquery.blueimp-gallery.min.js" />
     <Content Include="js\plugins\bootstrap-markdown\bootstrap-markdown.js" />
     <Content Include="js\plugins\bootstrap-markdown\markdown.js" />

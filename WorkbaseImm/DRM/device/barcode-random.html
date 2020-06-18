@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARCODE RANDOM</title>
+    <style>
+        svg {
+            width: 100px;
+            height: 80px;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+    <div id="random">
+    </div>
+   
+    <script src="../../js/JsBarcode.all.min.js"></script>
+    <script>
+
+	    var text = "";
+		var i = 0;
+		while (i < 500) {
+		  text += " <svg id='barcode" + i + "'></svg>";
+		  document.getElementById("random").innerHTML = text;
+		  i++;
+		}
+
+		//
+		var j = 0;
+		while (j < 500) {
+		  var val1 = Math.floor(Math.random() * 9999999999);
+		  JsBarcode("#barcode" + j, val1);
+		  j++;
+		}
+    </script>
+</body>
+
+</html>
