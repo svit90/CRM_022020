@@ -22,8 +22,9 @@
 
 	    var text = "";
 		var i = 0;
-		while (i < 500) {
-		  text += " <svg id='barcode" + i + "'></svg>";
+        while (i < 500) {
+            text += " <svg id='barcode" + i + "'></svg>";
+            //text += " <svg id='abarcode" + i + "'></svg> <svg id='bbarcode" + i + "'></svg> <svg id='cbarcode" + i + "'></svg> <svg id='dbarcode" + i + "'></svg> <svg id='ebarcode" + i + "'></svg>";
 		  document.getElementById("random").innerHTML = text;
 		  i++;
 		}
@@ -31,8 +32,13 @@
 		//
 		var j = 0;
 		while (j < 500) {
-		  var val1 = Math.floor(Math.random() * 9999999999);
-		  JsBarcode("#barcode" + j, val1);
+            var val1 = Math.floor(Math.random() * 9999999999);
+             JsBarcode("#barcode" + j, val1);
+            //JsBarcode("#abarcode" + j, val1);
+            //JsBarcode("#bbarcode" + j, val1);
+            //JsBarcode("#cbarcode" + j, val1);
+            //JsBarcode("#dbarcode" + j, val1);
+            //JsBarcode("#ebarcode" + j, val1);
 		  j++;
 		}
     </script>
