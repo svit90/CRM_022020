@@ -28,36 +28,47 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                               <label class="">Chọn nhân Viên</label>
+                               <label class="">User Assign</label>
                                 <asp:TextBox ID="_txt_STAFF_ID_selected" runat="server" CssClass="d-none"></asp:TextBox>
-                               <select id="listStaff" class="form-control" required="">
+                               <select id="listStaff" class="form-control">
                                    <option value="">--Chọn--</option>
                                 </select>
                             </div>
                         
                         </div>
+                         <div class="col-md-3">
+                                <div class="form-group">
+                                <label class="">Device Name</label>
+                                <asp:TextBox ID="_txt_Name_Device" runat="server" CssClass="form-control" required=""></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="">Phân loại</label><asp:TextBox ID="_txt_Category_selected" runat="server" CssClass="d-none"></asp:TextBox>
+                                <label class="">Catalogy </label><asp:TextBox ID="_txt_Category_selected" runat="server" CssClass="d-none"></asp:TextBox>
                                 <select id="listCategory" class="form-control" name="" required="">
                                     <option value="">--Chọn--</option>
+                                    <option value="Bàn phím">Bàn Phím</option>
+                                    <option value="Bộ bàn phím - chuột">Bộ bàn phím - chuột</option>                                    
+                                     <option value="Chuột">Chuột</option>
                                     <option value="Máy tính">Máy tính</option>
                                     <option value="Màn hình">Màn Hình</option>
-                                    <option value="Chuột">Chuột</option>
-                                    <option value="Bàn phím">Bàn Phím</option>
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="Router-Switch">Router-Switch</option>
+                                    <option value="WC-Camera">WC-Camera</option>
                                     <option value="Phone">Phone</option>
+                                    <option value="Khác">Thiết bị khác</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3">
                                 <div class="form-group">
-                                <label class="">Tên thiết bị</label>
-                                <asp:TextBox ID="_txt_Name_Device" runat="server" CssClass="form-control" required=""></asp:TextBox>
+                                <label class="">Price</label>
+                                <asp:TextBox ID="_txt_Price" runat="server" CssClass="form-control" data-type="currency" required=""></asp:TextBox>
+                                <asp:TextBox ID="_txt_Piture" runat="server" CssClass="form-control d-none"></asp:TextBox>
                             </div>
-                        </div>
-                    
+                        </div>                    
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -88,12 +99,13 @@
                         <thead>
                             <tr>
                                 <th>Barcode</th>
-                                <th>Tên Nhân Viên</th>
-                                <th>Phân loại</th>
-                                <th>Tên thiết bị</th>
-                                <th>Thông tin thiết bị</th>
-                                <th>Ghi chú</th>
-                                <th>Xem nhật ký</th>
+                                <th>User Assign</th>
+                                <th>Catalogy</th>
+                                <th>Device Name</th>
+                                <th>Device Info</th>
+                                <th>Price</th>
+                                <th>Note</th>
+                                <th>Input Date</th>
                             </tr>
                         </thead>                   
                     </table>
@@ -146,6 +158,7 @@
                         { "data": "Catalogy" },
                         { "data": "DeviceNAme" },
                         { "data": "DeviceInfo" },
+                        { "data": "DevicePrice" },
                         { "data": "DeviceNote" },
                         { "data": "CreateDate" }
                     ]
@@ -176,6 +189,7 @@
                             $("#listCategory").val(val.Catalogy);
                             $("#ContentAll__txt_Name_Device").val(val.DeviceNAme);
                             $("#ContentAll__txt_Info_Device").val(val.DeviceInfo);
+                            $("#ContentAll__txt_Price").val(val.DevicePrice);
                             $("#ContentAll__txt_Note_Device").val(val.DeviceNote);
                         });
                     });
@@ -192,6 +206,17 @@
             $("#listCategory").change(function () {
                 var val = (this.value);
                 $("#ContentAll__txt_Category_selected").val(val);
+            });
+
+            // Jquery Dependency
+
+            $("input[data-type='currency']").on({
+                keyup: function () {
+                    formatCurrency($(this));
+                },
+                blur: function () {
+                    formatCurrency($(this), "blur");
+                }
             });
 
            

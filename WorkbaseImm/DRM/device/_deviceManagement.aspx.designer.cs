@@ -51,6 +51,15 @@ namespace WorkbaseImm.DRM.device
         protected global::System.Web.UI.WebControls.TextBox _txt_STAFF_ID_selected;
 
         /// <summary>
+        /// _txt_Name_Device control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _txt_Name_Device;
+
+        /// <summary>
         /// _txt_Category_selected control.
         /// </summary>
         /// <remarks>
@@ -60,13 +69,22 @@ namespace WorkbaseImm.DRM.device
         protected global::System.Web.UI.WebControls.TextBox _txt_Category_selected;
 
         /// <summary>
-        /// _txt_Name_Device control.
+        /// _txt_Price control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _txt_Name_Device;
+        protected global::System.Web.UI.WebControls.TextBox _txt_Price;
+
+        /// <summary>
+        /// _txt_Piture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox _txt_Piture;
 
         /// <summary>
         /// _txt_Info_Device control.

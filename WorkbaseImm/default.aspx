@@ -16,12 +16,14 @@
 
     
     <!-- Toastr style -->
-    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+
 
     <link href="css/animate.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 
-        <!-- Mainly scripts -->
+    
+    <!-- Mainly scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Toastr script -->
@@ -83,7 +85,8 @@
                 </div>           
             </div>
         </div>        
-        <script type="text/javascript">
+    
+    <script type="text/javascript">
         $().ready(function() {          
             getUserLocation();
             checkError();
