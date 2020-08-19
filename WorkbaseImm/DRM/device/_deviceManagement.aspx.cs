@@ -40,6 +40,9 @@ namespace WorkbaseImm.DRM.device
             string @p_DeviceInfo = _txt_Info_Device.Text;
             string @p_DeviceNote = _txt_Note_Device.Text;
             string @p_DeviceBarCode = _txt_BarCode_Device.Text;
+            string @p_DevicePrice = _txt_Price.Text;
+            string @p_DevicePicture = _txt_Piture.Text;
+
             try
             {
                 string sql = "";
@@ -47,11 +50,11 @@ namespace WorkbaseImm.DRM.device
                 sql += " WHERE DV_BARCODE = '" + @p_DeviceBarCode + "';";
                 if (_mode != "DEL")
                 {
-                    if (@p_DeviceBarCode != "" && @p_DevicestaffId != "" && @p_DeviceCategory != "" && @p_DeviceName != "" && @p_DeviceInfo != "")
+                    if (@p_DeviceBarCode != "" && @p_DeviceCategory != "" && @p_DeviceName != "" && @p_DeviceInfo != "")
                     {                       
-                        sql += "INSERT INTO [dbo].[M_DEVICE] ( [DV_BARCODE] ,[DV_USER_ID] ,[DV_CATALORY] ,[DV_NAME] ,[DV_INFO] ,[DV_NOTE] ,[FLAG_ACTIVE] ,[CREATE_DATE] ,[UPDATE_DATE] )";
+                        sql += "INSERT INTO [dbo].[M_DEVICE] ( [DV_BARCODE] ,[DV_USER_ID] ,[DV_CATALORY] ,[DV_NAME] ,[DV_INFO] ,[DV_NOTE] ,[FLAG_ACTIVE] ,[CREATE_DATE] ,[UPDATE_DATE],[DV_PRICE],[DV_PICTURE] )";
                         sql += " VALUES";
-                        sql += "('" + @p_DeviceBarCode + "','" + @p_DevicestaffId + "',N'" + @p_DeviceCategory + "',N'" + @p_DeviceName + "',N'" + @p_DeviceInfo + "',N'" + @p_DeviceNote + "','1',GETDATE(),GETDATE())";
+                        sql += "('" + @p_DeviceBarCode + "','" + @p_DevicestaffId + "',N'" + @p_DeviceCategory + "',N'" + @p_DeviceName + "',N'" + @p_DeviceInfo + "',N'" + @p_DeviceNote + "','1',GETDATE(),GETDATE(),N'" + @p_DevicePrice + "',N'" + p_DevicePicture + "')";
                     }
                     else
                     {
