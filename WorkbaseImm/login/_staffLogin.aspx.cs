@@ -52,40 +52,50 @@ namespace WorkbaseImm.login
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            string @p_Email = lb_userEmail.Text;
-            string @p_Pass = immcode.Text;
-            var flag = false;
-            int time_expire = 1;
-            foreach (var per in db._012020_CRM_V3_FUNC_User_Login("Staffs", @p_Email, @p_Pass))
+            try
             {
-                if(per.Permiss == "AUTHADM")
+                string @p_Email = lb_userEmail.Text;
+                string @p_Pass = immcode.Text;
+                var _error = false;
+                int time_expire = 1;
+                foreach (var per in db._012020_CRM_V3_FUNC_User_Login("Staffs", @p_Email, @p_Pass))
                 {
-                    time_expire = 30;
+                    if (per.Permiss == "AUTHADM")
+                    {
+                        time_expire = 30;
+                    }
+                    Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.RowId.ToString());
+                    Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_NAME"].Value = Server.UrlEncode(per.FullName.ToString());
+                    Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_EMAIL"].Value = Server.UrlEncode(@p_Email);
+                    Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_PASS"].Value = Server.UrlEncode(@p_Pass);
+                    Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_ROLE"].Value = Server.UrlEncode(per.RoleName.ToString());
+                    Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_AVATAR"].Value = Server.UrlEncode(per.AvatarImg.ToString());
+                    Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_TEAM"].Value = Server.UrlEncode(per.StaffTeamName.ToString());
+                    Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Cookies["USER_LINKHOME"].Value = Server.UrlEncode(per.Linkhome.ToString());
+                    Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(time_expire);
+                    Response.Redirect(per.Linkhome, true);
+                    
                 }
-                Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.RowId.ToString());
-                Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_NAME"].Value = Server.UrlEncode(per.FullName.ToString());
-                Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_EMAIL"].Value = Server.UrlEncode(@p_Email);
-                Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_PASS"].Value = Server.UrlEncode(@p_Pass);
-                Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_ROLE"].Value = Server.UrlEncode(per.RoleName.ToString());
-                Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_AVATAR"].Value = Server.UrlEncode(per.AvatarImg.ToString());
-                Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_TEAM"].Value = Server.UrlEncode(per.StaffTeamName.ToString());
-                Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_LINKHOME"].Value = Server.UrlEncode(per.Linkhome.ToString());
-                Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Redirect(per.Linkhome, true);
-                flag = true;
+                //if (_error != "OK")
+                //{
+                //    Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email, false);
+                //}
+                //if (flag == false)
+                //{
+                //    ClientScript.RegisterStartupScript(typeof(Page), "", "<script>wrongpass();</script>");
+                //    //ClientScript.RegisterStartupScript(typeof(Page), "", "<script>showerror('Mật khẩu đăng nhập không chính xác', 'Oop!Lỗi rồi.', 'error', 'toast-top-center');</script>");
+                //}
             }
-
-            if (flag == false)
+            catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(typeof(Page), "", "<script>wrongpass();</script>");
-                //ClientScript.RegisterStartupScript(typeof(Page), "", "<script>showerror('Mật khẩu đăng nhập không chính xác', 'Oop!Lỗi rồi.', 'error', 'toast-top-center');</script>");
+                Response.Redirect("/default.aspx?mes=" + ex.Message, false);
             }
         }
     }

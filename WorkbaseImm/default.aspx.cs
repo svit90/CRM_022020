@@ -73,7 +73,7 @@ namespace WorkbaseImm
                         {
                             foreach (var r in db._2019_LOAD_FUNCTION_STAFF(_email, "03"))
                             {
-                                if ((r.FUNC != "HAVE" && r.STAFF_PERMISSION != "AUTHADM") || (_ipAdress != "118.69.224.243" && _ipAdress != "115.73.214.199" && _ipAdress != "118.69.224.168" && _ipAdress != "118.70.171.215"))
+                                if ((r.FUNC != "HAVE" && r.STAFF_PERMISSION != "AUTHADM") && (_ipAdress != "118.69.224.243" && _ipAdress != "115.73.214.199" && _ipAdress != "118.69.224.168" && _ipAdress != "118.70.171.215"))
                                 {
                                     _error = "001";
                                 }
