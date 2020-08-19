@@ -33,6 +33,15 @@ namespace WorkbaseImm
         protected global::System.Web.UI.WebControls.TextBox email;
 
         /// <summary>
+        /// password control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox password;
+
+        /// <summary>
         /// btn_signin control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace WorkbaseImm
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_signin;
+
+        /// <summary>
+        /// btn_request_signin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btn_request_signin;
 
         /// <summary>
         /// label_IPAddress control.

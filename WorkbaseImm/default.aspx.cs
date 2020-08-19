@@ -18,7 +18,7 @@ namespace WorkbaseImm
             {
                 if (Request.Cookies["USER_EMAIL"] != null && Request.Cookies["USER_PASS"] != null)
                 {
-                    if (Request["val"] == "logout" || (db._012020_CRM_V3_FUNC_User_Login(Server.UrlDecode(Request.Cookies["USER_ROLE"].Value),Server.UrlDecode(Request.Cookies["USER_EMAIL"].Value), Server.UrlDecode(Request.Cookies["USER_PASS"].Value)).Count() != 1))
+                    if (Request["val"] == "logout" || (db._012020_CRM_V3_FUNC_User_Login(Server.UrlDecode(Request.Cookies["USER_ROLE"].Value), Server.UrlDecode(Request.Cookies["USER_EMAIL"].Value), Server.UrlDecode(Request.Cookies["USER_PASS"].Value)).Count() != 1))
                     {
                         Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(-1);
                         Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(-1);
@@ -34,12 +34,12 @@ namespace WorkbaseImm
                     {
                         Response.Redirect(Server.UrlDecode(Request.Cookies["USER_LINKHOME"].Value));
                     }
-                }               
-                
+                }
+
             }
         }
 
-        protected void btn_signin_Click(object sender, EventArgs e)
+        protected void btn_request_signin_Click(object sender, EventArgs e)
         {
             string _error = "002";
             DataClassesDataContext db = new DataClassesDataContext();
@@ -52,7 +52,7 @@ namespace WorkbaseImm
             string _ipAdress = txt_IPAddress.Text;
             try
             {
-                if(_email != "")
+                if (_email != "")
                 {
                     foreach (var row in db.wb_FUNCTION_Login_Oop_define(_email))
                     {
@@ -73,7 +73,7 @@ namespace WorkbaseImm
                         {
                             foreach (var r in db._2019_LOAD_FUNCTION_STAFF(_email, "03"))
                             {
-                                if ((r.FUNC != "HAVE" && r.STAFF_PERMISSION != "AUTHADM") || (_ipAdress != "118.69.224.243" && _ipAdress != "115.73.214.199" && _ipAdress != "118.69.224.168" && _ipAdress != "118.70.171.215"))
+                                if ((r.FUNC != "HAVE" && r.STAFF_PERMISSION != "AUTHADM") && (_ipAdress != "118.69.224.243" && _ipAdress != "115.73.214.199" && _ipAdress != "118.69.224.168" && _ipAdress != "118.70.171.215"))
                                 {
                                     _error = "001";
                                 }
@@ -92,8 +92,72 @@ namespace WorkbaseImm
                 else
                 {
                     _error = "000";
-                }                
-                if(_error != "OK")
+                }
+                if (_error != "OK")
+                {
+                    Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Redirect("/default.aspx?mes=" + ex.Message, false);
+            }
+        }
+        protected void btn_signin_Click(object sender, EventArgs e)
+        {
+            string _error = "002";
+            DataClassesDataContext db = new DataClassesDataContext();
+            FC_Common FC = new FC_Common();
+            DateTime mmday = DateTime.Now;
+            string format = "dd-MM-yyyy hh:mm:ss tt";
+            string mday = mmday.ToString(format);
+            string _email = email.Text;
+            string _appPass = FC.GetUniqueKey(8);
+            string _ipAdress = txt_IPAddress.Text;
+            try
+            {
+                if (_email != "" && _appPass != "")
+                {
+                    foreach (var row in db.wb_FUNCTION_Login_Oop_define(_email))
+                    {
+                        if (row.RoleName == "Customers")
+                        {
+                            _error = "OK";
+                            Response.Redirect("/login/_customerLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
+                        }
+                        if (row.RoleName == "Partners")
+                        {
+                            _error = "OK";
+                            string bodyprivate = FC.SentImmCode(_appPass);
+                            db.wb_PARTNER_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
+                            FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
+                            Response.Redirect("/login/_agentLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
+                        }
+                        if (row.RoleName == "Staffs")
+                        {
+                            foreach (var r in db._2019_LOAD_FUNCTION_STAFF(_email, "03"))
+                            {
+                                if ((r.FUNC != "HAVE" && r.STAFF_PERMISSION != "AUTHADM") && (_ipAdress != "118.69.224.243" && _ipAdress != "115.73.214.199" && _ipAdress != "118.69.224.168" && _ipAdress != "118.70.171.215"))
+                                {
+                                    _error = "001";
+                                }
+                                else
+                                {
+                                    _error = "OK";
+                                    db.wb_STAFF_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
+                                    string bodyprivate = FC.SentImmCode(_appPass);
+                                    FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
+                                    Response.Redirect("/login/_staffLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    _error = "000";
+                }
+                if (_error != "OK")
                 {
                     Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email, false);
                 }
@@ -104,6 +168,37 @@ namespace WorkbaseImm
             }
         }
 
-      
+        public void addCookie(string _email, string _pass, string _Role)
+        {
+            DataClassesDataContext db = new DataClassesDataContext();
+            FC_Common FC = new FC_Common();
+            string _error = "002";
+            int time_expire = 1;
+            foreach (var per in db._012020_CRM_V3_FUNC_User_Login(_Role, _email, _pass))
+            {
+                if (per.Permiss == _Role)
+                {
+                    time_expire = 30;
+                }
+                Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.RowId.ToString());
+                Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_NAME"].Value = Server.UrlEncode(per.FullName.ToString());
+                Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_EMAIL"].Value = Server.UrlEncode(_email);
+                Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_PASS"].Value = Server.UrlEncode(_pass);
+                Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_ROLE"].Value = Server.UrlEncode(per.RoleName.ToString());
+                Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_AVATAR"].Value = Server.UrlEncode(per.AvatarImg.ToString());
+                Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_TEAM"].Value = Server.UrlEncode(per.StaffTeamName.ToString());
+                Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_LINKHOME"].Value = Server.UrlEncode(per.Linkhome.ToString());
+                Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Redirect(per.Linkhome, true);
+                _error = "OK";
+            }
+        }
     }
 }

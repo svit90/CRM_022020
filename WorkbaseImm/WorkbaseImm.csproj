@@ -1924,7 +1924,6 @@
   <ItemGroup>
     <Folder Include="img\gallery\" />
     <Folder Include="img\landing\" />
-    <Folder Include="obj\Debug\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

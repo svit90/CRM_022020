@@ -16,12 +16,14 @@
 
     
     <!-- Toastr style -->
-    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet"/>
+
 
     <link href="css/animate.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 
-        <!-- Mainly scripts -->
+    
+    <!-- Mainly scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!-- Toastr script -->
@@ -60,14 +62,21 @@
                 </div>
                 <div class="col-md-6 align-self-center text-center">
                     <div class="ibox-content">
-                        <img src="https://crm.imm.group/images/logo-no-padding.png" alt="Logo" style="height: 45px;padding: 5px;" />
+                        <a href="https://immgroup.com/" title="Về website"><img class="mb-4" src="https://crm.imm.group/images/logo-no-padding.png" alt="Logo" style="height: 45px;padding: 5px;" /></a>
                         
                         <div class="form-group">                            
-                            <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control required email" placeholder="Nhập email của bạn.." ></asp:TextBox>
-                        </div>                         
-                        <asp:Button id="btn_signin" class="btn btn-primary block full-width m-b" runat="server" Text="Tiếp tục" onclick="btn_signin_Click"/>
-                        
+                            <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control " placeholder="Nhập email của bạn.."></asp:TextBox>
+                        </div> 
+                        <div class="form-group">                            
+                            <asp:TextBox ID="password" TextMode="Password" runat="server"  class="form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
+                        </div> 
+                        <asp:Button id="btn_signin" disabled class="btn btn-primary block full-width m-b" runat="server" Text="Đăng nhập với mật khẩu" OnClick="btn_signin_Click"/>
+                        <div class="tooltip-demo">
+                          
+                            <asp:LinkButton id="btn_request_signin" class="btn btn-outline btn-default block full-width m-b disabled" runat="server" Text="Gửi yêu cầu đăng nhập" OnClientClick="checkEmail()"  OnClick="btn_request_signin_Click" data-toggle="tooltip" data-placement="right" title="" data-original-title="Gửi code đăng nhập về email"/>
+                        </div>
                     </div>
+                     
                 </div>
             </div>
             <hr/>
@@ -83,16 +92,71 @@
                 </div>           
             </div>
         </div>        
-        <script type="text/javascript">
-        $().ready(function() {          
+    
+
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/inspinia.js"></script>
+        <script src="../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../js/plugins/validate/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $().ready(function () { 
+
+
             getUserLocation();
             checkError();
+         
+            $("#login").validate({
+                rules: {
+                    email: {
+                        required: true
+                    } 
+                },
+                onkeyup: function (element) {
+                    controlbtn();
+                     
+                }
+            });
+           
         });
-    
-       
 
+
+        function checkEmail() {
+            $("#login").validate({
+                rules: {
+                    email: {
+                        required: true
+                    }
+                }
+               
+            });
+        }
+
+        function controlbtn() {
+            var _email = $('#email').val();
+            var _password = $('#password').val();
+
+            if (_email !== "") {
+                $('#btn_request_signin').removeClass('disabled');
+
+                if (_password !== "") {
+                    $('#btn_signin').prop('disabled', false);
+                }
+                else {
+                    $('#btn_signin').prop('disabled', true);
+                }
+            } else {
+                $('#btn_request_signin').addClass('disabled');
+                $('#btn_signin').prop('disabled', true);
+            }
+        }
+    
         function checkError() {
-            var _errorCode = getParameterByName('error');
+            var _errorCode = getParameterByName('mes');
             var _email = getParameterByName('e');
             if (_email !== "" && _email !== undefined) {
                 $("#email").val(_email);
@@ -106,12 +170,10 @@
             });
         }
 
-       
-       
-
-        </script>
+    </script>
     
-    </form>
+    </form> 
+
 </body>
 
 </html>
