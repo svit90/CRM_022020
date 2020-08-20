@@ -1055,6 +1055,7 @@
     <Content Include="js\demo\peity-demo.js" />
     <Content Include="js\demo\rickshaw-demo.js" />
     <Content Include="js\demo\sparkline-demo.js" />
+    <Content Include="js\scroll.js" />
     <Content Include="js\immgroup.js" />
     <Content Include="js\inspinia.js" />
     <Content Include="js\jquery-2.1.1.js" />

@@ -9553,3 +9553,9 @@ body.md-skin {
     margin: 0;
   }
 }
+
+.fixed-top-one {
+    position: fixed;
+    top: 0;
+    z-index: 1030;
+}

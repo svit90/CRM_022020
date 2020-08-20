@@ -63,7 +63,7 @@
 
     <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
-            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <nav class="navbar navbar-static-top nav-srcoll" role="navigation">
                 <div class="navbar-header">
                     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
                     <form role="search" class="navbar-form-custom" action="search_results.html">
@@ -224,11 +224,12 @@
 
     <!-- Custom and plugin javascript -->
     <script src="<%= ResolveClientUrl("~/js/plugins/pace/pace.min.js") %>"></script>
-    <script src="<%= ResolveClientUrl("~/js/jquery-ui.js") %>"></script>
     <script src="<%= ResolveClientUrl("~/js/jquery-ui.min.js") %>"></script>
     <script src="<%= ResolveClientUrl("~/js/inspinia.js") %>"></script>
     <script src="<%= ResolveClientUrl("~/js/immgroup.js") %>"></script>
+   <%-- <script src="<%= ResolveClientUrl("~/js/scroll.js") %>"></script>--%>
     <script src="<%= ResolveClientUrl("~/js/plugins/toastr/toastr.min.js") %>"></script>
+
     <asp:ContentPlaceHolder ID="Footer" runat="server">
 
        
