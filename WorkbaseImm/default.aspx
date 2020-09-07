@@ -35,6 +35,31 @@
             border: 0;
             background: #f3f3f4;
         }
+        .form-group {
+            max-width: 240px;
+            margin: 25px auto 0;
+        }
+        .pass-code {
+                margin: 0 4px 20px;
+                text-align: center;
+                line-height: 60px;
+                font-size: 30px;
+                border: solid 1px #ccc;
+                box-shadow: 0 0 5px #ccc inset;
+                outline: none;
+                width: 20%;
+                transition: all .2s ease-in-out;
+                border-radius: 3px;
+                display: inline-block;
+        }
+        .pass-code:focus {
+            border-color: purple;
+            box-shadow: 0 0 5px purple inset;
+        }
+        
+        .pass-code::selection {
+            background: transparent;
+        }
     </style>
 </head>
 
@@ -68,8 +93,11 @@
                             <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control " placeholder="Nhập email của bạn.."></asp:TextBox>
                         </div> 
                         <div class="form-group">                            
-                            <asp:TextBox ID="password" TextMode="Password" runat="server"  class="form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
-                        </div> 
+                             <asp:TextBox ID="password1" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
+                             <asp:TextBox ID="password2" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
+                             <asp:TextBox ID="password3" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
+                             <asp:TextBox ID="password4" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
+                      </div> 
                         <asp:Button id="btn_signin" disabled class="btn btn-primary block full-width m-b" runat="server" Text="Đăng nhập với mật khẩu" OnClick="btn_signin_Click"/>
                         <div class="tooltip-demo">
                           
@@ -122,19 +150,55 @@
                      
                 }
             });
-           
+
+            
+
+                var body = $('body');
+
+                function goToNextInput(e) {
+                    var key = e.which,
+                        t = $(e.target),
+                        sib = t.next('input');
+
+                    if (key != 9 && (key < 48 || key > 57)) {
+                        e.preventDefault();
+                        return false;
+                    }
+
+                    if (key === 9) {
+                        return true;
+                    }
+
+                    if (!sib || !sib.length) {
+                        sib = body.find('input').eq(0);
+                    }
+                    sib.select().focus();
+                }
+
+                function onKeyDown(e) {
+                    var key = e.which;
+
+                    if (key === 9 || (key >= 48 && key <= 57)) {
+                        return true;
+                    }
+
+                    e.preventDefault();
+                    return false;
+                }
+
+                function onFocus(e) {
+                    $(e.target).select();
+                }
+
+                body.on('keyup', 'input', goToNextInput);
+                body.on('keydown', 'input', onKeyDown);
+                body.on('click', 'input', onFocus);
+
         });
 
 
         function checkEmail() {
-            $("#login").validate({
-                rules: {
-                    email: {
-                        required: true
-                    }
-                }
-               
-            });
+            alert("Please enter the 8-digit verification code we sent via email");
         }
 
         function controlbtn() {
