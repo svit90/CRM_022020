@@ -223,9 +223,13 @@
                                 <div class="col-md-3"></div>
                                 <div class="col-md-9">
                                      <div class="collapse mt-4" id="collapseSignature">
-                                        <div class="summernote">
-                                           Trân trọng
-
+                                        <div class="w-100">
+                                            <div class="summernote">
+                                               Trân trọng
+                                            </div>
+                                        </div>
+                                         <div class="w-100 text-right">
+                                             <asp:Button id="Button1" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
                                         </div>
                                      </div>
                                 </div>
@@ -260,7 +264,11 @@
     <script>
         $(document).ready(function () {
 
-            $('.summernote').summernote();
+            //$('.summernote').summernote();
+            $('.summernote').summernote({
+                tabsize: 2,
+                height: 150
+            });
             $(".editInfo").validate({});
 
         });

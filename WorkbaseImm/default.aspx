@@ -44,17 +44,21 @@
                 text-align: center;
                 line-height: 60px;
                 font-size: 30px;
-                border: solid 1px #ccc;
-                box-shadow: 0 0 5px #ccc inset;
+                box-shadow: 0 0px 2px -2px #ccc inset;
                 outline: none;
                 width: 20%;
                 transition: all .2s ease-in-out;
                 border-radius: 3px;
                 display: inline-block;
+                border-top: none!important;
+                border-left: none!important;
+                border-right: none!important;
+                border-bottom: solid 1px #ccc;
         }
         .pass-code:focus {
-            border-color: purple;
-            box-shadow: 0 0 5px purple inset;
+            border-color: #1ab394;
+            box-shadow: 0 4px 2px -2px #1ab394;
+            border: none;
         }
         
         .pass-code::selection {
@@ -92,7 +96,7 @@
                         <div class="form-group">                            
                             <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control " placeholder="Nhập email của bạn.."></asp:TextBox>
                         </div> 
-                        <div class="form-group">                            
+                        <div class="form-group mt-2">                            
                              <asp:TextBox ID="password1" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
                              <asp:TextBox ID="password2" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
                              <asp:TextBox ID="password3" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
