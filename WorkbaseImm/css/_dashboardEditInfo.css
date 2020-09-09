@@ -8,35 +8,36 @@
     height:100%;
 }
 .avatar-edit {
+    position: relative;
+}
+.filetype {
     position: absolute;
-    right: -12px;
+    min-height: 80%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
     z-index: 1;
-    top: 10px;
 }
-.avatar-edit input {
-    display: none;
-}
-.avatar-edit input + label {
-    display: inline-block;
-    width: 34px;
-    height: 34px;
-    margin-bottom: 0;
-    border-radius: 100%;
-    background: #FFFFFF;
-    border: 1px solid transparent;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-    font-weight: normal;
-    transition: all 0.2s ease-in-out;
-}
-.avatar-edit input + label:after {
+.avatar-edit:after {
     content: "\f030";
     font-family: 'FontAwesome';
-    color: #757575;
+    color: #e2e3e3;
     position: absolute;
-    top: 7px;
-    left: 0;
-    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    font-size: 40px;
+}
+.avatar-view {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+.avatar-view canvas {
     text-align: center;
-    margin: auto;
+    width: 100%;
+}
+.jcrop-keymgr{
+    opacity:0;
 }
