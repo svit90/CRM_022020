@@ -3,6 +3,7 @@
     <link href="../css/_dashboardEditInfo.css" rel="stylesheet" />
     <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="../css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
+    <link href="../css/plugins/jcrop/jquery.Jcrop.css" rel="stylesheet" type="text/css" /> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -33,8 +34,29 @@
                         <div class="d-flex align-items-center info-top">
                             <div class="avatar">
                                 <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                    <label for="imageUpload"></label>
+                                    <input type="file" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
+                                     <table id="table_input" border="0" cellpadding="0">
+                                        <tr>
+                                            <td>
+                                                <img id="Image1" src="" alt="" style="display: none" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table id="table_review" border="0" cellpadding="0">
+                                        <tr>
+                                            <td>
+                                                <canvas id="canvas" height="5" width="5"></canvas>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <input type="button" id="btnCrop" value="Crop" style="display: none" />
+                                    <asp:Button ID="btnUpload" runat="server" Text="Save" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
+                                    <input type="hidden" name="imgX1" id="imgX1" />
+                                    <input type="hidden" name="imgY1" id="imgY1" />
+                                    <input type="hidden" name="imgWidth" id="imgWidth" />
+                                    <input type="hidden" name="imgHeight" id="imgHeight" />
+                                    <input type="hidden" name="imgCropped" id="imgCropped" />
                                 </div>
                                 <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
                             </div>
@@ -258,6 +280,69 @@
         var yearsAgo = new Date();
         yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
     </script>
+
+    <script src="../js/plugins/jcrop/jquery.jcrop.min.js" type="text/javascript"></script>  
+     <script type="text/javascript">
+         $(function () {
+             $('#FileUpload_jcrop').change(function () {
+                 var oFile = $(this)[0].files[0];
+                 var rFilter = /^(image\/jpeg|image\/png)$/i;
+                 if (!rFilter.test(oFile.type)) {
+                     alert('Please select a valid image file (jpg and png are allowed)');
+                     return;
+                 }
+
+                 // check for file size
+                 if (oFile.size > 10000 * 1024) {
+                     Showalert("You file is too large. The file you have selected exceeds the maximum size of 10mb.");
+                     return;
+                 }
+                 $('#Image1, #bind_avatar').hide();
+                 var reader = new FileReader();
+                 reader.onload = function (e) {
+                     $('#Image1').show();
+                     $('.jcrop-holder').replaceWith('');
+                     $('#Image1').replaceWith('<img id="Image1" src="' + e.target.result + '" width="100%"/>');
+                     //$('#Image1').attr("src", e.target.result);
+                     $('#Image1').Jcrop({
+                         onChange: SetCoordinates,
+                         onSelect: SetCoordinates,
+                         aspectRatio: 1,
+                         setSelect: [50, 50, 200, 200],
+                         boxWidth: 450,
+                         boxHeight: 400
+                     });
+                 }
+                 reader.readAsDataURL($(this)[0].files[0]);
+             });
+             $('#btnCrop').click(function () {
+                 var x1 = $('#imgX1').val();
+                 var y1 = $('#imgY1').val();
+                 var width = $('#imgWidth').val();
+                 var height = $('#imgHeight').val();
+                 var canvas = $("#canvas")[0];
+                 var context = canvas.getContext('2d');
+                 var img = new Image();
+                 img.onload = function () {
+                     canvas.height = height;
+                     canvas.width = width;
+                     context.drawImage(img, x1, y1, width, height, 0, 0, width, height);
+                     $('#imgCropped').val(canvas.toDataURL());
+                     $('[id*=btnUpload]').show();
+                 };
+                 img.src = $('#Image1').attr("src");
+                 $('#table_input, #FileUpload_jcrop, #btnCrop').hide();
+                 $('#table_review').show();
+             });
+         });
+         function SetCoordinates(e) {
+             $('#imgX1').val(e.x);
+             $('#imgY1').val(e.y);
+             $('#imgWidth').val(e.w);
+             $('#imgHeight').val(e.h);
+             $('#btnCrop').show();
+         };
+     </script>
     <!-- SUMMERNOTE -->
     <script src="../js/plugins/summernote/summernote-bs4.js"></script>
     <script src="../js/plugins/validate/jquery.validate.min.js"></script>

@@ -97,10 +97,10 @@
                             <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control " placeholder="Nhập email của bạn.."></asp:TextBox>
                         </div> 
                         <div class="form-group mt-2">                            
-                             <asp:TextBox ID="password1" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
-                             <asp:TextBox ID="password2" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
-                             <asp:TextBox ID="password3" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
-                             <asp:TextBox ID="password4" runat="server"  class="pass-code form-control required" placeholder="Nhập password của bạn.." ></asp:TextBox>
+                             <asp:TextBox ID="password1" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password2" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password3" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password4" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
                       </div> 
                         <asp:Button id="btn_signin" disabled class="btn btn-primary block full-width m-b" runat="server" Text="Đăng nhập với mật khẩu" OnClick="btn_signin_Click"/>
                         <div class="tooltip-demo">
@@ -155,34 +155,89 @@
                 }
             });
 
-            
+                
 
-                var body = $('body');
+            var body = $('body');
+            var pass_code = $(".pass-code");
+         
+            //$("#password1").keypress(function (event) {
+            //    var key = event.which,
+            //        t = $(event.target); 
+            //    if (key === 8 || key === 46) {
+            //        var text = t.val();
+            //        if (text === "" || text === undefined) {
+            //            t.prev('input').select();
+            //        } else {
+            //            t.select();
+            //        }
+            //    } else {
+            //        var text = t.val();
+            //        if (text !== "" && text !== undefined) {
+            //            t.next('input').select();
+            //        } else {
+            //            t.select();
+            //        }
+            //    }
+            //});
+            $(".pass-code").keyup(function (event) {
+
+                var key = event.which,
+                    t = $(event.target);
+                if (key === 8 || key === 46) {
+                   t.val("");                                       
+                   t.select();
+                } else if (key === 39 || key === 40) {
+                    t.next('input').select();
+                } else if (key === 37 || key === 38) {
+                    t.prev('input').select();
+                } else {
+                    var text = t.val();
+                    if (text !== "") {
+                        t.next('input').select();
+                    }
+                }
+            });
 
                 function goToNextInput(e) {
                     var key = e.which,
-                        t = $(e.target),
-                        sib = t.next('input');
+                        t = $(e.target);                   
+                        //sib = t.next('input');
+                    //if (key != 9 && (key < 48 || key > 57)) {
+                    //    e.preventDefault();
+                    //    return false;
+                    //}
 
-                    if (key != 9 && (key < 48 || key > 57)) {
-                        e.preventDefault();
-                        return false;
+                    if (key === 8 || key === 46) {
+                        var text = t.val();
+                        if (text === "" || text === undefined) {
+                            t.prev('input').select();
+                        } else {
+                            t.select();
+                        }
+                    } else {       
+                        var text = t.val();
+                        if (text !== "" && text !== undefined) {
+                            t.next('input').select();
+                        } else {
+                            t.select();
+                        }
                     }
+                    //if (t.val() === "" || t.val() === undefined) {
+                    //    e.preventDefault();
+                    //    return false;
+                    //}
 
-                    if (key === 9) {
-                        return true;
-                    }
-
-                    if (!sib || !sib.length) {
-                        sib = body.find('input').eq(0);
-                    }
-                    sib.select().focus();
+                    //if (!sib || !sib.length) {
+                    //    sib = body.find('input').eq(0);
+                    //}
+                    //sib.select().focus();
                 }
 
                 function onKeyDown(e) {
                     var key = e.which;
 
-                    if (key === 9 || (key >= 48 && key <= 57)) {
+                    if (key === 9 || key === 13) {
+                        goToNextInput(e);
                         return true;
                     }
 
@@ -194,9 +249,9 @@
                     $(e.target).select();
                 }
 
-                body.on('keyup', 'input', goToNextInput);
-                body.on('keydown', 'input', onKeyDown);
-                body.on('click', 'input', onFocus);
+                //body.on('keyup', 'input', goToNextInput);
+                //body.on('keydown', 'input', onKeyDown);
+                //body.on('click', 'input', onFocus);
 
         });
 
