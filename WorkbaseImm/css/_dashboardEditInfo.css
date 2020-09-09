@@ -30,7 +30,7 @@
     transition: all 0.2s ease-in-out;
 }
 .avatar-edit input + label:after {
-    content: "\f040";
+    content: "\f030";
     font-family: 'FontAwesome';
     color: #757575;
     position: absolute;
