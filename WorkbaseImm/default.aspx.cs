@@ -42,13 +42,14 @@ namespace WorkbaseImm
         protected void btn_request_signin_Click(object sender, EventArgs e)
         {
             string _error = "002";
+            string _roleUser = "";
             DataClassesDataContext db = new DataClassesDataContext();
             FC_Common FC = new FC_Common();
             DateTime mmday = DateTime.Now;
             string format = "dd-MM-yyyy hh:mm:ss tt";
             string mday = mmday.ToString(format);
             string _email = email.Text;
-            string _appPass = FC.GetUniqueKey(8);
+            string _appPass = FC.GetVerifyCode(4);
             string _ipAdress = txt_IPAddress.Text;
             try
             {
@@ -56,18 +57,19 @@ namespace WorkbaseImm
                 {
                     foreach (var row in db.wb_FUNCTION_Login_Oop_define(_email))
                     {
+                        _roleUser = row.RoleName;
                         if (row.RoleName == "Customers")
                         {
-                            _error = "OK";
-                            Response.Redirect("/login/_customerLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
+                            _error = "007";
+                            //Response.Redirect("/login/_customerLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
                         }
                         if (row.RoleName == "Partners")
                         {
-                            _error = "OK";
+                            _error = "007";
                             string bodyprivate = FC.SentImmCode(_appPass);
                             db.wb_PARTNER_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
                             FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
-                            Response.Redirect("/login/_agentLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
+                            //Response.Redirect("/login/_agentLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
                         }
                         if (row.RoleName == "Staffs")
                         {
@@ -79,11 +81,11 @@ namespace WorkbaseImm
                                 }
                                 else
                                 {
-                                    _error = "OK";
-                                    db.wb_STAFF_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
-                                    string bodyprivate = FC.SentImmCode(_appPass);
-                                    FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
-                                    Response.Redirect("/login/_staffLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
+                                    _error = "007";
+                                    //db.wb_STAFF_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
+                                    //string bodyprivate = FC.SentImmCode(_appPass);
+                                    //FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
+                                    //Response.Redirect("/login/_staffLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
                                 }
                             }
                         }
@@ -93,10 +95,8 @@ namespace WorkbaseImm
                 {
                     _error = "000";
                 }
-                if (_error != "OK")
-                {
-                    Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email, false);
-                }
+                Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email + "&r=" + _roleUser, false);
+             
             }
             catch (Exception ex)
             {

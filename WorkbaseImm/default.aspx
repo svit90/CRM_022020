@@ -97,15 +97,18 @@
                             <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control " placeholder="Nhập email của bạn.."></asp:TextBox>
                         </div> 
                         <div class="form-group mt-2">                            
-                             <asp:TextBox ID="password1" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
-                             <asp:TextBox ID="password2" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
-                             <asp:TextBox ID="password3" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
-                             <asp:TextBox ID="password4" runat="server" MaxLength="1" class="pass-code form-control required" placeholder="" ></asp:TextBox>
-                      </div> 
-                        <asp:Button id="btn_signin" disabled class="btn btn-primary block full-width m-b" runat="server" Text="Đăng nhập với mật khẩu" OnClick="btn_signin_Click"/>
-                        <div class="tooltip-demo">
-                          
-                            <asp:LinkButton id="btn_request_signin" class="btn btn-outline btn-default block full-width m-b disabled" runat="server" Text="Gửi yêu cầu đăng nhập" OnClientClick="checkEmail()"  OnClick="btn_request_signin_Click" data-toggle="tooltip" data-placement="right" title="" data-original-title="Gửi code đăng nhập về email"/>
+                             <asp:TextBox ID="password1" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password2" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password3" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password4" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:Button id="btn_signin" disabled class="btn btn-primary full-width m-b by-code d-none" runat="server" Text="Đăng nhập" OnClick="btn_signin_Click"/>
+                            <asp:LinkButton id="btn_request_signin"  class="btn btn-outline btn-primary block full-width m-b disabled" runat="server" Text="Gửi yêu cầu đăng nhập" OnClick="btn_request_signin_Click" data-toggle="tooltip" data-placement="right" title="" data-original-title="Gửi code đăng nhập về email"/>
+                            <a id="i_have_code" class="cursor have-code" href="#" onclick="control_items();"><small>Đã có code đăng nhập</small></a>
+                        </div> 
+                        
+                        <div class="form-group tooltip-demo">                          
+                            
+                            
                         </div>
                     </div>
                      
@@ -156,36 +159,13 @@
             });
 
                 
-
-            var body = $('body');
-            var pass_code = $(".pass-code");
-         
-            //$("#password1").keypress(function (event) {
-            //    var key = event.which,
-            //        t = $(event.target); 
-            //    if (key === 8 || key === 46) {
-            //        var text = t.val();
-            //        if (text === "" || text === undefined) {
-            //            t.prev('input').select();
-            //        } else {
-            //            t.select();
-            //        }
-            //    } else {
-            //        var text = t.val();
-            //        if (text !== "" && text !== undefined) {
-            //            t.next('input').select();
-            //        } else {
-            //            t.select();
-            //        }
-            //    }
-            //});
             $(".pass-code").keyup(function (event) {
-
+                var pas = ($("#password1").val() + $("#password2").val() + $("#password3").val() + $("#password4").val()).length;
                 var key = event.which,
                     t = $(event.target);
                 if (key === 8 || key === 46) {
-                   t.val("");                                       
-                   t.select();
+                    t.val("");                                       
+                    t.select();
                 } else if (key === 39 || key === 40) {
                     t.next('input').select();
                 } else if (key === 37 || key === 38) {
@@ -196,78 +176,27 @@
                         t.next('input').select();
                     }
                 }
-            });
-
-                function goToNextInput(e) {
-                    var key = e.which,
-                        t = $(e.target);                   
-                        //sib = t.next('input');
-                    //if (key != 9 && (key < 48 || key > 57)) {
-                    //    e.preventDefault();
-                    //    return false;
-                    //}
-
-                    if (key === 8 || key === 46) {
-                        var text = t.val();
-                        if (text === "" || text === undefined) {
-                            t.prev('input').select();
-                        } else {
-                            t.select();
-                        }
-                    } else {       
-                        var text = t.val();
-                        if (text !== "" && text !== undefined) {
-                            t.next('input').select();
-                        } else {
-                            t.select();
-                        }
-                    }
-                    //if (t.val() === "" || t.val() === undefined) {
-                    //    e.preventDefault();
-                    //    return false;
-                    //}
-
-                    //if (!sib || !sib.length) {
-                    //    sib = body.find('input').eq(0);
-                    //}
-                    //sib.select().focus();
-                }
-
-                function onKeyDown(e) {
-                    var key = e.which;
-
-                    if (key === 9 || key === 13) {
-                        goToNextInput(e);
-                        return true;
-                    }
-
-                    e.preventDefault();
-                    return false;
-                }
-
-                function onFocus(e) {
-                    $(e.target).select();
-                }
-
-                //body.on('keyup', 'input', goToNextInput);
-                //body.on('keydown', 'input', onKeyDown);
-                //body.on('click', 'input', onFocus);
-
+                //if (pas === 4) {
+                //    $('#btn_signin').prop('disabled', false);
+                //} else {
+                //    $('#btn_signin').prop('disabled', true);
+                //}
+            });   
         });
 
-
-        function checkEmail() {
-            alert("Please enter the 8-digit verification code we sent via email");
+        function control_items() {
+            $('.by-code, .have-code').toggleClass('d-none');
         }
 
         function controlbtn() {
             var _email = $('#email').val();
             var _password = $('#password').val();
+            var pas = ($("#password1").val() + $("#password2").val() + $("#password3").val() + $("#password4").val()).length;
 
             if (_email !== "") {
                 $('#btn_request_signin').removeClass('disabled');
 
-                if (_password !== "") {
+                if (pas === 4) {
                     $('#btn_signin').prop('disabled', false);
                 }
                 else {
@@ -282,15 +211,19 @@
         function checkError() {
             var _errorCode = getParameterByName('mes');
             var _email = getParameterByName('e');
-            if (_email !== "" && _email !== undefined) {
+            if (_email !== "" && _email !== undefined && _email !== null) {
                 $("#email").val(_email);
+                controlbtn();
+                $("#password1").focus();
             }
             var flickerAPI = "https://api.immgroup.com/crm/message/VN/" + _errorCode;
             $.getJSON(flickerAPI, {
                 format: "json"
             }).done(function (data) {
-                if (data.mess !== "OK" && data.mess !== undefined && data.mess !== "" )
-                showerror(data.mess, 'Oop!Lỗi rồi.', 'error', 'toast-top-center');
+                if (data[0].mess !== undefined && data[0].mess !== "") {             
+                    showerror(data[0].mess, data[0].header, data[0].style, data[0].pos); 
+                }
+                
             });
         }
 

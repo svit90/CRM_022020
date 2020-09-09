@@ -47,6 +47,7 @@ function showerror(msg, title, type, pos) {
         "hideDuration": "1000",
         "timeOut": "7000",
         "extendedTimeOut": "1000",
+        "width": "600",
         "showEasing": "swing",
         "hideEasing": "linear",
         "showMethod": "fadeIn",

@@ -66,6 +66,22 @@ button.toast-close-button {
     width: 100%
 }
 
+.toast-top-25-width {
+    top: 0;
+    right: 37.5%;
+    width: 25%
+}
+.toast-top-50-width {
+    top: 0;
+    left: 25%;
+    width: 50%
+}
+.toast-top-75-width {
+    top: 0;
+    right: 12.5%;
+    width: 75%
+}
+
 .toast-bottom-full-width {
     bottom: 0;
     right: 0;
@@ -154,10 +170,14 @@ button.toast-close-button {
     margin: auto
 }
 
-#toast-container.toast-bottom-full-width > div, #toast-container.toast-top-full-width > div {
-    width: 96%;
-    margin: auto
-}
+    #toast-container.toast-bottom-full-width > div,
+    #toast-container.toast-top-full-width > div,
+    #toast-container.toast-top-50-width > div,
+    #toast-container.toast-top-25-width > div,
+    #toast-container.toast-top-75-width > div {
+        width: 96%;
+        margin: auto
+    }
 
 .toast {
     background-color: #030303

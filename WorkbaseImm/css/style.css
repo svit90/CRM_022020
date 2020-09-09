@@ -3370,8 +3370,11 @@ label.error {
 .toast-warning {
   background-color: #f8ac59;
 }
-.toast-top-full-width {
-  margin-top: 20px;
+.toast-top-full-width,
+.toast-top-25-width,
+.toast-top-50-width,
+.toast-top-75-width {
+    margin-top: 10px;
 }
 .toast-bottom-full-width {
   margin-bottom: 20px;
@@ -9558,4 +9561,8 @@ body.md-skin {
     position: fixed;
     top: 0;
     z-index: 1030;
+}
+
+.cursor {
+    cursor: pointer;
 }
