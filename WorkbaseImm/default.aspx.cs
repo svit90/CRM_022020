@@ -82,9 +82,9 @@ namespace WorkbaseImm
                                 else
                                 {
                                     _error = "007";
-                                    //db.wb_STAFF_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
-                                    //string bodyprivate = FC.SentImmCode(_appPass);
-                                    //FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
+                                    db.wb_STAFF_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
+                                    string bodyprivate = FC.SentImmCode(_appPass);
+                                    FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
                                     //Response.Redirect("/login/_staffLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
                                 }
                             }
@@ -96,7 +96,7 @@ namespace WorkbaseImm
                     _error = "000";
                 }
                 Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email + "&r=" + _roleUser, false);
-             
+
             }
             catch (Exception ex)
             {
@@ -105,62 +105,17 @@ namespace WorkbaseImm
         }
         protected void btn_signin_Click(object sender, EventArgs e)
         {
-            string _error = "002";
+            string _Role = Request["r"];
             DataClassesDataContext db = new DataClassesDataContext();
             FC_Common FC = new FC_Common();
             DateTime mmday = DateTime.Now;
             string format = "dd-MM-yyyy hh:mm:ss tt";
             string mday = mmday.ToString(format);
-            string _email = email.Text;
-            string _appPass = FC.GetUniqueKey(8);
-            string _ipAdress = txt_IPAddress.Text;
+            string _Email = email.Text;
+            string _Pass = password1.Text + password2.Text + password3.Text + password4.Text;
             try
             {
-                if (_email != "" && _appPass != "")
-                {
-                    foreach (var row in db.wb_FUNCTION_Login_Oop_define(_email))
-                    {
-                        if (row.RoleName == "Customers")
-                        {
-                            _error = "OK";
-                            Response.Redirect("/login/_customerLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
-                        }
-                        if (row.RoleName == "Partners")
-                        {
-                            _error = "OK";
-                            string bodyprivate = FC.SentImmCode(_appPass);
-                            db.wb_PARTNER_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
-                            FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
-                            Response.Redirect("/login/_agentLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
-                        }
-                        if (row.RoleName == "Staffs")
-                        {
-                            foreach (var r in db._2019_LOAD_FUNCTION_STAFF(_email, "03"))
-                            {
-                                if ((r.FUNC != "HAVE" && r.STAFF_PERMISSION != "AUTHADM") && (_ipAdress != "118.69.224.243" && _ipAdress != "115.73.214.199" && _ipAdress != "118.69.224.168" && _ipAdress != "118.70.171.215"))
-                                {
-                                    _error = "001";
-                                }
-                                else
-                                {
-                                    _error = "OK";
-                                    db.wb_STAFF_Reset_Pass_Work(_email, FC.Encrypt(_appPass));
-                                    string bodyprivate = FC.SentImmCode(_appPass);
-                                    FC_Common.SendMessageMailKit("Hệ thống CRM | IMM Group", "customerservice@immgroup.com", FC.DecryptPassword64("bgBhAHMAcgBpAHIAZQB2AHMAZAB4AGoAdABoAGgAeQA="), _email, "", "", "Mật khẩu đăng nhập hệ thống ngày: " + mday, bodyprivate);
-                                    Response.Redirect("/login/_staffLogin.aspx?i=" + FC.EncryptPassword64(row.RowId.ToString()), false);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    _error = "000";
-                }
-                if (_error != "OK")
-                {
-                    Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email, false);
-                }
+                addCookie(_Email, _Pass.ToUpper(), _Role);
             }
             catch (Exception ex)
             {
@@ -168,25 +123,29 @@ namespace WorkbaseImm
             }
         }
 
-        public void addCookie(string _email, string _pass, string _Role)
+        public void addCookie(string _Email, string _Pass, string _Role)
         {
+            string _error = "002";
             DataClassesDataContext db = new DataClassesDataContext();
             FC_Common FC = new FC_Common();
-            string _error = "002";
-            int time_expire = 1;
-            foreach (var per in db._012020_CRM_V3_FUNC_User_Login(_Role, _email, _pass))
+            int time_expire = 30;
+            if(_Role == "" || _Role == null)
             {
-                if (per.Permiss == _Role)
+                _Role = CheckRole(_Email);
+            }
+            foreach (var per in db._012020_CRM_V3_FUNC_User_Login(_Role, _Email, _Pass))
+            {
+                if (per.Permiss == "AUTHSTAF")
                 {
-                    time_expire = 30;
+                    time_expire = 1;
                 }
                 Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.RowId.ToString());
                 Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(time_expire);
                 Response.Cookies["USER_NAME"].Value = Server.UrlEncode(per.FullName.ToString());
                 Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_EMAIL"].Value = Server.UrlEncode(_email);
+                Response.Cookies["USER_EMAIL"].Value = Server.UrlEncode(_Email);
                 Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_PASS"].Value = Server.UrlEncode(_pass);
+                Response.Cookies["USER_PASS"].Value = Server.UrlEncode(_Pass);
                 Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(time_expire);
                 Response.Cookies["USER_ROLE"].Value = Server.UrlEncode(per.RoleName.ToString());
                 Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(time_expire);
@@ -197,8 +156,26 @@ namespace WorkbaseImm
                 Response.Cookies["USER_LINKHOME"].Value = Server.UrlEncode(per.Linkhome.ToString());
                 Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(time_expire);
                 Response.Redirect(per.Linkhome, true);
-                _error = "OK";
+
             }
+            Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _Email + "&r=" + _Role, false);
+        }
+
+        public string CheckRole(string _Email)
+        {
+            try
+            {                
+                foreach (var row in db.wb_FUNCTION_Login_Oop_define(_Email))
+                {
+                    return row.RoleName;
+                       
+                }      
+            }
+            catch (Exception ex)
+            {
+                return "Staffs";
+            }
+            return "Staffs";
         }
     }
 }

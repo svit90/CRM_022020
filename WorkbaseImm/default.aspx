@@ -91,16 +91,16 @@
                 </div>
                 <div class="col-md-6 align-self-center text-center">
                     <div class="ibox-content">
-                        <a href="https://immgroup.com/" title="Về website"><img class="mb-4" src="https://crm.imm.group/images/logo-no-padding.png" alt="Logo" style="height: 45px;padding: 5px;" /></a>
+                        <a href="https://immgroup.com/" title="Về website"><img class="mt-2" src="https://crm.imm.group/images/logo-no-padding.png" alt="Logo" style="height: 45px;padding: 5px;" /></a>
                         
                         <div class="form-group">                            
                             <asp:TextBox ID="email" TextMode="Email" runat="server" class="form-control " placeholder="Nhập email của bạn.."></asp:TextBox>
                         </div> 
                         <div class="form-group mt-2">                            
-                             <asp:TextBox ID="password1" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
-                             <asp:TextBox ID="password2" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
-                             <asp:TextBox ID="password3" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
-                             <asp:TextBox ID="password4" runat="server" MaxLength="1" class="by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password1" runat="server" MaxLength="1" class="text-uppercase by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password2" runat="server" MaxLength="1" class="text-uppercase by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password3" runat="server" MaxLength="1" class="text-uppercase by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
+                             <asp:TextBox ID="password4" runat="server" MaxLength="1" class="text-uppercase by-code pass-code form-control d-none" placeholder="" ></asp:TextBox>
                              <asp:Button id="btn_signin" disabled class="btn btn-primary full-width m-b by-code d-none" runat="server" Text="Đăng nhập" OnClick="btn_signin_Click"/>
                             <asp:LinkButton id="btn_request_signin"  class="btn btn-outline btn-primary block full-width m-b disabled" runat="server" Text="Gửi yêu cầu đăng nhập" OnClick="btn_request_signin_Click" data-toggle="tooltip" data-placement="right" title="" data-original-title="Gửi code đăng nhập về email"/>
                             <a id="i_have_code" class="cursor have-code" href="#" onclick="control_items();"><small>Đã có code đăng nhập</small></a>
@@ -186,11 +186,11 @@
 
         function control_items() {
             $('.by-code, .have-code').toggleClass('d-none');
+            $("#password1").focus();
         }
 
         function controlbtn() {
             var _email = $('#email').val();
-            var _password = $('#password').val();
             var pas = ($("#password1").val() + $("#password2").val() + $("#password3").val() + $("#password4").val()).length;
 
             if (_email !== "") {
@@ -214,7 +214,7 @@
             if (_email !== "" && _email !== undefined && _email !== null) {
                 $("#email").val(_email);
                 controlbtn();
-                $("#password1").focus();
+                control_items();
             }
             var flickerAPI = "https://api.immgroup.com/crm/message/VN/" + _errorCode;
             $.getJSON(flickerAPI, {
