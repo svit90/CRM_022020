@@ -32,34 +32,46 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="d-flex align-items-center info-top">
-                            <div class="avatar">
-                                <div class="avatar-edit">
-                                    <input type="file" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
-                                     <table id="table_input" border="0" cellpadding="0">
-                                        <tr>
-                                            <td>
-                                                <img id="Image1" src="" alt="" style="display: none" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table id="table_review" border="0" cellpadding="0">
-                                        <tr>
-                                            <td>
-                                                <canvas id="canvas" height="5" width="5"></canvas>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <input type="button" id="btnCrop" value="Crop" style="display: none" />
-                                    <asp:Button ID="btnUpload" runat="server" Text="Save" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
-                                    <input type="hidden" name="imgX1" id="imgX1" />
-                                    <input type="hidden" name="imgY1" id="imgY1" />
-                                    <input type="hidden" name="imgWidth" id="imgWidth" />
-                                    <input type="hidden" name="imgHeight" id="imgHeight" />
-                                    <input type="hidden" name="imgCropped" id="imgCropped" />
-                                </div>
+                            <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
                                 <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
                             </div>
+
+                            <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content animated bounceInRight">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <div class="default-avatar text-center">
+                                                <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
+                                            </div>
+                                            <div class="avatar-view d-none">
+                                                   <canvas id="canvas" class="rounded-circle "></canvas>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-body">
+                                             <div class="avatar-edit dropzone ">
+                                                
+                                                 <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
+                                                
+                                                 <img id="Image1" src="" alt="" style="display: none" />
+                                                <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
+                                               
+                                                <input type="hidden" name="imgX1" id="imgX1" />
+                                                <input type="hidden" name="imgY1" id="imgY1" />
+                                                <input type="hidden" name="imgWidth" id="imgWidth" />
+                                                <input type="hidden" name="imgHeight" id="imgHeight" />
+                                                <input type="hidden" name="imgCropped" id="imgCropped" />
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                             <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="sumary-info ml-3">
                                 <p class="mb-0"><b>PHẠM HOÀNG ĐĂNG THANH</b></p>
                                 <p class="mb-0">IT Executive</p>
@@ -262,6 +274,8 @@
             </div>
         </div>
     </div>
+
+    
    </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
@@ -309,7 +323,7 @@
                          onSelect: SetCoordinates,
                          aspectRatio: 1,
                          setSelect: [50, 50, 200, 200],
-                         boxWidth: 450,
+                         boxWidth: 400,
                          boxHeight: 400
                      });
                  }
@@ -331,8 +345,8 @@
                      $('[id*=btnUpload]').show();
                  };
                  img.src = $('#Image1').attr("src");
-                 $('#table_input, #FileUpload_jcrop, #btnCrop').hide();
-                 $('#table_review').show();
+                 $('#FileUpload_jcrop, #btnCrop,.default-avatar').hide();
+                 $('.avatar-view').removeClass("d-none");
              });
          });
          function SetCoordinates(e) {
