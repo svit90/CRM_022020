@@ -32,7 +32,7 @@ namespace WorkbaseImm
                     else
                     {
                         loadInfoUser_masterpage();
-                                               
+                        
                     }
                 }
 
@@ -46,7 +46,14 @@ namespace WorkbaseImm
                 lb_userName.InnerText = u.FullName;
                 lb_Position.InnerText = u.Position;
                 img_avatar.Src = "/uploads/blog/" + u.AvatarImg;
+                ScanFeedback(u.Id.ToString());
             }
+        }
+
+        protected void ScanFeedback(string StaffID)
+        {
+            rptFeedback.DataSource = db.SCAN_FEEDBACK(StaffID);
+            rptFeedback.DataBind();
         }
     }
 }

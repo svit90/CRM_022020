@@ -26,6 +26,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
 
     <form class="editInfo" runat="server">
+
     <div class="ibox">
         <div class="ibox-content">
             <div class="profile-section">

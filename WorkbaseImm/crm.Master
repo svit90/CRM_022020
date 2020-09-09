@@ -9,15 +9,28 @@
     <meta name="robots" content="noindex, nofollow" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link href="/favicon.ico" rel="apple-touch-icon"/>
-      <link rel="stylesheet" href="<%= ResolveClientUrl("~/font-awesome/css/font-awesome.css") %>">
-      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/bootstrap.min.css") %>">
-    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/font-awesome/css/font-awesome.css") %>">
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/bootstrap.min.css") %>">
+     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/style.css") %>">
      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/animate.css") %>">
 
     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_mainGeneral.css") %>">
-     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_masterPage.css") %>">
+    <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_masterPage.css") %>">
     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/plugins/toastr/toastr.min.css") %>">
+    <style>
+        #UpdScanFeddback li{
+            max-height:70px;
+            overflow:hidden;
+        }
+        .text-small, .text-small child, .text-small p {
+            font-size:11px!important;
+            color:#1ab394 !important
+        }
+        .media-body{
+            max-height:68px;
+        }
+    </style>
 </head>
 <body>
    <div id="wrapper">
@@ -60,7 +73,7 @@
         </div>
     </nav>
 
-
+    
     <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top nav-srcoll" role="navigation">
@@ -78,55 +91,30 @@
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                            <i class="fa fa-envelope"></i>  <span class="count-formNewfeed label label-warning"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a class="dropdown-item float-left" href="profile.html">
-                                        <img alt="image" class="rounded-circle" src="../img/a7.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="float-right">46h ago</small>
-                                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a class="dropdown-item float-left" href="profile.html">
-                                        <img alt="image" class="rounded-circle" src="../img/a4.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="float-right text-navy">5h ago</small>
-                                        <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                        <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <div class="dropdown-messages-box">
-                                    <a class="dropdown-item float-left" href="profile.html">
-                                        <img alt="image" class="rounded-circle" src="../img/profile.jpg">
-                                    </a>
-                                    <div class="media-body ">
-                                        <small class="float-right">23h ago</small>
-                                        <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                        <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a href="mailbox.html" class="dropdown-item">
-                                        <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
-                                    </a>
-                                </div>
-                            </li>
+                                                     
+                                                                                  
+                                        <asp:Repeater ID="rptFeedback" runat="server" ClientIDMode="Static">                                                                 
+                                            <ItemTemplate>                                             
+                                            <li>
+                                                <div class="dropdown-messages-box">
+                                                    <a class="dropdown-item float-left" href="profile.html">
+                                                        <img alt="image" class="rounded-circle" src="../img/a7.jpg">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <small class="time-feedback float-right"><%# Eval("FEEDBACK_DATE")%></small>
+                                                        <strong><%# Eval("CUS_NAME_VN")%></strong> gửi cho bạn một phản hồi <br>
+                                                        <div class="text-small text-muted"><%# Eval("FEEDBACK_CONTENT")%></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    
+                            
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -180,7 +168,7 @@
 
             </nav>
         </div>
-             <div class="row wrapper border-bottom white-bg page-heading">
+             <div class="row wrapper border-bottom white-bg page-heading d-none">
                 <div id="pageHeading" class="col-lg-12">
                     <h2>Trang chủ</h2>
                     <ol class="breadcrumb">
@@ -210,6 +198,142 @@
         </div>
         
     </div>
+    <div class="theme-config">
+        <div class="theme-config-box">
+            <div class="spin-icon">
+                <i class="fa fa-cogs fa-spin"></i>
+            </div>
+            <div class="skin-settings">
+                <div class="title">Configuration <br>
+                <small style="text-transform: none;font-weight: 400">
+                    Config box designed for demo purpose. All options available via code.
+                </small></div>
+                <div class="setings-item">
+                        <span>
+                            Collapse menu
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu">
+                            <label class="onoffswitch-label" for="collapsemenu">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Fixed sidebar
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixedsidebar" class="onoffswitch-checkbox" id="fixedsidebar">
+                            <label class="onoffswitch-label" for="fixedsidebar">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Top navbar
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixednavbar" class="onoffswitch-checkbox" id="fixednavbar">
+                            <label class="onoffswitch-label" for="fixednavbar">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Top navbar v.2
+                            <br>
+                            <small>*Primary layout</small>
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixednavbar2" class="onoffswitch-checkbox" id="fixednavbar2">
+                            <label class="onoffswitch-label" for="fixednavbar2">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Boxed layout
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout">
+                            <label class="onoffswitch-label" for="boxedlayout">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Fixed footer
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixedfooter" class="onoffswitch-checkbox" id="fixedfooter">
+                            <label class="onoffswitch-label" for="fixedfooter">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title">Skins</div>
+                <div class="setings-item default-skin">
+                        <span class="skin-name ">
+                             <a href="#" class="s-skin-0">
+                                 Default
+                             </a>
+                        </span>
+                </div>
+                <div class="setings-item blue-skin">
+                        <span class="skin-name ">
+                            <a href="#" class="s-skin-1">
+                                Blue light
+                            </a>
+                        </span>
+                </div>
+                <div class="setings-item ultra-skin">
+                        <span class="skin-name ">
+                            <a href="#" class="s-skin-2">
+                                Material Design
+                            </a>
+                        </span>
+                </div>
+                <div class="setings-item light-skin">
+                        <span class="skin-name ">
+                            <a href="#" class="s-skin-3">
+                                Light Skin
+                            </a>
+                        </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 
 
@@ -229,6 +353,7 @@
     <script src="<%= ResolveClientUrl("~/js/immgroup.js") %>"></script>
    <%-- <script src="<%= ResolveClientUrl("~/js/scroll.js") %>"></script>--%>
     <script src="<%= ResolveClientUrl("~/js/plugins/toastr/toastr.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/plugins/moment/moment.js") %>"></script>
 
     <asp:ContentPlaceHolder ID="Footer" runat="server">
 
@@ -241,6 +366,16 @@
         $().ready(function () {   
             checkError();
             load_control_menu();
+            var i = 0;
+            $(".time-feedback").each(function () {
+                if (i > 3) {
+                    $(this).text(moment(new Date($(this).text())).calendar());
+                } else {
+                    $(this).text(moment(new Date($(this).text())).fromNow());
+                }     
+                i++;
+            });
+            $(".count-formNewfeed").text(i);
         });
 
         //Type to search on top
@@ -293,6 +428,7 @@
             }    
             
         }
-         
+
+       
     </script>
 </html>

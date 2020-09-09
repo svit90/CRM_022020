@@ -153,167 +153,104 @@
         </div>
         <div class="ibox-content">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover dataTables-example">
+                <table class="table table-striped dataTables-example">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Tên</th>
-                            <th>Sản phẩm</th>
-                            <th>Loại khách</th>
-                            <th>Sales/Team được phân công</th>
-                            <th>Ngày tạo/Ngày phân công</th>
-                            <th>Ghi chú</th>
+                            <th>ID</th>                        
                             <th>Xem nhật ký</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td>Trident</td>
-                            <td>Internet
-                            Explorer 4.0
-                            </td>
-                            <td>Win 95+</td>
-                            <td class="center">4</td>
+                        <tr class="">                           
                             <td class="center">
-                                Win 95+
-                            </td>
-                            <td class="center">
-                                Win 95+
-                            </td>
-                            <td class="center">
-                                Win 95+
+                                <div class="contact-box">
+                                    <a class="row" href="profile.html">
+                                    <div class="col-4">
+                                        <div class="text-center">
+                                            <img alt="image" class="rounded-circle m-t-xs img-fluid" src="../img/a2.jpg">
+                                            <div class="m-t-xs font-bold">Graphics designer</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <h3><strong>John Smith</strong></h3>
+                                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                                        <address>
+                                            <strong>Twitter, Inc.</strong><br>
+                                            795 Folsom Ave, Suite 600<br>
+                                            San Francisco, CA 94107<br>
+                                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                                        </address>
+                                    </div>
+                                        </a>
+                                </div>
                             </td>
                             <td class="center">
                                 <a class="btn btn-danger btn-xs" href="#" ><i class="fa fa-trash"></i> <strong>Delete</strong></a>
                                 <a class="btn btn-info btn-xs" href="#" ><i class="fa fa-pencil-square-o"></i> <strong>Edit</strong></a>
                             </td>
                         </tr>
-                        <tr class="">
-                            <td>Trident</td>
-                            <td>Internet
-                            Explorer 5.0
+                        <tr class="">                           
+                            <td class="center">
+                                <div class="contact-box">
+                                    <a class="row" href="profile.html">
+                                    <div class="col-4">
+                                        <div class="text-center">
+                                            <img alt="image" class="rounded-circle m-t-xs img-fluid" src="../img/a2.jpg">
+                                            <div class="m-t-xs font-bold">Graphics designer</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <h3><strong>Phạm Hoàng Đăng Thanh</strong></h3>
+                                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                                        <address>
+                                            <strong>Twitter, Inc.</strong><br>
+                                            795 Folsom Ave, Suite 600<br>
+                                            San Francisco, CA 94107<br>
+                                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                                        </address>
+                                    </div>
+                                        </a>
+                                </div>
                             </td>
-                            <td>Win 95+</td>
-                            <td class="center">5</td>
-                            <td class="center">C</td>
-                            <td class="center">5</td>
-                            <td class="center">C</td>
-                             <td class="center">
+                            <td class="center">
                                 <a class="btn btn-danger btn-xs" href="#" ><i class="fa fa-trash"></i> <strong>Delete</strong></a>
                                 <a class="btn btn-info btn-xs" href="#" ><i class="fa fa-pencil-square-o"></i> <strong>Edit</strong></a>
                             </td>
                         </tr>
-                        <tr class="gradeA">
-                            <td>Trident</td>
-                            <td>Internet
-                            Explorer 5.5
+                        <tr class="">                           
+                            <td class="center">
+                                <div class="contact-box">
+                                    <a class="row" href="profile.html">
+                                    <div class="col-4">
+                                        <div class="text-center">
+                                            <img alt="image" class="rounded-circle m-t-xs img-fluid" src="../img/a2.jpg">
+                                            <div class="m-t-xs font-bold">Graphics designer</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <h3><strong>Nguyen Hữu Hùng</strong></h3>
+                                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                                        <address>
+                                            <strong>Twitter, Inc.</strong><br>
+                                            795 Folsom Ave, Suite 600<br>
+                                            San Francisco, CA 94107<br>
+                                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                                        </address>
+                                    </div>
+                                        </a>
+                                </div>
                             </td>
-                            <td>Win 95+</td>
-                            <td class="center">5.5</td>
-                            <td class="center">A</td>
-                            <td class="center">5.5</td>
-                            <td class="center">A</td>
-                             <td class="center">
+                            <td class="center">
                                 <a class="btn btn-danger btn-xs" href="#" ><i class="fa fa-trash"></i> <strong>Delete</strong></a>
                                 <a class="btn btn-info btn-xs" href="#" ><i class="fa fa-pencil-square-o"></i> <strong>Edit</strong></a>
                             </td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Trident</td>
-                            <td>Internet
-                            Explorer 6
-                            </td>
-                            <td>Win 98+</td>
-                            <td class="center">6</td>
-                            <td class="center">A</td>
-                            <td class="center">6</td>
-                            <td class="center">A</td>
-                           <td class="center">
-                                <a class="btn btn-danger btn-xs" href="#" ><i class="fa fa-trash"></i> <strong>Delete</strong></a>
-                                <a class="btn btn-info btn-xs" href="#" ><i class="fa fa-pencil-square-o"></i> <strong>Edit</strong></a>
-                            </td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Trident</td>
-                            <td>Internet Explorer 7</td>
-                            <td>Win XP SP2+</td>
-                            <td class="center">7</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                            <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Trident</td>
-                            <td>AOL browser (AOL desktop)</td>
-                            <td>Win XP</td>
-                            <td class="center">6</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                             <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Firefox 1.0</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td class="center">1.7</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                            <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Firefox 1.5</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td class="center">1.8</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                             <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Firefox 2.0</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td class="center">1.8</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                             <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Firefox 3.0</td>
-                            <td>Win 2k+ / OSX.3+</td>
-                            <td class="center">1.9</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                             <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
-                        </tr>
-                         <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Firefox 3.0</td>
-                            <td>Win 2k+ / OSX.3+</td>
-                            <td class="center">1.9</td>
-                            <td class="center">A</td>
-                             <td class="center">7</td>
-                            <td class="center">A</td>
-                             <td class="center"><a class="btn btn-info btn-xs" href="#" data-toggle="modal" data-target="#viewdiary"><i class="fa fa-eye"></i> <strong>View</strong></a></td>
                         </tr>
                        
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Tên</th>
-                            <th>Sản phẩm</th>
-                            <th>Loại khách</th>
-                            <th>Sales/Team được phân công</th>
-                            <th>Ngày tạo/Ngày phân công</th>
-                            <th>Ghi chú</th>
+                          
                             <th>Xem nhật ký</th>
                         </tr>
                     </tfoot>
