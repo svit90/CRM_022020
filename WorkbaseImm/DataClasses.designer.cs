@@ -586,6 +586,20 @@ namespace WorkbaseImm
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_STAFF);
 			return ((ISingleResult<SCAN_FEEDBACKResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetConversation_ByStaff]")]
+		public ISingleResult<_0620_Workbase_GetConversation_ByStaffResult> _0620_Workbase_GetConversation_ByStaff([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_Staff_Token", DbType="NVarChar(MAX)")] string p_Staff_Token)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_Staff_Token);
+			return ((ISingleResult<_0620_Workbase_GetConversation_ByStaffResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetConversation_ByCus]")]
+		public ISingleResult<_0620_Workbase_GetConversation_ByCusResult> _0620_Workbase_GetConversation_ByCus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_CusId", DbType="Int")] System.Nullable<int> p_CusId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_CusId);
+			return ((ISingleResult<_0620_Workbase_GetConversation_ByCusResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.M_ACTION_HISTORY")]
@@ -15114,6 +15128,418 @@ namespace WorkbaseImm
 				if ((this._CUS_NAME_VN != value))
 				{
 					this._CUS_NAME_VN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _0620_Workbase_GetConversation_ByStaffResult
+	{
+		
+		private int _FEEDBACK_ID;
+		
+		private System.Nullable<System.DateTime> _FEEDBACK_DATE;
+		
+		private string _FEEDBACK_DESCRIPT;
+		
+		private string _FEEDBACK_CONTENT;
+		
+		private System.Guid _CusRowId;
+		
+		private System.Nullable<int> _CUS_ID;
+		
+		private System.Guid _StaffRowId;
+		
+		private System.Nullable<int> _STAFF_ID;
+		
+		private System.Nullable<int> _FLAG_ACTIVE;
+		
+		private string _CUS_NAME_VN;
+		
+		public _0620_Workbase_GetConversation_ByStaffResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_ID", DbType="Int NOT NULL")]
+		public int FEEDBACK_ID
+		{
+			get
+			{
+				return this._FEEDBACK_ID;
+			}
+			set
+			{
+				if ((this._FEEDBACK_ID != value))
+				{
+					this._FEEDBACK_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FEEDBACK_DATE
+		{
+			get
+			{
+				return this._FEEDBACK_DATE;
+			}
+			set
+			{
+				if ((this._FEEDBACK_DATE != value))
+				{
+					this._FEEDBACK_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_DESCRIPT", DbType="NVarChar(MAX)")]
+		public string FEEDBACK_DESCRIPT
+		{
+			get
+			{
+				return this._FEEDBACK_DESCRIPT;
+			}
+			set
+			{
+				if ((this._FEEDBACK_DESCRIPT != value))
+				{
+					this._FEEDBACK_DESCRIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_CONTENT", DbType="NVarChar(MAX)")]
+		public string FEEDBACK_CONTENT
+		{
+			get
+			{
+				return this._FEEDBACK_CONTENT;
+			}
+			set
+			{
+				if ((this._FEEDBACK_CONTENT != value))
+				{
+					this._FEEDBACK_CONTENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusRowId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CusRowId
+		{
+			get
+			{
+				return this._CusRowId;
+			}
+			set
+			{
+				if ((this._CusRowId != value))
+				{
+					this._CusRowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_ID", DbType="Int")]
+		public System.Nullable<int> CUS_ID
+		{
+			get
+			{
+				return this._CUS_ID;
+			}
+			set
+			{
+				if ((this._CUS_ID != value))
+				{
+					this._CUS_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffRowId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid StaffRowId
+		{
+			get
+			{
+				return this._StaffRowId;
+			}
+			set
+			{
+				if ((this._StaffRowId != value))
+				{
+					this._StaffRowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_ID", DbType="Int")]
+		public System.Nullable<int> STAFF_ID
+		{
+			get
+			{
+				return this._STAFF_ID;
+			}
+			set
+			{
+				if ((this._STAFF_ID != value))
+				{
+					this._STAFF_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_ACTIVE", DbType="Int")]
+		public System.Nullable<int> FLAG_ACTIVE
+		{
+			get
+			{
+				return this._FLAG_ACTIVE;
+			}
+			set
+			{
+				if ((this._FLAG_ACTIVE != value))
+				{
+					this._FLAG_ACTIVE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_NAME_VN", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string CUS_NAME_VN
+		{
+			get
+			{
+				return this._CUS_NAME_VN;
+			}
+			set
+			{
+				if ((this._CUS_NAME_VN != value))
+				{
+					this._CUS_NAME_VN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _0620_Workbase_GetConversation_ByCusResult
+	{
+		
+		private int _FeedbId;
+		
+		private int _CusId;
+		
+		private System.Nullable<int> _StaffId;
+		
+		private string _OwnerName;
+		
+		private string _AvatarLink;
+		
+		private System.Nullable<System.DateTime> _DateSend;
+		
+		private string _FeedbSubject;
+		
+		private string _FeedbDetails;
+		
+		private string _TypeSend;
+		
+		private string _RoleSender;
+		
+		private string _Position;
+		
+		private string _FileAttach;
+		
+		public _0620_Workbase_GetConversation_ByCusResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FeedbId", DbType="Int NOT NULL")]
+		public int FeedbId
+		{
+			get
+			{
+				return this._FeedbId;
+			}
+			set
+			{
+				if ((this._FeedbId != value))
+				{
+					this._FeedbId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusId", DbType="Int NOT NULL")]
+		public int CusId
+		{
+			get
+			{
+				return this._CusId;
+			}
+			set
+			{
+				if ((this._CusId != value))
+				{
+					this._CusId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffId", DbType="Int")]
+		public System.Nullable<int> StaffId
+		{
+			get
+			{
+				return this._StaffId;
+			}
+			set
+			{
+				if ((this._StaffId != value))
+				{
+					this._StaffId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnerName", DbType="NVarChar(253)")]
+		public string OwnerName
+		{
+			get
+			{
+				return this._OwnerName;
+			}
+			set
+			{
+				if ((this._OwnerName != value))
+				{
+					this._OwnerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvatarLink", DbType="NVarChar(MAX)")]
+		public string AvatarLink
+		{
+			get
+			{
+				return this._AvatarLink;
+			}
+			set
+			{
+				if ((this._AvatarLink != value))
+				{
+					this._AvatarLink = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateSend", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateSend
+		{
+			get
+			{
+				return this._DateSend;
+			}
+			set
+			{
+				if ((this._DateSend != value))
+				{
+					this._DateSend = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FeedbSubject", DbType="NVarChar(MAX)")]
+		public string FeedbSubject
+		{
+			get
+			{
+				return this._FeedbSubject;
+			}
+			set
+			{
+				if ((this._FeedbSubject != value))
+				{
+					this._FeedbSubject = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FeedbDetails", DbType="NVarChar(MAX)")]
+		public string FeedbDetails
+		{
+			get
+			{
+				return this._FeedbDetails;
+			}
+			set
+			{
+				if ((this._FeedbDetails != value))
+				{
+					this._FeedbDetails = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeSend", DbType="NVarChar(14) NOT NULL", CanBeNull=false)]
+		public string TypeSend
+		{
+			get
+			{
+				return this._TypeSend;
+			}
+			set
+			{
+				if ((this._TypeSend != value))
+				{
+					this._TypeSend = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleSender", DbType="VarChar(8) NOT NULL", CanBeNull=false)]
+		public string RoleSender
+		{
+			get
+			{
+				return this._RoleSender;
+			}
+			set
+			{
+				if ((this._RoleSender != value))
+				{
+					this._RoleSender = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this._Position = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileAttach", DbType="NVarChar(MAX)")]
+		public string FileAttach
+		{
+			get
+			{
+				return this._FileAttach;
+			}
+			set
+			{
+				if ((this._FileAttach != value))
+				{
+					this._FileAttach = value;
 				}
 			}
 		}

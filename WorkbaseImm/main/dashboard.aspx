@@ -1,8 +1,55 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/crm.Master" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="WorkbaseImm.main.dashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
-   
+   <style>
+       .media-body {
+            border: 1px solid;
+            padding: 10px;  
+       }
+       .chat-element {
+            position: relative;
+            display: inline-block;
+       }
+       .chat-element .media-body {
+           border-color: #f5222d;
+           border-radius: 3px 16px 16px 16px;
+       }
+       .chat-element.right .media-body {
+           border-color: #1ab394;
+           border-radius: 16px 3px 16px 16px;
+       }
+       .chat-activity-list .chat-element {
+            border-bottom: 0px;
+       }
+       .chat-element.right {
+            margin-right: 0;
+            text-align: left;
+            float:right;
+       }
+       .media-body .file-box {
+            float: left;
+            width: 50px;
+       }
+       .media-body .file {
+            margin-bottom: inherit;
+            margin-right: 10px;
+       }
+       .media-body .file .icon {
+            padding: 10px 10px;
+            text-align: center;
+            width:auto;
+       }
+       .media-body .file .icon, .media-body .file .image {
+            height: auto;
+            overflow: inherit;
+       }
+       .file .icon i {
+            font-size: inherit; 
+            color: #1ab394;
+       }
+   </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
     <div class="row">
@@ -23,8 +70,6 @@
                     <iframe style="height:600px; border:0;" src="https://imm-crm.firebaseapp.com/widget/c/staffs/9e1b8147-37a9-4a68-9bcc-f0c38c402003/customers/"></iframe>
                 </div> 
             </div>
-
-           
         </div>
             
         <div class="col-lg-8">
@@ -39,115 +84,426 @@
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
-                </div>
-                <div class="ibox-content ibox-heading">
-                    <h3>You have meeting today!</h3>
-                    <small><i class="fa fa-map-marker"></i> Meeting is on 6:00am. Check your schedule to see detail.</small>
-                </div>
-                <div class="ibox-content inspinia-timeline">
+                </div>              
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="clients-list">
+                            <span class="float-right small text-muted">Tổng cộng 14 khách</span>
+                            <ul class="nav nav-tabs">
+                                <li><a class="nav-link active" data-toggle="tab" href="#tab-1"><i class="fa fa-user"></i> Khách đang chăm sóc</a></li>
+                            </ul>
+                                </div>
+                            <div class="fh-breadcrumb">
 
-                    <div class="timeline-item">
-                        <div class="row">
-                            <div class="col-4 date">
-                                <i class="fa fa-briefcase"></i>
-                                6:00 am
-                                <br>
-                                <small class="text-navy">2 hour ago</small>
-                            </div>
-                            <div class="col content no-top-border">
-                                <p class="m-b-xs"><strong>Meeting</strong></p>
+                                <div class="fh-column">
+                                    <div class="full-height-scroll">
+                                        <ul class="list-group elements-list">
+                                            <asp:Repeater ID="rptFeedback" runat="server" ClientIDMode="Static">                                                                 
+                                                <ItemTemplate>   
+                                                    <li class="list-group-item" onclick="binding_conversation();">
+                                                        <a class="nav-link" data-toggle="tab" href="#tab-1">
 
-                                <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
-                                    sale.</p>
+                                                            <small><b><%# Eval("CUS_NAME_VN")%></b></small>
+                                                            
+                                                            <div class="content-feedback small m-t-xs">
+                                                                <%# Eval("FEEDBACK_DESCRIPT")%>    
+                                                            </div>
 
-                                <p><span data-diameter="40" class="updating-chart" style="display: none;">2,9,4,2,8,2,10,8,1,7,5,4,8,6,6,3,2,1,9,8,10,2,7,6,9,9,1,3,5,8,8,5,6,2,9,5,0</span><svg class="peity" height="16" width="64"><polygon fill="#1ab394" points="0 15 0 12.5 1.7777777777777777 2 3.5555555555555554 9.5 5.333333333333333 12.5 7.111111111111111 3.5 8.88888888888889 12.5 10.666666666666666 0.5 12.444444444444443 3.5 14.222222222222221 14 16 5 17.77777777777778 8 19.555555555555554 9.5 21.333333333333332 3.5 23.11111111111111 6.5 24.888888888888886 6.5 26.666666666666664 11 28.444444444444443 12.5 30.22222222222222 14 32 2 33.77777777777778 3.5 35.55555555555556 0.5 37.33333333333333 12.5 39.11111111111111 5 40.888888888888886 6.5 42.666666666666664 2 44.44444444444444 2 46.22222222222222 14 48 11 49.77777777777777 8 51.55555555555555 3.5 53.33333333333333 3.5 55.11111111111111 8 56.888888888888886 6.5 58.666666666666664 12.5 60.44444444444444 2 62.22222222222222 8 64 15.5 64 15"></polygon><polyline fill="transparent" points="0 12.5 1.7777777777777777 2 3.5555555555555554 9.5 5.333333333333333 12.5 7.111111111111111 3.5 8.88888888888889 12.5 10.666666666666666 0.5 12.444444444444443 3.5 14.222222222222221 14 16 5 17.77777777777778 8 19.555555555555554 9.5 21.333333333333332 3.5 23.11111111111111 6.5 24.888888888888886 6.5 26.666666666666664 11 28.444444444444443 12.5 30.22222222222222 14 32 2 33.77777777777778 3.5 35.55555555555556 0.5 37.33333333333333 12.5 39.11111111111111 5 40.888888888888886 6.5 42.666666666666664 2 44.44444444444444 2 46.22222222222222 14 48 11 49.77777777777777 8 51.55555555555555 3.5 53.33333333333333 3.5 55.11111111111111 8 56.888888888888886 6.5 58.666666666666664 12.5 60.44444444444444 2 62.22222222222222 8 64 15.5" stroke="#169c81" stroke-width="1" stroke-linecap="square"></polyline></svg></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="row">
-                            <div class="col-4 date">
-                                <i class="fa fa-file"></i>
-                                7:00 am
-                                <br>
-                                <small class="text-navy">3 hour ago</small>
-                            </div>
-                            <div class="col content">
-                                <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="row">
-                            <div class="col-4 date">
-                                <i class="fa fa-coffee"></i>
-                                8:00 am
-                                <br>
-                            </div>
-                            <div class="col content">
-                                <p class="m-b-xs"><strong>Coffee Break</strong></p>
-                                <p>
-                                    Go to shop and find some products.
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="row">
-                            <div class="col-4 date">
-                                <i class="fa fa-phone"></i>
-                                11:00 am
-                                <br>
-                                <small class="text-navy">21 hour ago</small>
-                            </div>
-                            <div class="col content">
-                                <p class="m-b-xs"><strong>Phone with Jeronimo</strong></p>
-                                <p>
-                                    Lorem Ipsum has been the industry's standard dummy text ever since.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="row">
-                            <div class="col-4 date">
-                                <i class="fa fa-user-md"></i>
-                                09:00 pm
-                                <br>
-                                <small>21 hour ago</small>
-                            </div>
-                            <div class="col content">
-                                <p class="m-b-xs"><strong>Go to the doctor dr Smith</strong></p>
-                                <p>
-                                    Find some issue and go to doctor.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="row">
-                            <div class="col-4 date">
-                                <i class="fa fa-comments"></i>
-                                12:50 pm
-                                <br>
-                                <small class="text-navy">48 hour ago</small>
-                            </div>
-                            <div class="col content">
-                                <p class="m-b-xs"><strong>Chat with Monica and Sandra</strong></p>
-                                <p>
-                                    Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                                                            <small class="time-feedback float-right text-muted"> <%# Eval("FEEDBACK_DATE")%></small>
+                                                        </a>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </ul>
 
+                                    </div>
+                                </div>
+
+                                <div class="full-height">
+                                    <div class="full-height-scroll white-bg border-left">
+
+                                        <div class="element-detail-box">
+
+                                            <div class="tab-content">
+                                                <div id="tab-1" class="tab-pane">
+                                                    <div>
+                                                        <div class="chat-activity-list">
+
+                                                            <div class="chat-element">
+                                                                <a href="#" class="float-left">
+                                                                    <img alt="image" class="rounded-circle" src="../img/a2.jpg">
+                                                                </a>
+                                                                <div class="media-body ">
+                                                                    <small class="float-right text-navy">1m ago</small>
+                                                                    <strong>Mike Smith</strong>
+                                                                    <p class="m-b-xs">
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                                    </p>
+                                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="chat-element right">
+                                                                <a href="#" class="float-right">
+                                                                    <img alt="image" class="rounded-circle" src="../img/a4.jpg">
+                                                                </a>
+                                                                <div class="media-body text-right ">
+                                                                    <small class="float-left">5m ago</small>
+                                                                    <strong>John Smith</strong>
+                                                                    <p class="m-b-xs">
+                                                                        Lorem Ipsum is simply dummy text of the printing.
+                                                                    </p>
+                                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="chat-element ">
+                                                                <a href="#" class="float-left">
+                                                                    <img alt="image" class="rounded-circle" src="../img/a2.jpg">
+                                                                </a>
+                                                                <div class="media-body">
+                                                                    <small class="float-right">2h ago</small>
+                                                                    <strong>Mike Smith</strong>
+                                                                    <p class="m-b-xs">
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                                    </p>
+                                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+
+                                                                    <div class="mail-attachment">
+                                                                        <p>
+                                                                            <span><i class="fa fa-paperclip"></i> 2 attachments </span>
+                                                                        </p>
+                                                                        <div class="attachment">
+                                                                            <div class="file-box">
+                                                                                <div class="file">
+                                                                                    <a href="#" title="FileName-tẻnatdaianca.pdf">
+                                                                                        <span class="corner"></span>
+                                                                                        <div class="icon">
+                                                                                            <i class="fa fa-file"></i>
+                                                                                        </div>                                                                                   
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="file-box">
+                                                                                <div class="file">
+                                                                                    <a href="#" title="FileName-tẻnatdaianca.jpge">
+                                                                                        <span class="corner"></span>
+                                                                                        <div class="image">
+                                                                                            <img alt="image" class="img-fluid" src="../img/a1.jpg">
+                                                                                        </div>                                                                                 
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="file-box">
+                                                                                <div class="file">
+                                                                                    <a href="#" title="FileName-tẻnatdaianca.png">
+                                                                                        <span class="corner"></span>
+                                                                                        <div class="image">
+                                                                                            <img alt="image" class="img-fluid" src="../img/a2.jpg">
+                                                                                        </div>                                                                                    
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="clearfix"></div>
+                                                                        </div>
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="chat-form">
+                                                        <form role="form">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" placeholder="Message"></textarea>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Trả lời nhanh</strong></button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                                <div id="tab-2" class="tab-pane active">
+                                                    <div class="float-right">
+                                                        <div class="tooltip-demo">
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="left" title="Plug this message"><i class="fa fa-plug"></i> Plug it</button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="small text-muted">
+                                                        <i class="fa fa-clock-o"></i> Monday, 21 May 2014, 10:32 am
+                                                    </div>
+
+                                                    <h1>
+                                                        The European languages - same family.
+                                                    </h1>
+
+                                                    <p>
+                                                        One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.
+                                                    </p>
+                                                    <p>
+                                                        The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.
+                                                    </p>
+
+                                                    <p>
+                                                        The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.
+                                                    </p>
+                                                    <p>
+                                                        To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.
+                                                    </p>
+                                                    <p>
+                                                        The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.
+                                                    </p>
+
+                                                    <p>
+                                                        The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.
+                                                    </p>
+                                                    <p>
+                                                        To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.
+                                                    </p>
+                                                    <p class="small">
+                                                        <strong>Best regards, Anthony Smith </strong>
+                                                    </p>
+
+                                                    <div class="m-t-lg">
+                                                        <p>
+                                                            <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
+                                                            <a href="#">Download all</a>
+                                                            |
+                                                            <a href="#">View all images</a>
+                                                        </p>
+
+                                                        <div class="attachment">
+                                                            <div class="file-box">
+                                                                <div class="file">
+                                                                    <a href="#">
+                                                                        <span class="corner"></span>
+
+                                                                        <div class="icon">
+                                                                            <i class="fa fa-file"></i>
+                                                                        </div>
+                                                                        <div class="file-name">
+                                                                            Document_2014.doc
+                                                                            <br>
+                                                                            <small>Added: Jan 11, 2014</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="file-box">
+                                                                <div class="file">
+                                                                    <a href="#">
+                                                                        <span class="corner"></span>
+
+                                                                        <div class="icon">
+                                                                            <i class="fa fa-line-chart"></i>
+                                                                        </div>
+                                                                        <div class="file-name">
+                                                                            Seels_2015.xls
+                                                                            <br>
+                                                                            <small>Added: May 13, 2015</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="tab-3" class="tab-pane">
+                                                    <div class="float-right">
+                                                        <div class="tooltip-demo">
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="left" title="Plug this message"><i class="fa fa-plug"></i> Plug it</button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="small text-muted">
+                                                        <i class="fa fa-clock-o"></i> Tuesday, 15 May 2014, 10:32 am
+                                                    </div>
+
+                                                    <h1>
+                                                        To take a trivial example
+                                                    </h1>
+
+                                                    <p>
+                                                        But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.
+                                                    </p>
+                                                    <p>
+                                                        The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.
+                                                    </p>
+
+                                                    <p>
+                                                        he wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and.
+                                                    </p>
+                                                    <p>
+                                                        To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.
+                                                    </p>
+
+                                                    <p>
+                                                        The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.
+                                                    </p>
+                                                    <p>
+                                                        To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? On the other hand, we denounce.
+                                                    </p>
+                                                    <p class="small">
+                                                        <strong>Best regards, Anthony Smith </strong>
+                                                    </p>
+
+                                                    <div class="m-t-lg">
+                                                        <p>
+                                                            <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
+                                                            <a href="#">Download all</a>
+                                                            |
+                                                            <a href="#">View all images</a>
+                                                        </p>
+
+                                                        <div class="attachment">
+                                                            <div class="file-box">
+                                                                <div class="file">
+                                                                    <a href="#">
+                                                                        <span class="corner"></span>
+
+                                                                        <div class="icon">
+                                                                            <i class="fa fa-file"></i>
+                                                                        </div>
+                                                                        <div class="file-name">
+                                                                            Document_2014.doc
+                                                                            <br>
+                                                                            <small>Added: Jan 11, 2014</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="file-box">
+                                                                <div class="file">
+                                                                    <a href="#">
+                                                                        <span class="corner"></span>
+
+                                                                        <div class="icon">
+                                                                            <i class="fa fa-line-chart"></i>
+                                                                        </div>
+                                                                        <div class="file-name">
+                                                                            Seels_2015.xls
+                                                                            <br>
+                                                                            <small>Added: May 13, 2015</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="tab-4" class="tab-pane">
+                                                    <div class="float-right">
+                                                        <div class="tooltip-demo">
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="left" title="Plug this message"><i class="fa fa-plug"></i> Plug it</button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                                                            <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="small text-muted">
+                                                        <i class="fa fa-clock-o"></i> Thursday, 27 april 2014, 10:32 am
+                                                    </div>
+
+                                                    <h1>
+                                                        Gregor Samsa woke from troubled dreams.
+                                                    </h1>
+
+                                                    <p>
+                                                        His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.
+                                                    </p>
+                                                    <p>
+                                                        To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.
+                                                    </p>
+                                                    <p>
+                                                        Travelling day in and day out. Doing business like this takes much more effort than doing your own business at home, and on top of that there's the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them.
+                                                    </p>
+
+                                                    <p>
+                                                        The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.
+                                                    </p>
+                                                    <p>
+                                                        To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is.
+                                                    </p>
+                                                    <p class="small">
+                                                        <strong>Best regards, Anthony Smith </strong>
+                                                    </p>
+
+                                                    <div class="m-t-lg">
+                                                        <p>
+                                                            <span><i class="fa fa-paperclip"></i> 2 attachments - </span>
+                                                            <a href="#">Download all</a>
+                                                            |
+                                                            <a href="#">View all images</a>
+                                                        </p>
+
+                                                        <div class="attachment">
+                                                            <div class="file-box">
+                                                                <div class="file">
+                                                                    <a href="#">
+                                                                        <span class="corner"></span>
+
+                                                                        <div class="icon">
+                                                                            <i class="fa fa-file"></i>
+                                                                        </div>
+                                                                        <div class="file-name">
+                                                                            Document_2014.doc
+                                                                            <br>
+                                                                            <small>Added: Jan 11, 2014</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="file-box">
+                                                                <div class="file">
+                                                                    <a href="#">
+                                                                        <span class="corner"></span>
+
+                                                                        <div class="icon">
+                                                                            <i class="fa fa-line-chart"></i>
+                                                                        </div>
+                                                                        <div class="file-name">
+                                                                            Seels_2015.xls
+                                                                            <br>
+                                                                            <small>Added: May 13, 2015</small>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 
 
       
