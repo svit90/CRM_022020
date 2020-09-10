@@ -15,7 +15,6 @@
      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/style.css") %>">
      <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/animate.css") %>">
 
-    <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_mainGeneral.css") %>">
     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_masterPage.css") %>">
     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/plugins/toastr/toastr.min.css") %>">
     <style>
@@ -30,6 +29,9 @@
         .media-body{
             max-height:68px;
         }
+        .caret{
+            margin-top:9px;
+        }
     </style>
 </head>
 <body>
@@ -39,10 +41,13 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <img id="img_avatar" runat="server" alt="image" class="rounded-circle w-100" src="img/profile_small.jpg"/>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img id="img_avatar" runat="server" width="80" alt="image" class="rounded-circle" src="img/profile_small.jpg"/>
+                        <a  class="dropdown-toggle" href="#">
                             <span id="lb_userName" runat="server" class="block m-t-xs font-bold">David</span>
-                            <span id="lb_Position" runat="server" class="text-muted text-xs block">Director <b class="caret"></b></span>
+                        </a>
+                        <a data-toggle="dropdown" class="dropdown-toggle d-flex mt-0" href="#!">
+                            <span id="lb_Position" runat="server" class="text-muted text-xs block">Art Director </span>
+                            <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a class="dropdown-item" href="profile.html">Profile</a></li>
@@ -180,12 +185,10 @@
             </div>
             <asp:ContentPlaceHolder ID="ContentPageHeading" runat="server"></asp:ContentPlaceHolder>
             <div class="wrapper wrapper-content  animated fadeInRight">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <asp:ContentPlaceHolder ID="ContentAll" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </div>
-                </div>
+              
+                    <asp:ContentPlaceHolder ID="ContentAll" runat="server">
+                    </asp:ContentPlaceHolder>
+                    
             </div>
             <div class="footer">
                 <div class="float-right">

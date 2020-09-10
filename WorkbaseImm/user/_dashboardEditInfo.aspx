@@ -26,247 +26,251 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
 
     <form class="editInfo" runat="server">
+        <div class="row">
+            <div class="col-xl-5 col-lg-8 col-md-10 col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="profile-section">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex align-items-center info-top">
+                                        <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
+                                            <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
+                                        </div>
 
-    <div class="ibox">
-        <div class="ibox-content">
-            <div class="profile-section">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="d-flex align-items-center info-top">
-                            <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
-                                <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
-                            </div>
-
-                            <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content animated bounceInRight">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <div class="default-avatar text-center">
-                                                <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
-                                            </div>
-                                            <div class="avatar-view d-none">
-                                                   <canvas id="canvas" class="rounded-circle "></canvas>
-                                            </div>
+                                        <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content animated bounceInRight">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                        <div class="default-avatar text-center">
+                                                            <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
+                                                        </div>
+                                                        <div class="avatar-view d-none">
+                                                               <canvas id="canvas" class="rounded-circle "></canvas>
+                                                        </div>
                                             
-                                        </div>
-                                        <div class="modal-body">
-                                             <div class="avatar-edit dropzone ">
+                                                    </div>
+                                                    <div class="modal-body">
+                                                         <div class="avatar-edit dropzone ">
                                                 
-                                                 <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
+                                                             <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
                                                 
-                                                 <img id="Image1" src="" alt="" style="display: none" />
-                                                <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
+                                                             <img id="Image1" src="" alt="" style="display: none" />
+                                                            <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
                                                
-                                                <input type="hidden" name="imgX1" id="imgX1" />
-                                                <input type="hidden" name="imgY1" id="imgY1" />
-                                                <input type="hidden" name="imgWidth" id="imgWidth" />
-                                                <input type="hidden" name="imgHeight" id="imgHeight" />
-                                                <input type="hidden" name="imgCropped" id="imgCropped" />
+                                                            <input type="hidden" name="imgX1" id="imgX1" />
+                                                            <input type="hidden" name="imgY1" id="imgY1" />
+                                                            <input type="hidden" name="imgWidth" id="imgWidth" />
+                                                            <input type="hidden" name="imgHeight" id="imgHeight" />
+                                                            <input type="hidden" name="imgCropped" id="imgCropped" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                                         <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                             <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
+
+                                        <div class="sumary-info ml-3">
+                                            <p class="mb-0"><b>PHẠM HOÀNG ĐĂNG THANH</b></p>
+                                            <p class="mb-0">IT Executive</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="sumary-info ml-3">
-                                <p class="mb-0"><b>PHẠM HOÀNG ĐĂNG THANH</b></p>
-                                <p class="mb-0">IT Executive</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5 pb-5">
-                    <div class="col-md-7">
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Full Name:</b></div>
-                                <div class="col-md-9">Phạm Hoàng Đăng Thanh
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editFullName" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editFullName">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_FullName" runat="server" class="form-control required"></asp:TextBox>
-                                        </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_fullname" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Other Name:</b></div>
-                                <div class="col-md-9">Paul
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editName" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editName">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_name" runat="server" class="form-control required"></asp:TextBox>
-                                        </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_name" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Email:</b></div>
-                                <div class="col-md-9">paul@imm.group
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editEmail" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editEmail">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_email" TextMode="Email" runat="server" class="form-control required email"></asp:TextBox>
-                                        </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_email" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>  
-                         <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Phone number:</b></div>
-                                <div class="col-md-9">0939 878 207
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editPhoneNumber" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editPhoneNumber">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_Phone" runat="server" class="form-control required number"></asp:TextBox>
-                                        </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_phone" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Birthday:</b></div>
-                                <div class="col-md-9 ">01/01/1900
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editBirthday" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4 dataDateTime" id="editBirthday">
-                                        <div class="w-100">
-                                            <div class="input-group date">
-                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                <asp:TextBox ID="txt_date" runat="server" class="form-control required"></asp:TextBox>
+                            <div class="row mt-5 pb-5">
+                                <div class="col-md-12">
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Full Name:</b></div>
+                                            <div class="col-md-8">Phạm Hoàng Đăng Thanh
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editFullName" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editFullName">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_FullName" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_fullname" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_date" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Other Name:</b></div>
+                                            <div class="col-md-8">Paul
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editName" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editName">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_name" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_name" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Position:</b></div>
-                                <div class="col-md-9">IT Executive
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editPosition" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editPosition">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_position" runat="server" class="form-control required"></asp:TextBox>
+                                    </div>
+                                     <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Email:</b></div>
+                                            <div class="col-md-8">paul@imm.group
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editEmail" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editEmail">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_email" TextMode="Email" runat="server" class="form-control required email"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_email" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_position" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                    </div>  
+                                     <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Phone number:</b></div>
+                                            <div class="col-md-8">0939 878 207
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editPhoneNumber" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editPhoneNumber">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_Phone" runat="server" class="form-control required number"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_phone" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Office:</b></div>
-                                <div class="col-md-9">
-                                Ho Chi Minh
-                                <a class="text-default edit-icon" data-toggle="collapse" href="#editOffice" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editOffice">
-                                       <div class="w-100">
-                                            <asp:TextBox ID="txt_office" runat="server" class="form-control required"></asp:TextBox>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Birthday:</b></div>
+                                            <div class="col-md-8 ">01/01/1900
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editBirthday" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4 dataDateTime" id="editBirthday">
+                                                    <div class="w-100">
+                                                        <div class="input-group date">
+                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            <asp:TextBox ID="txt_date" runat="server" class="form-control required"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_date" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_office" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Position:</b></div>
+                                            <div class="col-md-8">IT Executive
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editPosition" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editPosition">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_position" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_position" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Group:</b></div>
-                                <div class="col-md-9">
-                                   IMM Group<a class="text-default edit-icon" data-toggle="collapse" href="#editGroup" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editGroup">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_group" runat="server" class="form-control required"></asp:TextBox>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Office:</b></div>
+                                            <div class="col-md-8">
+                                            Ho Chi Minh
+                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editOffice" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editOffice">
+                                                   <div class="w-100">
+                                                        <asp:TextBox ID="txt_office" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_office" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_group" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Group:</b></div>
+                                            <div class="col-md-8">
+                                               IMM Group<a class="text-default edit-icon" data-toggle="collapse" href="#editGroup" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editGroup">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_group" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_group" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Password App CRM:</b></div>
-                                <div class="col-md-9">
-                                    Edit Password App CRM<a class="text-default edit-icon" data-toggle="collapse" href="#editPasswordCRM" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editPasswordCRM">
-                                        <div class="w-100">
-                                            <asp:TextBox ID="txt_passwordCRM" TextMode="Password" runat="server" class="form-control required"></asp:TextBox>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Password App CRM:</b></div>
+                                            <div class="col-md-8">
+                                                Edit Password App CRM<a class="text-default edit-icon" data-toggle="collapse" href="#editPasswordCRM" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editPasswordCRM">
+                                                    <div class="w-100">
+                                                        <asp:TextBox ID="txt_passwordCRM" TextMode="Password" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_passwordCRM" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
                                         </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_passwordCRM" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                        </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border-bottom py-2">
-                            <div class="row">
-                                <div class="col-md-3"><b>Password Email:</b></div>
-                                <div class="col-md-9">
-                                    Edit Password<a class="text-default edit-icon" data-toggle="collapse" href="#editPasswordEmail" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                    <div class="collapse my-4" id="editPasswordEmail">
-                                         <div class="w-100">
-                                            <asp:TextBox ID="txt_password" TextMode="Password" runat="server" class="form-control required"></asp:TextBox>
-                                        </div>
-                                        <div class="w-100 text-right">
-                                             <asp:Button id="btn_password" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                        </div>
+                                    </div>
+                                    <div class="border-bottom py-2">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Password Email:</b></div>
+                                            <div class="col-md-8">
+                                                Edit Password<a class="text-default edit-icon" data-toggle="collapse" href="#editPasswordEmail" role="button" ><i class="fa fa-edit ml-2"></i></a>
+                                                <div class="collapse my-4" id="editPasswordEmail">
+                                                     <div class="w-100">
+                                                        <asp:TextBox ID="txt_password" TextMode="Password" runat="server" class="form-control required"></asp:TextBox>
+                                                    </div>
+                                                    <div class="w-100 text-right">
+                                                         <asp:Button id="btn_password" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
                                          
-                                     </div>
+                                                 </div>
                                    
-                                </div>
-                            </div>
-                           
-                        </div>
-                        <div class="border-bottom py-2 mb-4">
-                            <div class="row">
-                                <div class="col-md-3"><b>Signature:</b></div>
-                                <div class="col-md-9">Edit Signature<a class="text-default edit-icon" data-toggle="collapse" href="#collapseSignature" role="button" ><i class="fa fa-edit ml-2"></i></a></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-9">
-                                     <div class="collapse mt-4" id="collapseSignature">
-                                        <div class="w-100">
-                                            <div class="summernote">
-                                               Trân trọng
                                             </div>
                                         </div>
-                                         <div class="w-100 text-right">
-                                             <asp:Button id="Button1" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                           
+                                    </div>
+                                    <div class="border-bottom py-2 mb-4">
+                                        <div class="row">
+                                            <div class="col-md-4"><b>Signature:</b></div>
+                                            <div class="col-md-8">Edit Signature<a class="text-default edit-icon" data-toggle="collapse" href="#collapseSignature" role="button" ><i class="fa fa-edit ml-2"></i></a></div>
                                         </div>
-                                     </div>
+                                        <div class="row">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-8">
+                                                 <div class="collapse mt-4" id="collapseSignature">
+                                                    <div class="w-100">
+                                                        <div class="summernote">
+                                                           Trân trọng
+                                                        </div>
+                                                    </div>
+                                                     <div class="w-100 text-right">
+                                                         <asp:Button id="Button1" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
+                                                    </div>
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -274,9 +278,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    
    </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
