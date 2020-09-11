@@ -5,6 +5,25 @@
     <link href="../css/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
     <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="../css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <style>
+        .contact-box{
+            position:relative;
+        }
+        .contact-box:hover .control-employee{
+            opacity:1;
+        }
+        .contact-box:hover{
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .control-employee{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 8px;
+            opacity:0;
+            transition: all 0.2s ease;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -73,8 +92,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Giới tính</label>
-                            <select class="form-control m-b required" name="gender">
-                                <option >--Chọn--</option>
+                            <select class="form-control required" name="gender">
+                                <option  value="">--Chọn--</option>
                                 <option value="nam">Nam</option>
                                 <option value="nu">Nữ</option>
                             </select>
@@ -83,8 +102,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Phân quyền</label>
-                            <select class="form-control m-b required" name="permission">
-                                <option>--Chọn--</option>
+                            <select class="form-control required" name="permission">
+                                <option value="">--Chọn--</option>
                                 <option>Admin</option>
                                 <option>User</option>
                             </select>
@@ -93,8 +112,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Vị trí</label>
-                            <select class="form-control m-b required" name="position">
-                                <option>--Chọn--</option>
+                            <select class="form-control required" name="position">
+                                <option value="">--Chọn--</option>
                                 <option>Admin</option>
                                 <option>User</option>
                             </select>
@@ -103,8 +122,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Bộ phận cty</label>
-                            <select class="form-control m-b required" name="part">
-                                <option>--Chọn--</option>
+                            <select class="form-control required" name="part">
+                                <option value="">--Chọn--</option>
                                 <option>Admin</option>
                                 <option>User</option>
                             </select>
@@ -113,8 +132,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Văn phòng</label>
-                            <select class="form-control m-b required" name="office">
-                                <option>--Chọn--</option>
+                            <select class="form-control required" name="office">
+                                <option value="">--Chọn--</option>
                                 <option>Admin</option>
                                 <option>User</option>
                             </select>
@@ -123,9 +142,9 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Chọn team</label>
-                            <select class="form-control m-b required" name="team">
-                                <option>--Chọn--</option>
-                                <option>Admin</option>
+                            <select class="form-control required" name="team">
+                                <option value="">--Chọn--</option>
+                                <option >Admin</option>
                                 <option>User</option>
                             </select>
                         </div>
@@ -133,8 +152,8 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label class="">Sản phẩm bán</label>
-                            <select class="form-control m-b required" name="product">
-                                <option>--Chọn--</option>
+                            <select class="form-control required" name="product">
+                                <option value="">--Chọn--</option>
                                 <option>Admin</option>
                                 <option>User</option>
                             </select>
@@ -150,7 +169,7 @@
             <h5>Danh sách nhân viên</h5>
         </div>
         <div class="ibox-content">
-            <div class="w-25">
+            <div class="row col-sm-6">
                 <div class="input-group">
                     <input type="text" placeholder="Search Employees " class="input form-control searchbox-input" autocomplete="off">
                     <span class="input-group-append">
@@ -162,46 +181,58 @@
                <div class="row">
                     <div class="col-lg-4">
                         <div class="contact-box">
-                            <a class="row" href="profile.html">
+                            <div class="row">
                                 <div class="col-4">
                                     <div class="text-center">
                                         <img alt="image" class="rounded-circle m-t-xs img-fluid" src="/uploads/blog/profile-nophoto.png">
-                                        <div class="m-t-xs font-bold">Graphics designer</div>
                                     </div>
                                 </div>
-                                <div class="col-8">
-                                    <h3><strong>John Smith</strong></h3>
-                                    <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
-                                    <address>
-                                        <strong>Twitter, Inc.</strong><br>
-                                        795 Folsom Ave, Suite 600<br>
-                                        San Francisco, CA 94107<br>
-                                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                                    </address>
+                                <div class="col-8 align-self-center">
+                                    <div>
+                                        <h3 class="mb-0"><strong>Nguyễn Hữu Hùng (Frank)</strong></h3>
+                                        <div class="font-bold">
+                                            <p>Team Leader | Web Development</p>
+                                        </div>
+                                        <address>
+                                           <strong><i class="fa fa fa-envelope"></i></strong> frank@immgroup.com<br> 
+                                           <strong><i class="fa fa fa-phone"></i></strong> (+84) 28 730 72 777 <strong>(Ext. 449)</strong>
+                                        </address>
+                                    </div>
+                                   
                                 </div>
-                            </a>
+                            </div>
+                            <div class="control-employee">
+                                <a class="btn btn-info btn-xs" href="#"><i class="fa fa-edit"></i> Sửa</a>
+                                <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash-o"></i> Xóa</a>
+                            </div>
                         </div>
                     </div>
                    <div class="col-lg-4">
                         <div class="contact-box">
-                            <a class="row" href="profile.html">
+                            <div class="row">
                                 <div class="col-4">
                                     <div class="text-center">
                                         <img alt="image" class="rounded-circle m-t-xs img-fluid" src="/uploads/blog/profile-nophoto.png">
-                                        <div class="m-t-xs font-bold">Graphics designer</div>
                                     </div>
                                 </div>
-                                <div class="col-8">
-                                    <h3><strong>John hung</strong></h3>
-                                    <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
-                                    <address>
-                                        <strong>Twitter, Inc.</strong><br>
-                                        795 Folsom Ave, Suite 600<br>
-                                        San Francisco, CA 94107<br>
-                                        <abbr title="Phone">P:</abbr> (123) 456-7890
-                                    </address>
+                                <div class="col-8 align-self-center">
+                                    <div>
+                                        <h3 class="mb-0"><strong>Nguyễn Hữu Hùng1 (Frank)</strong></h3>
+                                        <div class="font-bold">
+                                            <p>Team Leader | Web Development</p>
+                                        </div>
+                                        <address>
+                                           <strong><i class="fa fa fa-envelope"></i></strong> frank@immgroup.com<br> 
+                                           <strong><i class="fa fa fa-phone"></i></strong> (+84) 28 730 72 777 <strong>(Ext. 449)</strong>
+                                        </address>
+                                    </div>
+                                   
                                 </div>
-                             </a>
+                            </div>
+                            <div class="control-employee">
+                                <a class="btn btn-info btn-xs" href="#"><i class="fa fa-edit"></i> Sửa</a>
+                                <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash-o"></i> Xóa</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -243,6 +274,15 @@
             $(".frmemployees").validate({
                 lang: 'vi',
                 ignore: [],
+                rules: {
+                    gender: { required: true },
+                    product: { required: true },
+                    team: { required: true },
+                    office: { required: true },
+                    part: { required: true },
+                    position: { required: true },
+                    permission: { required: true }
+                }
               
             });
             //search cart
