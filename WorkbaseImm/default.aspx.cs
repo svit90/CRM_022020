@@ -139,7 +139,9 @@ namespace WorkbaseImm
                 {
                     time_expire = 1;
                 }
-                Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.RowId.ToString());
+                Response.Cookies["USER_TOKEN"].Value = Server.UrlEncode(per.RowId.ToString());
+                Response.Cookies["USER_TOKEN"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.Id.ToString());
                 Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(time_expire);
                 Response.Cookies["USER_NAME"].Value = Server.UrlEncode(per.FullName.ToString());
                 Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(time_expire);

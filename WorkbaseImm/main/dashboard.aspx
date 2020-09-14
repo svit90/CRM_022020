@@ -134,7 +134,7 @@
                                                                 <a href="#" class="float-left">
                                                                     <img alt="image" class="rounded-circle" src="../img/a2.jpg">
                                                                 </a>
-                                                                <div class="media-body ">
+                                                                <div class="media-body">
                                                                     <small class="float-right text-navy">1m ago</small>
                                                                     <strong>Mike Smith</strong>
                                                                     <p class="m-b-xs">

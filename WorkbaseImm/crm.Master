@@ -26,9 +26,7 @@
             font-size:11px!important;
             color:#1ab394 !important
         }
-        .media-body{
-            max-height:68px;
-        }
+        
         .caret{
             margin-top:9px;
         }
