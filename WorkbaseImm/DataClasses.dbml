@@ -820,21 +820,6 @@
       <Column Name="CUS_NAME_VN" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.[_0620_Workbase_GetConversation_ByStaff]" Method="_0620_Workbase_GetConversation_ByStaff">
-    <Parameter Name="P_Staff_Token" Parameter="p_Staff_Token" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="_0620_Workbase_GetConversation_ByStaffResult">
-      <Column Name="FEEDBACK_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FEEDBACK_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FEEDBACK_DESCRIPT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FEEDBACK_CONTENT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CusRowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="CUS_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StaffRowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="STAFF_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FLAG_ACTIVE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CUS_NAME_VN" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.[_0620_Workbase_GetConversation_ByCus]" Method="_0620_Workbase_GetConversation_ByCus">
     <Parameter Name="P_CusId" Parameter="p_CusId" Type="System.Int32" DbType="Int" />
     <ElementType Name="_0620_Workbase_GetConversation_ByCusResult">
@@ -850,6 +835,32 @@
       <Column Name="RoleSender" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
       <Column Name="Position" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
       <Column Name="FileAttach" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_0620_Workbase_GetConversation_ByStaff]" Method="_0620_Workbase_GetConversation_ByStaff">
+    <Parameter Name="P_Staff_Token" Parameter="p_Staff_Token" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="_0620_Workbase_GetConversation_ByStaffResult">
+      <Column Name="FEEDBACK_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FEEDBACK_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FEEDBACK_DESCRIPT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FEEDBACK_CONTENT" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CusRowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CUS_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffRowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="STAFF_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLAG_ACTIVE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CUS_NAME_VN" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CusAvatar" Type="System.String" DbType="VarChar(22) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_0620_Workbase_Get_Customer_Following_ByStaffId]" Method="_0620_Workbase_Get_Customer_Following_ByStaffId">
+    <Parameter Name="P_STAFF" Parameter="p_STAFF" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="_0620_Workbase_Get_Customer_Following_ByStaffIdResult">
+      <Column Name="CUS_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CUS_NAME_VN" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="LastYourFeedback" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CusStatus" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CusDNT" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

@@ -26,6 +26,10 @@
             font-size:11px!important;
             color:#1ab394 !important
         }
+        .dropdown-messages-box .media-body
+        {
+            border:inherit;
+        }
         .media-body{
             max-height:68px;
         }
@@ -96,29 +100,27 @@
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope"></i>  <span class="count-formNewfeed label label-warning"></span>
+                            <i class="fa fa-envelope"></i>  <span class="count-time-feedback label label-warning"></span>
                         </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                                                     
+                        <ul class="dropdown-menu dropdown-messages">                                                     
                                                                                   
-                                        <asp:Repeater ID="rptFeedback" runat="server" ClientIDMode="Static">                                                                 
-                                            <ItemTemplate>                                             
-                                            <li>
-                                                <div class="dropdown-messages-box">
-                                                    <a class="dropdown-item float-left" href="profile.html">
-                                                        <img alt="image" class="rounded-circle" src="../img/a7.jpg">
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <small class="time-feedback float-right"><%# Eval("FEEDBACK_DATE")%></small>
-                                                        <strong><%# Eval("CUS_NAME_VN")%></strong> gửi cho bạn một phản hồi <br>
-                                                        <div class="text-small text-muted"><%# Eval("FEEDBACK_CONTENT")%></div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="dropdown-divider"></li>
-                                            </ItemTemplate>
-                                        </asp:Repeater>
-                                    
+                            <asp:Repeater ID="rptFeedback" runat="server" ClientIDMode="Static">                                                                 
+                                <ItemTemplate>                                             
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a class="dropdown-item float-left" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="../img/avatar/<%# Eval("CusAvatar")%>">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="time-feedback float-right"><%# Eval("FEEDBACK_DATE")%></small>
+                                            <strong><%# Eval("CUS_NAME_VN")%></strong> gửi cho bạn một phản hồi <br>
+                                            <div class="text-small text-muted"><%# Eval("FEEDBACK_DESCRIPT")%></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                </ItemTemplate>
+                            </asp:Repeater>                                    
                             
                         </ul>
                     </li>
@@ -369,16 +371,7 @@
         $().ready(function () {   
             checkError();
             load_control_menu();
-            var i = 0;
-            $(".time-feedback").each(function () {
-                if (i > 3) {
-                    $(this).text(moment(new Date($(this).text())).calendar());
-                } else {
-                    $(this).text(moment(new Date($(this).text())).fromNow());
-                }     
-                i++;
-            });
-            $(".count-formNewfeed").text(i);
+            formatTimeAgo("time-feedback");            
         });
 
         //Type to search on top

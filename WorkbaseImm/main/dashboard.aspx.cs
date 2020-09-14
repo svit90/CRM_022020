@@ -31,7 +31,7 @@ namespace WorkbaseImm.main
                     }
                     else
                     {
-                        ScanFeedback(Server.UrlDecode(Request.Cookies["USER_TOKEN"].Value));
+                        ScanFeedback(Server.UrlDecode(Request.Cookies["USER_ID"].Value));
 
                     }
                 }
@@ -40,8 +40,8 @@ namespace WorkbaseImm.main
         }
         protected void ScanFeedback(string _Token)
         {
-            rptFeedback.DataSource = db._0620_Workbase_GetConversation_ByStaff(_Token);
-            rptFeedback.DataBind();
+            rpt_YourCusFollowing.DataSource = db._0620_Workbase_Get_Customer_Following_ByStaffId(_Token);
+            rpt_YourCusFollowing.DataBind();
             //rpt_feedbackDetails.DataSource = db._0620_Workbase_GetConversation_ByCus(19438);
             //rpt_feedbackDetails.DataBind();
         }
