@@ -46,13 +46,15 @@ namespace WorkbaseImm
                 lb_userName.InnerText = u.FullName;
                 lb_Position.InnerText = u.Position;
                 img_avatar.Src = "/uploads/blog/" + u.AvatarImg;
-                ScanFeedback(u.Id.ToString());
+                ScanFeedback(u.RowId.ToString());
             }
         }
 
-        protected void ScanFeedback(string StaffID)
+        protected void ScanFeedback(string _Token)
         {
-            rptFeedback.DataSource = db.SCAN_FEEDBACK(StaffID);
+            //rptFeedback.DataSource = db.SCAN_FEEDBACK(StaffID);
+            //rptFeedback.DataBind();
+            rptFeedback.DataSource = db._0620_Workbase_GetConversation_ByStaff(_Token);
             rptFeedback.DataBind();
         }
     }

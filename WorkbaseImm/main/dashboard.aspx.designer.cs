@@ -15,12 +15,12 @@ namespace WorkbaseImm.main
     {
 
         /// <summary>
-        /// rptFeedback control.
+        /// rpt_YourCusFollowing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptFeedback;
+        protected global::System.Web.UI.WebControls.Repeater rpt_YourCusFollowing;
     }
 }

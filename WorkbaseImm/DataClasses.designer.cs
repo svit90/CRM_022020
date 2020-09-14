@@ -587,6 +587,13 @@ namespace WorkbaseImm
 			return ((ISingleResult<SCAN_FEEDBACKResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetConversation_ByCus]")]
+		public ISingleResult<_0620_Workbase_GetConversation_ByCusResult> _0620_Workbase_GetConversation_ByCus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_CusId", DbType="Int")] System.Nullable<int> p_CusId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_CusId);
+			return ((ISingleResult<_0620_Workbase_GetConversation_ByCusResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetConversation_ByStaff]")]
 		public ISingleResult<_0620_Workbase_GetConversation_ByStaffResult> _0620_Workbase_GetConversation_ByStaff([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_Staff_Token", DbType="NVarChar(MAX)")] string p_Staff_Token)
 		{
@@ -594,11 +601,11 @@ namespace WorkbaseImm
 			return ((ISingleResult<_0620_Workbase_GetConversation_ByStaffResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetConversation_ByCus]")]
-		public ISingleResult<_0620_Workbase_GetConversation_ByCusResult> _0620_Workbase_GetConversation_ByCus([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_CusId", DbType="Int")] System.Nullable<int> p_CusId)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_Get_Customer_Following_ByStaffId]")]
+		public ISingleResult<_0620_Workbase_Get_Customer_Following_ByStaffIdResult> _0620_Workbase_Get_Customer_Following_ByStaffId([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_STAFF", DbType="NVarChar(50)")] string p_STAFF)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_CusId);
-			return ((ISingleResult<_0620_Workbase_GetConversation_ByCusResult>)(result.ReturnValue));
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_STAFF);
+			return ((ISingleResult<_0620_Workbase_Get_Customer_Following_ByStaffIdResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -15133,194 +15140,6 @@ namespace WorkbaseImm
 		}
 	}
 	
-	public partial class _0620_Workbase_GetConversation_ByStaffResult
-	{
-		
-		private int _FEEDBACK_ID;
-		
-		private System.Nullable<System.DateTime> _FEEDBACK_DATE;
-		
-		private string _FEEDBACK_DESCRIPT;
-		
-		private string _FEEDBACK_CONTENT;
-		
-		private System.Guid _CusRowId;
-		
-		private System.Nullable<int> _CUS_ID;
-		
-		private System.Guid _StaffRowId;
-		
-		private System.Nullable<int> _STAFF_ID;
-		
-		private System.Nullable<int> _FLAG_ACTIVE;
-		
-		private string _CUS_NAME_VN;
-		
-		public _0620_Workbase_GetConversation_ByStaffResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_ID", DbType="Int NOT NULL")]
-		public int FEEDBACK_ID
-		{
-			get
-			{
-				return this._FEEDBACK_ID;
-			}
-			set
-			{
-				if ((this._FEEDBACK_ID != value))
-				{
-					this._FEEDBACK_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_DATE", DbType="DateTime")]
-		public System.Nullable<System.DateTime> FEEDBACK_DATE
-		{
-			get
-			{
-				return this._FEEDBACK_DATE;
-			}
-			set
-			{
-				if ((this._FEEDBACK_DATE != value))
-				{
-					this._FEEDBACK_DATE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_DESCRIPT", DbType="NVarChar(MAX)")]
-		public string FEEDBACK_DESCRIPT
-		{
-			get
-			{
-				return this._FEEDBACK_DESCRIPT;
-			}
-			set
-			{
-				if ((this._FEEDBACK_DESCRIPT != value))
-				{
-					this._FEEDBACK_DESCRIPT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_CONTENT", DbType="NVarChar(MAX)")]
-		public string FEEDBACK_CONTENT
-		{
-			get
-			{
-				return this._FEEDBACK_CONTENT;
-			}
-			set
-			{
-				if ((this._FEEDBACK_CONTENT != value))
-				{
-					this._FEEDBACK_CONTENT = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusRowId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid CusRowId
-		{
-			get
-			{
-				return this._CusRowId;
-			}
-			set
-			{
-				if ((this._CusRowId != value))
-				{
-					this._CusRowId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_ID", DbType="Int")]
-		public System.Nullable<int> CUS_ID
-		{
-			get
-			{
-				return this._CUS_ID;
-			}
-			set
-			{
-				if ((this._CUS_ID != value))
-				{
-					this._CUS_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffRowId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid StaffRowId
-		{
-			get
-			{
-				return this._StaffRowId;
-			}
-			set
-			{
-				if ((this._StaffRowId != value))
-				{
-					this._StaffRowId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_ID", DbType="Int")]
-		public System.Nullable<int> STAFF_ID
-		{
-			get
-			{
-				return this._STAFF_ID;
-			}
-			set
-			{
-				if ((this._STAFF_ID != value))
-				{
-					this._STAFF_ID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_ACTIVE", DbType="Int")]
-		public System.Nullable<int> FLAG_ACTIVE
-		{
-			get
-			{
-				return this._FLAG_ACTIVE;
-			}
-			set
-			{
-				if ((this._FLAG_ACTIVE != value))
-				{
-					this._FLAG_ACTIVE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_NAME_VN", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
-		public string CUS_NAME_VN
-		{
-			get
-			{
-				return this._CUS_NAME_VN;
-			}
-			set
-			{
-				if ((this._CUS_NAME_VN != value))
-				{
-					this._CUS_NAME_VN = value;
-				}
-			}
-		}
-	}
-	
 	public partial class _0620_Workbase_GetConversation_ByCusResult
 	{
 		
@@ -15540,6 +15359,310 @@ namespace WorkbaseImm
 				if ((this._FileAttach != value))
 				{
 					this._FileAttach = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _0620_Workbase_GetConversation_ByStaffResult
+	{
+		
+		private int _FEEDBACK_ID;
+		
+		private System.Nullable<System.DateTime> _FEEDBACK_DATE;
+		
+		private string _FEEDBACK_DESCRIPT;
+		
+		private string _FEEDBACK_CONTENT;
+		
+		private System.Guid _CusRowId;
+		
+		private System.Nullable<int> _CUS_ID;
+		
+		private System.Guid _StaffRowId;
+		
+		private System.Nullable<int> _STAFF_ID;
+		
+		private System.Nullable<int> _FLAG_ACTIVE;
+		
+		private string _CUS_NAME_VN;
+		
+		private string _CusAvatar;
+		
+		public _0620_Workbase_GetConversation_ByStaffResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_ID", DbType="Int NOT NULL")]
+		public int FEEDBACK_ID
+		{
+			get
+			{
+				return this._FEEDBACK_ID;
+			}
+			set
+			{
+				if ((this._FEEDBACK_ID != value))
+				{
+					this._FEEDBACK_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_DATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FEEDBACK_DATE
+		{
+			get
+			{
+				return this._FEEDBACK_DATE;
+			}
+			set
+			{
+				if ((this._FEEDBACK_DATE != value))
+				{
+					this._FEEDBACK_DATE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_DESCRIPT", DbType="NVarChar(MAX)")]
+		public string FEEDBACK_DESCRIPT
+		{
+			get
+			{
+				return this._FEEDBACK_DESCRIPT;
+			}
+			set
+			{
+				if ((this._FEEDBACK_DESCRIPT != value))
+				{
+					this._FEEDBACK_DESCRIPT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FEEDBACK_CONTENT", DbType="NVarChar(MAX)")]
+		public string FEEDBACK_CONTENT
+		{
+			get
+			{
+				return this._FEEDBACK_CONTENT;
+			}
+			set
+			{
+				if ((this._FEEDBACK_CONTENT != value))
+				{
+					this._FEEDBACK_CONTENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusRowId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CusRowId
+		{
+			get
+			{
+				return this._CusRowId;
+			}
+			set
+			{
+				if ((this._CusRowId != value))
+				{
+					this._CusRowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_ID", DbType="Int")]
+		public System.Nullable<int> CUS_ID
+		{
+			get
+			{
+				return this._CUS_ID;
+			}
+			set
+			{
+				if ((this._CUS_ID != value))
+				{
+					this._CUS_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffRowId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid StaffRowId
+		{
+			get
+			{
+				return this._StaffRowId;
+			}
+			set
+			{
+				if ((this._StaffRowId != value))
+				{
+					this._StaffRowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_ID", DbType="Int")]
+		public System.Nullable<int> STAFF_ID
+		{
+			get
+			{
+				return this._STAFF_ID;
+			}
+			set
+			{
+				if ((this._STAFF_ID != value))
+				{
+					this._STAFF_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_ACTIVE", DbType="Int")]
+		public System.Nullable<int> FLAG_ACTIVE
+		{
+			get
+			{
+				return this._FLAG_ACTIVE;
+			}
+			set
+			{
+				if ((this._FLAG_ACTIVE != value))
+				{
+					this._FLAG_ACTIVE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_NAME_VN", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string CUS_NAME_VN
+		{
+			get
+			{
+				return this._CUS_NAME_VN;
+			}
+			set
+			{
+				if ((this._CUS_NAME_VN != value))
+				{
+					this._CUS_NAME_VN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusAvatar", DbType="VarChar(22) NOT NULL", CanBeNull=false)]
+		public string CusAvatar
+		{
+			get
+			{
+				return this._CusAvatar;
+			}
+			set
+			{
+				if ((this._CusAvatar != value))
+				{
+					this._CusAvatar = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _0620_Workbase_Get_Customer_Following_ByStaffIdResult
+	{
+		
+		private int _CUS_ID;
+		
+		private string _CUS_NAME_VN;
+		
+		private System.Nullable<System.DateTime> _LastYourFeedback;
+		
+		private string _CusStatus;
+		
+		private string _CusDNT;
+		
+		public _0620_Workbase_Get_Customer_Following_ByStaffIdResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_ID", DbType="Int NOT NULL")]
+		public int CUS_ID
+		{
+			get
+			{
+				return this._CUS_ID;
+			}
+			set
+			{
+				if ((this._CUS_ID != value))
+				{
+					this._CUS_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CUS_NAME_VN", DbType="NVarChar(200) NOT NULL", CanBeNull=false)]
+		public string CUS_NAME_VN
+		{
+			get
+			{
+				return this._CUS_NAME_VN;
+			}
+			set
+			{
+				if ((this._CUS_NAME_VN != value))
+				{
+					this._CUS_NAME_VN = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastYourFeedback", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastYourFeedback
+		{
+			get
+			{
+				return this._LastYourFeedback;
+			}
+			set
+			{
+				if ((this._LastYourFeedback != value))
+				{
+					this._LastYourFeedback = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusStatus", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CusStatus
+		{
+			get
+			{
+				return this._CusStatus;
+			}
+			set
+			{
+				if ((this._CusStatus != value))
+				{
+					this._CusStatus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CusDNT", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CusDNT
+		{
+			get
+			{
+				return this._CusDNT;
+			}
+			set
+			{
+				if ((this._CusDNT != value))
+				{
+					this._CusDNT = value;
 				}
 			}
 		}

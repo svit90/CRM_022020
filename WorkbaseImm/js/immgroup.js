@@ -25,6 +25,21 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+function formatTimeAgo(_class_name) {
+    var i = 0;
+    $("."+ _class_name).each(function () {
+        if (i > 5) {
+            $(this).text(moment(new Date($(this).text())).calendar());
+        } else {
+            $(this).text(moment(new Date($(this).text())).fromNow());
+        }
+        i++;
+    });
+    $(".count-" + _class_name).text(i);
+}
+
+
+
 //Load infor of user in master page
 function loadInfoUser_masterpage() {
     var email = getCookie("USER_EMAIL");
