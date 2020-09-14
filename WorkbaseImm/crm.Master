@@ -1,0 +1,431 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="crm.master.cs" Inherits="WorkbaseImm.crm" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="robots" content="noindex, nofollow" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link href="/favicon.ico" rel="apple-touch-icon"/>
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/font-awesome/css/font-awesome.css") %>">
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/bootstrap.min.css") %>">
+     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/style.css") %>">
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/animate.css") %>">
+
+    <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/_masterPage.css") %>">
+    <link rel="stylesheet" href="<%= ResolveClientUrl("~/css/plugins/toastr/toastr.min.css") %>">
+    <style>
+        #UpdScanFeddback li{
+            max-height:70px;
+            overflow:hidden;
+        }
+        .text-small, .text-small child, .text-small p {
+            font-size:11px!important;
+            color:#1ab394 !important
+        }
+
+        .dropdown-messages-box .media-body
+        {
+            border:inherit;
+        }
+        .media-body{
+            max-height:68px;
+        }
+        .caret{
+            margin-top:9px;
+        }
+    </style>
+</head>
+<body>
+   <div id="wrapper">
+       <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img id="img_avatar" runat="server" width="80" alt="image" class="rounded-circle" src="img/profile_small.jpg"/>
+                        <a  class="dropdown-toggle" href="#">
+                            <span id="lb_userName" runat="server" class="block m-t-xs font-bold">David</span>
+                        </a>
+                        <a data-toggle="dropdown" class="dropdown-toggle d-flex mt-0" href="#!">
+                            <span id="lb_Position" runat="server" class="text-muted text-xs block">Art Director </span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                            <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/?val=logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+               <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="form_basic.html">Basic form</a></li>
+                        <li><a href="form_advanced.html">Advanced Plugins</a></li>
+                        <li><a href="form_wizard.html">Wizard</a></li>
+                        <li><a href="form_file_upload.html">File Upload</a></li>
+                        <li><a href="form_editors.html">Text Editor</a></li>
+                        <li><a href="form_autocomplete.html">Autocomplete</a></li>
+                        <li><a href="form_markdown.html">Markdown</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top nav-srcoll" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <div class="form-group">
+                            <input  id="inputToSearch" type="text" placeholder="Tìm kiếm theo ID khách / Tên / Điện Thoại / Email" class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to CRM system.</span>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope"></i>  <span class="count-time-feedback label label-warning"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages">                                                     
+                                                                                  
+                            <asp:Repeater ID="rptFeedback" runat="server" ClientIDMode="Static">                                                                 
+                                <ItemTemplate>                                             
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a class="dropdown-item float-left" href="profile.html">
+                                            <img alt="image" class="rounded-circle" src="../img/avatar/<%# Eval("CusAvatar")%>">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="time-feedback float-right"><%# Eval("FEEDBACK_DATE")%></small>
+                                            <strong><%# Eval("CUS_NAME_VN")%></strong> gửi cho bạn một phản hồi <br>
+                                            <div class="text-small text-muted"><%# Eval("FEEDBACK_DESCRIPT")%></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                </ItemTemplate>
+                            </asp:Repeater>                                    
+                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-alerts">
+                            <li>
+                                <a href="mailbox.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="profile.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                        <span class="float-right text-muted small">12 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <a href="grid_options.html" class="dropdown-item">
+                                    <div>
+                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                        <span class="float-right text-muted small">4 minutes ago</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dropdown-divider"></li>
+                            <li>
+                                <div class="text-center link-block">
+                                    <a href="notifications.html" class="dropdown-item">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/?val=logout">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+             <div class="row wrapper border-bottom white-bg page-heading d-none">
+                <div id="pageHeading" class="col-lg-12">
+                    <h2>Trang chủ</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">Trang chủ</a>
+                        </li>                       
+                    </ol>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPageHeading" runat="server"></asp:ContentPlaceHolder>
+            <div class="wrapper wrapper-content  animated fadeInRight">
+              
+                    <asp:ContentPlaceHolder ID="ContentAll" runat="server">
+                    </asp:ContentPlaceHolder>
+                    
+            </div>
+            <div class="footer">
+                <div class="float-right">
+                    <strong>IMM GROUP</strong> .
+                </div>
+                <div>
+                    <strong>Copyright</strong> &copy; 2020
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="theme-config">
+        <div class="theme-config-box">
+            <div class="spin-icon">
+                <i class="fa fa-cogs fa-spin"></i>
+            </div>
+            <div class="skin-settings">
+                <div class="title">Configuration <br>
+                <small style="text-transform: none;font-weight: 400">
+                    Config box designed for demo purpose. All options available via code.
+                </small></div>
+                <div class="setings-item">
+                        <span>
+                            Collapse menu
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu">
+                            <label class="onoffswitch-label" for="collapsemenu">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Fixed sidebar
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixedsidebar" class="onoffswitch-checkbox" id="fixedsidebar">
+                            <label class="onoffswitch-label" for="fixedsidebar">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Top navbar
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixednavbar" class="onoffswitch-checkbox" id="fixednavbar">
+                            <label class="onoffswitch-label" for="fixednavbar">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Top navbar v.2
+                            <br>
+                            <small>*Primary layout</small>
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixednavbar2" class="onoffswitch-checkbox" id="fixednavbar2">
+                            <label class="onoffswitch-label" for="fixednavbar2">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Boxed layout
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout">
+                            <label class="onoffswitch-label" for="boxedlayout">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="setings-item">
+                        <span>
+                            Fixed footer
+                        </span>
+
+                    <div class="switch">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="fixedfooter" class="onoffswitch-checkbox" id="fixedfooter">
+                            <label class="onoffswitch-label" for="fixedfooter">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="title">Skins</div>
+                <div class="setings-item default-skin">
+                        <span class="skin-name ">
+                             <a href="#" class="s-skin-0">
+                                 Default
+                             </a>
+                        </span>
+                </div>
+                <div class="setings-item blue-skin">
+                        <span class="skin-name ">
+                            <a href="#" class="s-skin-1">
+                                Blue light
+                            </a>
+                        </span>
+                </div>
+                <div class="setings-item ultra-skin">
+                        <span class="skin-name ">
+                            <a href="#" class="s-skin-2">
+                                Material Design
+                            </a>
+                        </span>
+                </div>
+                <div class="setings-item light-skin">
+                        <span class="skin-name ">
+                            <a href="#" class="s-skin-3">
+                                Light Skin
+                            </a>
+                        </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+
+     
+
+    <!-- Mainly scripts -->
+     <script src="<%= ResolveClientUrl("~/js/jquery-3.1.1.min.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/popper.min.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/bootstrap.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/plugins/metisMenu/jquery.metisMenu.js") %>"></script>
+     <script src="<%= ResolveClientUrl("~/js/plugins/slimscroll/jquery.slimscroll.min.js") %>"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="<%= ResolveClientUrl("~/js/plugins/pace/pace.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/jquery-ui.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/inspinia.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/immgroup.js") %>"></script>
+   <%-- <script src="<%= ResolveClientUrl("~/js/scroll.js") %>"></script>--%>
+    <script src="<%= ResolveClientUrl("~/js/plugins/toastr/toastr.min.js") %>"></script>
+    <script src="<%= ResolveClientUrl("~/js/plugins/moment/moment.js") %>"></script>
+
+    <asp:ContentPlaceHolder ID="Footer" runat="server">
+
+       
+    </asp:ContentPlaceHolder>
+    
+    <!-- Typehead -->
+    <script src="<%= ResolveClientUrl("~/js/plugins/typehead/bootstrap3-typeahead.min.js") %>"></script>
+    <script type="text/javascript">
+        $().ready(function () {   
+            checkError();
+            load_control_menu();
+            formatTimeAgo("time-feedback");            
+        });
+
+        //Type to search on top
+        $(function () {          
+            $('#inputToSearch').typeahead({
+                source: function (request, response) {
+                    var flickerAPI = "https://api.immgroup.com/crm/search/" + request;
+                    $.getJSON(flickerAPI, {
+                        format: "json"
+                    }).done(function (data) {
+                        var resultList = data.customers.map(function (item) {
+                            var aItem = { Id: item.Id, FullName: item.FullName, Emails: item.Emails, Phone: item.Phone };
+                            return JSON.stringify(aItem);
+                        });
+                        return response(resultList);
+                    });
+                },
+
+                matcher: function (obj) {
+                    var item = JSON.parse(obj);                   
+                    return item;
+                },
+
+                highlighter: function (obj) {
+                    var items = JSON.parse(obj);
+                    return ('<div class="row"><div class="col-md-1">' + items.Id + '</div><div class="col-md-2">' + items.FullName + '</div><div class="col-md-4">' + items.Phone + '</div><div class="col-md-4">' + items.Emails + '</div></div>');
+                },   
+
+                updater: function (item) {
+                    var items = JSON.parse(item);
+                    $('#IdControl').attr('value', item.Id);
+                    var win = window.open("/customer/_customerProfile.aspx?cusid=" + items.Id, '_blank');
+                    win.focus();
+                    return items.FullName;
+                }
+            });           
+        });
+
+        function checkError() {
+            var _mesCode = getCookie("ERROR_MES") //getParameterByName('mes');
+            var _mesType = getCookie("ERROR_TYPE");
+            if (_mesCode !== "" && _mesType !== "") {
+                var flickerAPI = "https://api.immgroup.com/crm/message/VN/" + _mesCode;
+                $.getJSON(flickerAPI, {
+                    format: "json"
+                }).done(function (data) {
+                    if (data.mess !== undefined && data.mess !== "")
+                        showerror(data.mess, 'Hệ thống', _mesType, 'toast-top-center');
+                });                
+            }    
+            
+        }
+
+       
+    </script>
+</html>
