@@ -863,4 +863,33 @@
       <Column Name="CusDNT" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.[_0620_Workbase_GetAllStaff]" Method="_0620_Workbase_GetAllStaff">
+    <ElementType Name="_0620_Workbase_GetAllStaffResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StaffNameVn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="StaffNameEng" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffNameVnEng" Type="System.String" DbType="NVarChar(253)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PassCrm" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="PassEmail" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="Permission" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PermissName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AvatarLink" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StaffNote" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailHeader" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SignatureEmail" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="OfficeName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StatusFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCreate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateUpdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="STAFF_TEAM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastSycnEmail" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email2StepEnroll" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
