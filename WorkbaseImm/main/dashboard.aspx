@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/crm.Master" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="WorkbaseImm.main.dashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+   
+    <link href="../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
    <style>
@@ -49,6 +50,23 @@
             font-size: inherit; 
             color: #1ab394;
        }
+
+       textarea.textarea-autosize {
+          height: 2.25rem;
+          min-height: 2.25rem;
+          resize: none;
+          overflow-y:hidden;
+        }
+
+        textarea.textarea-autosize.form-control-lg {
+          height: 3.75rem;
+          min-height: 3.75rem;
+        }
+
+        textarea.textarea-autosize.form-control-sm {
+          height: 2rem;
+          min-height: 2rem;
+        }
    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
@@ -132,42 +150,35 @@
                 <div class="col-lg-4">
                     <div class="ibox">
                         <div class="ibox-content">
-                            <h3>To-do</h3>
-                            <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>
-                            <div class="col-sm-6">
-                                <div class="radio radio-danger">
-                                    <input type="radio" name="radio2" id="radio3" value="option1">
-                                    <label for="radio3">
-                                        Ưu tiên
-                                    </label>
+                            <h3 class="d-inline-block">To-do</h3>
+                            <span class="small"> ( <i class="fa fa-hand-o-up"></i> Drag task between list )</span>
+                            <div class="p-2 border mb-2" >
+                               <div class="row">
+                                    <div class="form-check form-check-inline radio radio-danger">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                      <label class="form-check-label" for="inlineRadio1">High</label>
+                                    </div>
+                                    <div class="form-check form-check-inline radio radio-warning">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                      <label class="form-check-label" for="inlineRadio2">Above normal</label>
+                                    </div>
+                                    <div class="form-check form-check-inline radio radio-info">
+                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                      <label class="form-check-label" for="inlineRadio3">Normal</label>
+                                    </div>
                                 </div>
-                                <div class="radio radio-warning">
-                                    <input type="radio" name="radio2" id="radio4" value="option2">
-                                    <label for="radio4">
-                                        Quan trọng
-                                    </label>
-                                </div>
-                                <div class="radio radio-info">
-                                    <input type="radio" name="radio2" id="radio5" value="option3">
-                                    <label for="radio5">
-                                        Quan trọng
-                                    </label>
-                                </div>
-                                <div class="radio radio-primary">
-                                    <input type="radio" name="radio2" id="radio6" value="option4">
-                                    <label for="radio6">
-                                        Quan trọng
-                                    </label>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="input-group mt-2">
+                                            <textarea class="form-control form-control-sm textarea-autosize" id="textareaExampleField" rows="1" placeholder="Add new task."></textarea>
+                                            <span class="input-group-append"> 
+                                             <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="input-group">
-                                            
-                                <input type="text" placeholder="Add new task. " class="input form-control-sm form-control">
-                                <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> Add task</button>
-                                </span>
-                            </div>
-
+                           
                             <ul class="sortable-list connectList agile-list" id="todo">
                                 <li class="warning-element" id="task1">
                                     Simply dummy text of the printing and typesetting industry.
@@ -276,7 +287,13 @@
             //Browser has blocked it
             alert('Please allow popups for this website');
         }
-    }
-</script>
+    } 
+
+    // Initialize Textarea
+    !function (t, e, i, n) { function s(e, i) { this.element = e, this.$element = t(e), this.init() } var h = "textareaAutoSize", o = "plugin_" + h, r = function (t) { return t.replace(/\s/g, "").length > 0 }; s.prototype = { init: function () { var i = parseInt(this.$element.css("paddingBottom")) + parseInt(this.$element.css("paddingTop")) + parseInt(this.$element.css("borderTopWidth")) + parseInt(this.$element.css("borderBottomWidth")) || 0; r(this.element.value) && this.$element.height(this.element.scrollHeight - i), this.$element.on("input keyup", function (n) { var s = t(e), h = s.scrollTop(); t(this).height(0).height(this.scrollHeight - i), s.scrollTop(h) }) } }, t.fn[h] = function (e) { return this.each(function () { t.data(this, o) || t.data(this, o, new s(this, e)) }), this } }(jQuery, window, document);
+
+    $('.textarea-autosize').textareaAutoSize();
+
+    </script>
 
 </asp:Content>
