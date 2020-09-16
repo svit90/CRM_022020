@@ -124,33 +124,18 @@
                         <div class="form-group">
                             <label class="">Văn phòng</label>
                             <asp:DropDownList ID="it_office" ClientIDMode="Static" runat="server" CssClass="form-control required" AppendDataBoundItems="true">
-                                <asp:ListItem Value="01" Text="Hồ Chí Minh"></asp:ListItem>
-                                <asp:ListItem Value="02" Text="Hà Nội"></asp:ListItem>
+                                <asp:ListItem Value="OFFICE01" Text="Hồ Chí Minh"></asp:ListItem>
+                                <asp:ListItem Value="OFFICE02" Text="Hà Nội"></asp:ListItem>
                             </asp:DropDownList> 
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label class="">Chọn team</label>
-                            <select class="form-control required" name="team">
-                                <option value="">--Chọn--</option>
-                                <option >Admin</option>
-                                <option>User</option>
-                            </select>
+                            <label class=""><small>*Click button below to add new user</small></label></br>
+                            <asp:Button ID="it_b_AddNewUser" ClientIDMode="Static" CssClass=" btn btn-primary btn-sm" runat="server" Text="Save" onclick="it_b_AddNewUser_Click" />
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="">Sản phẩm bán</label>
-                            <select class="form-control required" name="product">
-                                <option value="">--Chọn--</option>
-                                <option>Admin</option>
-                                <option>User</option>
-                            </select>
-                        </div>
-                    </div>
+                     </div>
                 </div>
-                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
             </form>
         </div>
     </div>

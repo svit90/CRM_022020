@@ -614,6 +614,13 @@ namespace WorkbaseImm
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<_0620_Workbase_GetAllStaffResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetBasicCodeCommonByKey]")]
+		public ISingleResult<_0620_Workbase_GetBasicCodeCommonByKeyResult> _0620_Workbase_GetBasicCodeCommonByKey([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_CODE1", DbType="NVarChar(50)")] string p_CODE1)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_CODE1);
+			return ((ISingleResult<_0620_Workbase_GetBasicCodeCommonByKeyResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.M_ACTION_HISTORY")]
@@ -16128,6 +16135,194 @@ namespace WorkbaseImm
 				if ((this._Email2StepEnroll != value))
 				{
 					this._Email2StepEnroll = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _0620_Workbase_GetBasicCodeCommonByKeyResult
+	{
+		
+		private string _BasicCode;
+		
+		private string _CLASS_CODE1;
+		
+		private string _CLASS_CODE2;
+		
+		private string _CLASS_NAME;
+		
+		private string _CLASS_KEYWORD;
+		
+		private System.Nullable<int> _FLAG_ACTIVE;
+		
+		private string _CLASS_URL;
+		
+		private string _CLASS_NOTE;
+		
+		private string _CLASS_PREPARED1;
+		
+		private string _CLASS_PREPARED2;
+		
+		public _0620_Workbase_GetBasicCodeCommonByKeyResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BasicCode", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string BasicCode
+		{
+			get
+			{
+				return this._BasicCode;
+			}
+			set
+			{
+				if ((this._BasicCode != value))
+				{
+					this._BasicCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_CODE1", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CLASS_CODE1
+		{
+			get
+			{
+				return this._CLASS_CODE1;
+			}
+			set
+			{
+				if ((this._CLASS_CODE1 != value))
+				{
+					this._CLASS_CODE1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_CODE2", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CLASS_CODE2
+		{
+			get
+			{
+				return this._CLASS_CODE2;
+			}
+			set
+			{
+				if ((this._CLASS_CODE2 != value))
+				{
+					this._CLASS_CODE2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_NAME", DbType="NVarChar(MAX)")]
+		public string CLASS_NAME
+		{
+			get
+			{
+				return this._CLASS_NAME;
+			}
+			set
+			{
+				if ((this._CLASS_NAME != value))
+				{
+					this._CLASS_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_KEYWORD", DbType="NVarChar(MAX)")]
+		public string CLASS_KEYWORD
+		{
+			get
+			{
+				return this._CLASS_KEYWORD;
+			}
+			set
+			{
+				if ((this._CLASS_KEYWORD != value))
+				{
+					this._CLASS_KEYWORD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_ACTIVE", DbType="Int")]
+		public System.Nullable<int> FLAG_ACTIVE
+		{
+			get
+			{
+				return this._FLAG_ACTIVE;
+			}
+			set
+			{
+				if ((this._FLAG_ACTIVE != value))
+				{
+					this._FLAG_ACTIVE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_URL", DbType="NVarChar(50)")]
+		public string CLASS_URL
+		{
+			get
+			{
+				return this._CLASS_URL;
+			}
+			set
+			{
+				if ((this._CLASS_URL != value))
+				{
+					this._CLASS_URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_NOTE", DbType="NVarChar(MAX)")]
+		public string CLASS_NOTE
+		{
+			get
+			{
+				return this._CLASS_NOTE;
+			}
+			set
+			{
+				if ((this._CLASS_NOTE != value))
+				{
+					this._CLASS_NOTE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_PREPARED1", DbType="NVarChar(50)")]
+		public string CLASS_PREPARED1
+		{
+			get
+			{
+				return this._CLASS_PREPARED1;
+			}
+			set
+			{
+				if ((this._CLASS_PREPARED1 != value))
+				{
+					this._CLASS_PREPARED1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_PREPARED2", DbType="NVarChar(50)")]
+		public string CLASS_PREPARED2
+		{
+			get
+			{
+				return this._CLASS_PREPARED2;
+			}
+			set
+			{
+				if ((this._CLASS_PREPARED2 != value))
+				{
+					this._CLASS_PREPARED2 = value;
 				}
 			}
 		}

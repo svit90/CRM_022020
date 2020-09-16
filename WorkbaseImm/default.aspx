@@ -216,7 +216,7 @@
                 controlbtn();
                 control_items();
             }
-            var flickerAPI = "https://api.immgroup.com/crm/message/VN/" + _errorCode;
+            var flickerAPI = "https://api.immgroup.com/crm/get/message/VN/" + _errorCode;
             $.getJSON(flickerAPI, {
                 format: "json"
             }).done(function (data) {
@@ -226,7 +226,7 @@
                 
             });
         }
-
+        
     </script>
     
     </form> 

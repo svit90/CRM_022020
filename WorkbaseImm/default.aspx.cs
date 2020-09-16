@@ -16,23 +16,26 @@ namespace WorkbaseImm
 
             if (!Page.IsPostBack)
             {
-                if (Request.Cookies["USER_EMAIL"] != null && Request.Cookies["USER_PASS"] != null)
+                if (Request.Cookies["_email"] != null && Request.Cookies["_verifycode"] != null)
                 {
-                    if (Request["val"] == "logout" || (db._012020_CRM_V3_FUNC_User_Login(Server.UrlDecode(Request.Cookies["USER_ROLE"].Value), Server.UrlDecode(Request.Cookies["USER_EMAIL"].Value), Server.UrlDecode(Request.Cookies["USER_PASS"].Value)).Count() != 1))
+                    if (Request["val"] == "logout")
                     {
-                        Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(-1);
+                        
+                        Response.Cookies["_token"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_id"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_name"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_email"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_verifycode"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_role"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_permiss"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_avatar"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_team"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["_linkhome"].Expires = DateTime.Now.AddDays(-1);
                         Response.Redirect("/default.aspx");
                     }
                     else
                     {
-                        Response.Redirect(Server.UrlDecode(Request.Cookies["USER_LINKHOME"].Value));
+                        Response.Redirect(Server.UrlDecode(Request.Cookies["_linkhome"].Value));
                     }
                 }
 
@@ -139,24 +142,26 @@ namespace WorkbaseImm
                 {
                     time_expire = 1;
                 }
-                Response.Cookies["USER_TOKEN"].Value = Server.UrlEncode(per.RowId.ToString());
-                Response.Cookies["USER_TOKEN"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_ID"].Value = Server.UrlEncode(per.Id.ToString());
-                Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_NAME"].Value = Server.UrlEncode(per.FullName.ToString());
-                Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_EMAIL"].Value = Server.UrlEncode(_Email);
-                Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_PASS"].Value = Server.UrlEncode(_Pass);
-                Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_ROLE"].Value = Server.UrlEncode(per.RoleName.ToString());
-                Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_AVATAR"].Value = Server.UrlEncode(per.AvatarImg.ToString());
-                Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_TEAM"].Value = Server.UrlEncode(per.StaffTeamName.ToString());
-                Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(time_expire);
-                Response.Cookies["USER_LINKHOME"].Value = Server.UrlEncode(per.Linkhome.ToString());
-                Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_token"].Value = Server.UrlEncode(per.RowId.ToString());
+                Response.Cookies["_token"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_id"].Value = Server.UrlEncode(per.Id.ToString());
+                Response.Cookies["_id"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_name"].Value = Server.UrlEncode(per.FullName.ToString());
+                Response.Cookies["_name"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_email"].Value = Server.UrlEncode(_Email);
+                Response.Cookies["_email"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_verifycode"].Value = Server.UrlEncode(FC.Encrypt(_Pass));
+                Response.Cookies["_verifycode"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_role"].Value = Server.UrlEncode(per.RoleName.ToString());
+                Response.Cookies["_role"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_permiss"].Value = Server.UrlEncode(per.Permiss.ToString());
+                Response.Cookies["_permiss"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_avatar"].Value = Server.UrlEncode(per.AvatarImg.ToString());
+                Response.Cookies["_avatar"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_team"].Value = Server.UrlEncode(per.StaffTeamName.ToString());
+                Response.Cookies["_team"].Expires = DateTime.Now.AddDays(time_expire);
+                Response.Cookies["_linkhome"].Value = Server.UrlEncode(per.Linkhome.ToString());
+                Response.Cookies["_linkhome"].Expires = DateTime.Now.AddDays(time_expire);
                 Response.Redirect(per.Linkhome, true);
 
             }

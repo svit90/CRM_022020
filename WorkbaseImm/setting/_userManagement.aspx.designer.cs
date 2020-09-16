@@ -105,6 +105,15 @@ namespace WorkbaseImm.setting
         protected global::System.Web.UI.WebControls.DropDownList it_office;
 
         /// <summary>
+        /// it_b_AddNewUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button it_b_AddNewUser;
+
+        /// <summary>
         /// _rpt_Alluser control.
         /// </summary>
         /// <remarks>

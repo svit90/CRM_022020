@@ -46,7 +46,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <img id="img_avatar" runat="server" width="80" alt="image" class="rounded-circle" src="img/profile_small.jpg"/>
+                        <img id="img_avatar" runat="server" width="80" alt="image" class="rounded-circle" src="img/avatar/user-default.png"/>
                         <a  class="dropdown-toggle" href="#">
                             <span id="lb_userName" runat="server" class="block m-t-xs font-bold">David</span>
                         </a>
@@ -370,6 +370,7 @@
     <script src="<%= ResolveClientUrl("~/js/plugins/typehead/bootstrap3-typeahead.min.js") %>"></script>
     <script type="text/javascript">
         $().ready(function () {   
+            verifyLogin();
             checkError();
             load_control_menu();
             formatTimeAgo("time-feedback");            
@@ -412,17 +413,42 @@
         });
 
         function checkError() {
-            var _mesCode = getCookie("ERROR_MES") //getParameterByName('mes');
-            var _mesType = getCookie("ERROR_TYPE");
-            if (_mesCode !== "" && _mesType !== "") {
-                var flickerAPI = "https://api.immgroup.com/crm/message/VN/" + _mesCode;
+            var _errorCode = getParameterByName('mes');
+            var _email = getParameterByName('e');
+            if (_email !== "" && _email !== undefined && _email !== null) {
+                $("#email").val(_email);
+                controlbtn();
+                control_items();
+            }
+            var flickerAPI = "https://api.immgroup.com/crm/get/message/VN/" + _errorCode;
+            $.getJSON(flickerAPI, {
+                format: "json"
+            }).done(function (data) {
+                if (data[0].mess !== undefined && data[0].mess !== "") {
+                    showerror(data[0].mess, data[0].header, data[0].style, data[0].pos);
+                }
+
+            });
+        }
+
+        function verifyLogin() {
+            var token = getCookie("_token");
+            var code = getCookie("_verifycode");
+            if (token !== "" && token !== undefined && token !== null) {
+                var flickerAPI = "https://api.immgroup.com/crm/check/" + token + "/" + code;
                 $.getJSON(flickerAPI, {
                     format: "json"
                 }).done(function (data) {
-                    if (data.mess !== undefined && data.mess !== "")
-                        showerror(data.mess, 'Hệ thống', _mesType, 'toast-top-center');
-                });                
-            }    
+                    var u = data[0];
+                    if (u.VerifyStatus !== "true") {
+                        window.location.replace("/default.aspx?val=logout&mes=008");
+                    } else {
+                        document.getElementById('img_avatar').src = "../img/avatar/" + u.AvatarImg;
+                        $("#lb_userName").text(u.FullName);
+                        $("#lb_Position").text(u.Position);
+                    }
+                });
+            }
             
         }
 

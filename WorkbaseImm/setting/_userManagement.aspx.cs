@@ -15,11 +15,19 @@ namespace WorkbaseImm.setting
         {
             if (!IsPostBack)
             {
-                string permission = Server.UrlDecode(Request.Cookies["AUTHORITIES"].Value).ToString();
+                string permission = Server.UrlDecode(Request.Cookies["_permiss"].Value).ToString();
                 if (permission == "AUTHSTAF" || permission == "AUTHSTAFS" || permission == "AUTHADM")
                 {
                     _rpt_Alluser.DataSource = db._0620_Workbase_GetAllStaff();
                     _rpt_Alluser.DataBind();
+                    it_permiss.DataSource = db._0620_Workbase_GetBasicCodeCommonByKey("AUTH");
+                    it_permiss.DataTextField = "CLASS_NAME";
+                    it_permiss.DataValueField = "BasicCode";
+                    it_permiss.DataBind();
+                }
+                else
+                {
+                    Response.Redirect("/");
                 }
             }
         }
@@ -29,7 +37,7 @@ namespace WorkbaseImm.setting
         protected void _rpt_Alluser_ItemCommand(object source, ListViewCommandEventArgs e)
         {
             int STAFFID = Convert.ToInt32(e.CommandArgument.ToString());
-            string permission = Server.UrlDecode(Request.Cookies["AUTHORITIES"].Value).ToString();
+            string permission = Server.UrlDecode(Request.Cookies["_permiss"].Value).ToString();
             switch (e.CommandName)
             {
                 case "delete":
@@ -47,6 +55,13 @@ namespace WorkbaseImm.setting
                     break;
             }
         }
+
+        protected void it_b_AddNewUser_Click(object sender, EventArgs e)
+        {
+                    
+
+        }
+
 
     }
 }
