@@ -607,6 +607,13 @@ namespace WorkbaseImm
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_STAFF);
 			return ((ISingleResult<_0620_Workbase_Get_Customer_Following_ByStaffIdResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_GetAllStaff]")]
+		public ISingleResult<_0620_Workbase_GetAllStaffResult> _0620_Workbase_GetAllStaff()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<_0620_Workbase_GetAllStaffResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.M_ACTION_HISTORY")]
@@ -15663,6 +15670,464 @@ namespace WorkbaseImm
 				if ((this._CusDNT != value))
 				{
 					this._CusDNT = value;
+				}
+			}
+		}
+	}
+	
+	public partial class _0620_Workbase_GetAllStaffResult
+	{
+		
+		private int _Id;
+		
+		private System.Guid _RowId;
+		
+		private string _StaffNameVn;
+		
+		private string _StaffNameEng;
+		
+		private string _StaffNameVnEng;
+		
+		private System.Nullable<System.DateTime> _Birthday;
+		
+		private string _Email;
+		
+		private string _PassCrm;
+		
+		private string _PassEmail;
+		
+		private string _Permission;
+		
+		private string _PermissName;
+		
+		private string _AvatarLink;
+		
+		private string _Phone;
+		
+		private string _StaffNote;
+		
+		private string _Position;
+		
+		private string _EmailHeader;
+		
+		private string _SignatureEmail;
+		
+		private string _OfficeCode;
+		
+		private string _OfficeName;
+		
+		private System.Nullable<int> _StatusFlag;
+		
+		private System.DateTime _DateCreate;
+		
+		private System.DateTime _DateUpdate;
+		
+		private string _STAFF_TEAM;
+		
+		private System.Nullable<System.DateTime> _LastSycnEmail;
+		
+		private string _Email2StepEnroll;
+		
+		public _0620_Workbase_GetAllStaffResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid RowId
+		{
+			get
+			{
+				return this._RowId;
+			}
+			set
+			{
+				if ((this._RowId != value))
+				{
+					this._RowId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffNameVn", DbType="NVarChar(200)")]
+		public string StaffNameVn
+		{
+			get
+			{
+				return this._StaffNameVn;
+			}
+			set
+			{
+				if ((this._StaffNameVn != value))
+				{
+					this._StaffNameVn = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffNameEng", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffNameEng
+		{
+			get
+			{
+				return this._StaffNameEng;
+			}
+			set
+			{
+				if ((this._StaffNameEng != value))
+				{
+					this._StaffNameEng = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffNameVnEng", DbType="NVarChar(253)")]
+		public string StaffNameVnEng
+		{
+			get
+			{
+				return this._StaffNameVnEng;
+			}
+			set
+			{
+				if ((this._StaffNameVnEng != value))
+				{
+					this._StaffNameVnEng = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Birthday", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Birthday
+		{
+			get
+			{
+				return this._Birthday;
+			}
+			set
+			{
+				if ((this._Birthday != value))
+				{
+					this._Birthday = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassCrm", DbType="VarChar(8) NOT NULL", CanBeNull=false)]
+		public string PassCrm
+		{
+			get
+			{
+				return this._PassCrm;
+			}
+			set
+			{
+				if ((this._PassCrm != value))
+				{
+					this._PassCrm = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassEmail", DbType="VarChar(8) NOT NULL", CanBeNull=false)]
+		public string PassEmail
+		{
+			get
+			{
+				return this._PassEmail;
+			}
+			set
+			{
+				if ((this._PassEmail != value))
+				{
+					this._PassEmail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Permission", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Permission
+		{
+			get
+			{
+				return this._Permission;
+			}
+			set
+			{
+				if ((this._Permission != value))
+				{
+					this._Permission = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissName", DbType="NVarChar(MAX)")]
+		public string PermissName
+		{
+			get
+			{
+				return this._PermissName;
+			}
+			set
+			{
+				if ((this._PermissName != value))
+				{
+					this._PermissName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AvatarLink", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string AvatarLink
+		{
+			get
+			{
+				return this._AvatarLink;
+			}
+			set
+			{
+				if ((this._AvatarLink != value))
+				{
+					this._AvatarLink = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this._Phone = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffNote", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string StaffNote
+		{
+			get
+			{
+				return this._StaffNote;
+			}
+			set
+			{
+				if ((this._StaffNote != value))
+				{
+					this._StaffNote = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this._Position = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailHeader", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string EmailHeader
+		{
+			get
+			{
+				return this._EmailHeader;
+			}
+			set
+			{
+				if ((this._EmailHeader != value))
+				{
+					this._EmailHeader = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignatureEmail", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string SignatureEmail
+		{
+			get
+			{
+				return this._SignatureEmail;
+			}
+			set
+			{
+				if ((this._SignatureEmail != value))
+				{
+					this._SignatureEmail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficeCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string OfficeCode
+		{
+			get
+			{
+				return this._OfficeCode;
+			}
+			set
+			{
+				if ((this._OfficeCode != value))
+				{
+					this._OfficeCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficeName", DbType="NVarChar(MAX)")]
+		public string OfficeName
+		{
+			get
+			{
+				return this._OfficeName;
+			}
+			set
+			{
+				if ((this._OfficeName != value))
+				{
+					this._OfficeName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusFlag", DbType="Int")]
+		public System.Nullable<int> StatusFlag
+		{
+			get
+			{
+				return this._StatusFlag;
+			}
+			set
+			{
+				if ((this._StatusFlag != value))
+				{
+					this._StatusFlag = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateCreate", DbType="DateTime NOT NULL")]
+		public System.DateTime DateCreate
+		{
+			get
+			{
+				return this._DateCreate;
+			}
+			set
+			{
+				if ((this._DateCreate != value))
+				{
+					this._DateCreate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateUpdate", DbType="DateTime NOT NULL")]
+		public System.DateTime DateUpdate
+		{
+			get
+			{
+				return this._DateUpdate;
+			}
+			set
+			{
+				if ((this._DateUpdate != value))
+				{
+					this._DateUpdate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_STAFF_TEAM", DbType="NVarChar(50)")]
+		public string STAFF_TEAM
+		{
+			get
+			{
+				return this._STAFF_TEAM;
+			}
+			set
+			{
+				if ((this._STAFF_TEAM != value))
+				{
+					this._STAFF_TEAM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastSycnEmail", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LastSycnEmail
+		{
+			get
+			{
+				return this._LastSycnEmail;
+			}
+			set
+			{
+				if ((this._LastSycnEmail != value))
+				{
+					this._LastSycnEmail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email2StepEnroll", DbType="NVarChar(MAX)")]
+		public string Email2StepEnroll
+		{
+			get
+			{
+				return this._Email2StepEnroll;
+			}
+			set
+			{
+				if ((this._Email2StepEnroll != value))
+				{
+					this._Email2StepEnroll = value;
 				}
 			}
 		}
