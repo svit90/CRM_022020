@@ -15,7 +15,7 @@ namespace WorkbaseImm.main
         {
             if (!Page.IsPostBack)
             {
-                ScanFeedback(Server.UrlDecode(Request.Cookies["USER_ID"].Value));
+                ScanFeedback(Server.UrlDecode(Request.Cookies["_id"].Value));
             }
         }
         protected void ScanFeedback(string _Token)

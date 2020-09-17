@@ -209,7 +209,7 @@
         }
     
         function checkError() {
-            var _errorCode = getParameterByName('mes');
+            var _errorCode = getCookie('mes');
             var _email = getParameterByName('e');
             if (_email !== "" && _email !== undefined && _email !== null) {
                 $("#email").val(_email);
@@ -222,6 +222,7 @@
             }).done(function (data) {
                 if (data[0].mess !== undefined && data[0].mess !== "") {             
                     showerror(data[0].mess, data[0].header, data[0].style, data[0].pos); 
+                    clearCookie('mes');
                 }
                 
             });

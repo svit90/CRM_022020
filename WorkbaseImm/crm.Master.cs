@@ -15,7 +15,8 @@ namespace WorkbaseImm
         {
             if (!Page.IsPostBack)
             {
-                //loadInfoUser_masterpage();
+                rptFeedback.DataSource = db._0620_Workbase_GetConversation_ByStaff(Server.UrlDecode(Request.Cookies["_token"].Value));
+                rptFeedback.DataBind();
             }
         }
 

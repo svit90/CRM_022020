@@ -621,6 +621,20 @@ namespace WorkbaseImm
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_CODE1);
 			return ((ISingleResult<_0620_Workbase_GetBasicCodeCommonByKeyResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.[_0620_Workbase_User_AddNew]")]
+		public int _0620_Workbase_User_AddNew([global::System.Data.Linq.Mapping.ParameterAttribute(Name="FullName", DbType="NVarChar(250)")] string fullName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EngName", DbType="NVarChar(100)")] string engName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Birthday", DbType="DateTime")] System.Nullable<System.DateTime> birthday, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Email", DbType="NVarChar(50)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Gender", DbType="NVarChar(50)")] string gender, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Permiss", DbType="NVarChar(50)")] string permiss, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Phone", DbType="NVarChar(50)")] string phone, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Position", DbType="NVarChar(50)")] string position, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Office", DbType="NVarChar(50)")] string office, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Deparment", DbType="NVarChar(50)")] string deparment)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fullName, engName, birthday, email, gender, permiss, phone, position, office, deparment);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CLASSIFICATION_SEARCH")]
+		public ISingleResult<CLASSIFICATION_SEARCHResult> CLASSIFICATION_SEARCH([global::System.Data.Linq.Mapping.ParameterAttribute(Name="P_CODE1", DbType="NVarChar(50)")] string p_CODE1)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), p_CODE1);
+			return ((ISingleResult<CLASSIFICATION_SEARCHResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.M_ACTION_HISTORY")]
@@ -16179,6 +16193,194 @@ namespace WorkbaseImm
 				if ((this._BasicCode != value))
 				{
 					this._BasicCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_CODE1", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CLASS_CODE1
+		{
+			get
+			{
+				return this._CLASS_CODE1;
+			}
+			set
+			{
+				if ((this._CLASS_CODE1 != value))
+				{
+					this._CLASS_CODE1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_CODE2", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CLASS_CODE2
+		{
+			get
+			{
+				return this._CLASS_CODE2;
+			}
+			set
+			{
+				if ((this._CLASS_CODE2 != value))
+				{
+					this._CLASS_CODE2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_NAME", DbType="NVarChar(MAX)")]
+		public string CLASS_NAME
+		{
+			get
+			{
+				return this._CLASS_NAME;
+			}
+			set
+			{
+				if ((this._CLASS_NAME != value))
+				{
+					this._CLASS_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_KEYWORD", DbType="NVarChar(MAX)")]
+		public string CLASS_KEYWORD
+		{
+			get
+			{
+				return this._CLASS_KEYWORD;
+			}
+			set
+			{
+				if ((this._CLASS_KEYWORD != value))
+				{
+					this._CLASS_KEYWORD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FLAG_ACTIVE", DbType="Int")]
+		public System.Nullable<int> FLAG_ACTIVE
+		{
+			get
+			{
+				return this._FLAG_ACTIVE;
+			}
+			set
+			{
+				if ((this._FLAG_ACTIVE != value))
+				{
+					this._FLAG_ACTIVE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_URL", DbType="NVarChar(50)")]
+		public string CLASS_URL
+		{
+			get
+			{
+				return this._CLASS_URL;
+			}
+			set
+			{
+				if ((this._CLASS_URL != value))
+				{
+					this._CLASS_URL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_NOTE", DbType="NVarChar(MAX)")]
+		public string CLASS_NOTE
+		{
+			get
+			{
+				return this._CLASS_NOTE;
+			}
+			set
+			{
+				if ((this._CLASS_NOTE != value))
+				{
+					this._CLASS_NOTE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_PREPARED1", DbType="NVarChar(50)")]
+		public string CLASS_PREPARED1
+		{
+			get
+			{
+				return this._CLASS_PREPARED1;
+			}
+			set
+			{
+				if ((this._CLASS_PREPARED1 != value))
+				{
+					this._CLASS_PREPARED1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_PREPARED2", DbType="NVarChar(50)")]
+		public string CLASS_PREPARED2
+		{
+			get
+			{
+				return this._CLASS_PREPARED2;
+			}
+			set
+			{
+				if ((this._CLASS_PREPARED2 != value))
+				{
+					this._CLASS_PREPARED2 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class CLASSIFICATION_SEARCHResult
+	{
+		
+		private string _CLASS_CODE;
+		
+		private string _CLASS_CODE1;
+		
+		private string _CLASS_CODE2;
+		
+		private string _CLASS_NAME;
+		
+		private string _CLASS_KEYWORD;
+		
+		private System.Nullable<int> _FLAG_ACTIVE;
+		
+		private string _CLASS_URL;
+		
+		private string _CLASS_NOTE;
+		
+		private string _CLASS_PREPARED1;
+		
+		private string _CLASS_PREPARED2;
+		
+		public CLASSIFICATION_SEARCHResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLASS_CODE", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string CLASS_CODE
+		{
+			get
+			{
+				return this._CLASS_CODE;
+			}
+			set
+			{
+				if ((this._CLASS_CODE != value))
+				{
+					this._CLASS_CODE = value;
 				}
 			}
 		}

@@ -11,8 +11,21 @@ namespace WorkbaseImm.user
     public partial class _dashboardEditInfo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
+        {           
+            if (!IsPostBack)
+            {
+                string permission = Server.UrlDecode(Request.Cookies["_permiss"].Value).ToString();
+                string usertoken = Server.UrlDecode(Request.Cookies["_token"].Value).ToString();
+                string token = Request.QueryString["token"].ToString();
+                if(permission == "AUTHADM" || usertoken == token)
+                {
+                    
+                }
+                else
+                {
+                   // Response.Redirect("/");
+                }
+            }
         }
 
 
@@ -20,15 +33,11 @@ namespace WorkbaseImm.user
         protected void Upload(object sender, EventArgs e)
         {
             string iduser = "thabh"; //userid.InnerText;
-            string namefile = "avataruser-" + iduser;
+            string namefile = "avatar-"+ iduser +".png";
             string base64 = Request.Form["imgCropped"];
             byte[] bytes = Convert.FromBase64String(base64.Split(',')[1]);
 
-            DateTime mmday = DateTime.Now;
-            string formatdayfile = "yyyyMMddhhss";
-            string nameday = mmday.ToString(formatdayfile);
-
-            using (System.IO.FileStream stream = new System.IO.FileStream(Server.MapPath("~/images/avatar/" + nameday + "-" + namefile + ".png"), System.IO.FileMode.Create))
+            using (System.IO.FileStream stream = new System.IO.FileStream(Server.MapPath("~/img/avatar/" + namefile), System.IO.FileMode.Create))
             {
 
                 stream.Write(bytes, 0, bytes.Length);

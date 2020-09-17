@@ -44,6 +44,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
+    <form role="form" class="frmemployees" runat="server">
     <div class="ibox ">
         <div class="ibox-title">
             <h5>Quản lý nhân viên</h5>
@@ -54,7 +55,6 @@
             </div>
         </div>
         <div class="ibox-content">
-            <form role="form" class="frmemployees" runat="server">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -136,7 +136,7 @@
                         </div>
                      </div>
                 </div>
-            </form>
+            
         </div>
     </div>
     <div class="ibox ">
@@ -154,10 +154,10 @@
             </div>
            <div class="employee-list mt-4 animated fadeInRight">
                <div class="row">
-                   <asp:ListView runat="server" ID="_rpt_Alluser" OnItemCommand="_rpt_Alluser_ItemCommand">
+                   <asp:Repeater runat="server" ID="_rpt_showAlluser" OnItemCommand="_rpt_showAlluser_ItemCommand">
                         <ItemTemplate>
                            <div class="col-lg-4">
-                                <div class="contact-box">
+                                <div class="contact-box cursor" onclick="openEditUser('<%# Eval("RowId")%>')">
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="text-center">
@@ -180,18 +180,18 @@
                                         </div>
                                     </div>
                                     <div class="control-employee">
-                                        <a class="btn btn-info btn-xs" href="#"><i class="fa fa-edit"></i> Sửa</a>
-                                        <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash-o"></i> Xóa</a>
+                                        <asp:LinkButton ID="it_DelUser" class="btn btn-danger btn-xs" CommandName="delete" runat="server" CommandArgument='<%# Eval("RowId") %>' OnClientClick="return confirm('Bạn có muốn xoá nhân viên này?');"><i class="fa fa-trash-o"></i> Xoá</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
                         </ItemTemplate>
-                   </asp:ListView>
+                   </asp:Repeater>
                 </div>
            </div>
 
         </div>
     </div>
+    </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
      <script src="../js/plugins/dataTables/datatables.min.js"></script>
@@ -219,6 +219,10 @@
         });
         var yearsAgo = new Date();
         yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+
+        function openEditUser(_token) {
+            window.location.replace("/user/_dashboardEditInfo.aspx?token=" + _token);
+        }
 
         $(document).ready(function () {
 

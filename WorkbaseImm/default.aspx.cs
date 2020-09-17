@@ -98,7 +98,9 @@ namespace WorkbaseImm
                 {
                     _error = "000";
                 }
-                Response.Redirect("/default.aspx?mes=" + _error + "&e=" + _email + "&r=" + _roleUser, false);
+                Response.Cookies["mes"].Value = Server.UrlEncode(_error);
+                Response.Cookies["mes"].Expires = DateTime.Now.AddMinutes(5);
+                Response.Redirect("/default.aspx?e=" + _email + "&r=" + _roleUser, false);
 
             }
             catch (Exception ex)

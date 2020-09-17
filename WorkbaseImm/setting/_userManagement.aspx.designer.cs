@@ -114,12 +114,12 @@ namespace WorkbaseImm.setting
         protected global::System.Web.UI.WebControls.Button it_b_AddNewUser;
 
         /// <summary>
-        /// _rpt_Alluser control.
+        /// _rpt_showAlluser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView _rpt_Alluser;
+        protected global::System.Web.UI.WebControls.Repeater _rpt_showAlluser;
     }
 }
