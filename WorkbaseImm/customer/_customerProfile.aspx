@@ -5,6 +5,12 @@
     <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="../css/_customerProfile.css" rel="stylesheet" />
+    <style>
+
+        .vertical-timeline-block .vertical-timeline-content{
+               padding: 15px 20px 20px 20px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -35,47 +41,115 @@
                 </div>
            </div>
            <div class="col">
-                <%--<dl class="row mb-0">
-                    <div class="col-sm-4 text-sm-right"><dt>Tình trạng:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"><dd class="mb-1"><span class="label label-primary">Active</span></dd></div>
-                </dl>--%>
-                <dl class="row mb-0">
+                <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Họ và tên:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"><dd class="mb-1">Vũ Sang</dd> </div>
+                    <div class="col-sm-8 text-sm-left">
+                        <div class="clt-name">
+                           <dd class="mb-1 clt_edit">Vũ Sang</dd> 
+                           <div class="input-group d-none">
+                                <input type="text" placeholder="Tên" class="input-type  form-control" autocomplete="off">
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </dl>
-                <dl class="row mb-0">
+                <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Ngày sinh:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">  11/11/1991</dd></div>
+                    <div class="col-sm-8 text-sm-left"> 
+                        <div class="clt-name">
+                            <dd class="mb-1 clt_edit">11/11/1991</dd>
+                            <div class="input-group d-none">
+                                <input type="text" placeholder="Ngày" class="input-type  form-control" autocomplete="off">
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </dl>
-                <dl class="row mb-0">
+                <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Giới tính:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">  Nam</dd></div>
+                    <div class="col-sm-8 text-sm-left"> 
+                         <div class="clt-name">
+                             <dd class="mb-1 clt_edit">Nam</dd>
+                             <div class="input-group d-none">
+                                 <select data-placeholder="Giới tính" class="input-type form-control" >
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                 </select>
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                         </div>
+                    </div>
                 </dl>
-                <dl class="row mb-0">
+                <dl class="row mb-1 ">
                     <div class="col-sm-4 text-sm-right"><dt>Email:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">  vusang@gmail.com</dd></div>
+                    <div class="col-sm-8 text-sm-left"> 
+                        <div class="clt-name">
+                            <dd class="mb-1 clt_edit">vusang@gmail.com</dd>
+                            <div class="input-group d-none">
+                                <input type="email" placeholder="Email" class="input-type  form-control" autocomplete="off">
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </dl>
                                            
                                             
             </div>
             <div class="col-lg-5" id="cluster_info">
 
-                <dl class="row mb-0">
+                <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Điện thoại:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">  015924646546</dd></div>
+                    <div class="col-sm-8 text-sm-left">
+                        <div class="clt-name">
+                            <dd class="mb-1 clt_edit">015924646546</dd>
+                            <div class="input-group d-none">
+                                <input type="text" placeholder="Phone" class="input-type  form-control" autocomplete="off">
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </dl>
-                <dl class="row mb-0">
+                <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Địa chỉ:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">  99 Nguyễn Đình Chiểu. HCM</dd></div>
+                    <div class="col-sm-8 text-sm-left"> 
+                        <div class="clt-name">
+                            <dd class="mb-1 clt_edit">99 Nguyễn Đình Chiểu. HCM</dd>
+                            <div class="input-group d-none">
+                                <input type="text" placeholder="Địa chỉ" class="input-type  form-control" autocomplete="off">
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </dl>
-                <dl class="row mb-0">
+                <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Tình trạng hôn nhân:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1"> Đã kết hôn </dd></div>
-                </dl>
-        
-                <dl class="row mb-0">
-                    <div class="col-sm-4 text-sm-right"><dt>Dịch vụ sử dụng:</dt> </div>
-                    <div class="col-sm-8 text-sm-left"> <dd class="mb-1">Di trú Canada </dd></div>
+                    <div class="col-sm-8 text-sm-left"> 
+                        <div class="clt-name">
+                            <dd class="mb-1 clt_edit"> Đã kết hôn </dd>
+                            <div class="input-group d-none">
+                                <select data-placeholder="Tình trạng hôn nhân" class="input-type form-control" >
+                                    <option value="Độc thân">Độc thân</option>
+                                    <option value="Đã kết hôn">Đã kết hôn</option>Ly
+                                    <option value="Ly hôn">Ly hôn</option>
+                                 </select>
+                                <span class="input-group-append">
+                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </dl>
             </div>
        </div>
@@ -103,23 +177,92 @@
                     <div class="ibox-content">
                         <h3>Di trú Úc <label class="label label-warning">Sản phẩm</label></h3>
                         
-                        <div class="w-100 mt-3">
-                
-                            <dl class="row mb-0">
-                                <div class="col-sm-5 text-sm-left"><dt>Loại khách:</dt> </div>
-                                <div class="col-sm-7 text-sm-left"><dd class="mb-1">Khách hàng tiềm năng</dd> </div>
-                            </dl>
-                            <dl class="row mb-0">
-                                <div class="col-sm-5 text-sm-left"><dt>Độ nghiêm túc:</dt> </div>
-                                <div class="col-sm-7 text-sm-left"> <dd class="mb-1">  Chưa chọn độ nghiêm túc</dd></div>
-                            </dl>
-                            <dl class="row mb-0">
-                                <div class="col-sm-5 text-sm-left"><dt>Trạng thái (chỉ di trú):</dt> </div>
-                                <div class="col-sm-7 text-sm-left"> <dd class="mb-1">  Chưa chọn trạng thái</dd></div>
-                            </dl>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row  field-group">
+                                    <div class="col-md-6"><b>Loại khách:</b></div>
+                                    <div class="col-md-6">Khách hàng tiềm năng</div>
+                                    <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseloaikhach"><i class="fa fa-edit"></i> Sửa</a>
                                       
-                                            
+                                    <div class="collapse gray-bg p-2 m-3 w-100 edit-panel" id="collapseloaikhach">
+                                        <div class="">                                                           
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                        <option value="">Chọn dịch vụ</option>
+                                                        <option value="Di trú Canada">Di trú Canada</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Aland Islands">Aland Islands</option>
+                                                        <option value="Albania">Albania</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="btn-actions text-right">
+                                                <button type="button" class="btn btn-primary btn-xs">Cập nhật</button>
+                                                <button type="button" class="btn btn-white btn-xs" data-toggle="collapse" data-target="#collapseloaikhach">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                </div>
+                                <div class="row  field-group">
+                                    <div class="col-md-6"><b>Độ nghiêm túc:</b></div>
+                                    <div class="col-md-6">Chưa chọn độ nghiêm túc</div>
+                                    <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapsedonghiemtuc"><i class="fa fa-edit"></i> Sửa</a>
+                                        
+                                    <div class="collapse gray-bg p-2 m-3 w-100 edit-panel" id="collapsedonghiemtuc">
+                                        <div class="">                                                           
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                        <option value="">Chọn dịch vụ</option>
+                                                        <option value="Di trú Canada">Di trú Canada</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Aland Islands">Aland Islands</option>
+                                                        <option value="Albania">Albania</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="btn-actions text-right">
+                                                <button type="button" class="btn btn-primary btn-xs">Cập nhật</button>
+                                                <button type="button" class="btn btn-white btn-xs" data-toggle="collapse" data-target="#collapsedonghiemtuc">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row  field-group">
+                                    <div class="col-md-6"><b>Trạng thái (chỉ di trú):</b></div>
+                                    <div class="col-md-6">Chưa chọn trạng thái</div>
+                                    <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapsetrangthai"><i class="fa fa-edit"></i> Sửa</a>
+                                
+                                    <div class="collapse gray-bg p-2 m-3 w-100 edit-panel" id="collapsetrangthai">
+                                        <div class="">                                                           
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                        <option value="">Chọn dịch vụ</option>
+                                                        <option value="Di trú Canada">Di trú Canada</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Aland Islands">Aland Islands</option>
+                                                        <option value="Albania">Albania</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="btn-actions text-right">
+                                                <button type="button" class="btn btn-primary btn-xs">Cập nhật</button>
+                                                <button type="button" class="btn btn-white btn-xs" data-toggle="collapse" data-target="#collapsetrangthai">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                                    
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -127,21 +270,92 @@
                     <div class="ibox-content">
                         <h3>Bất động sản Úc <label class="label label-warning">Sản phẩm</label></h3>
                         
-                        <div class="w-100 mt-3">
-                
-                            <dl class="row mb-0">
-                                <div class="col-sm-5 text-sm-left"><dt>Loại khách:</dt> </div>
-                                <div class="col-sm-7 text-sm-left"><dd class="mb-1">Khách hàng tiềm năng</dd> </div>
-                            </dl>
-                            <dl class="row mb-0">
-                                <div class="col-sm-5 text-sm-left"><dt>Độ nghiêm túc:</dt> </div>
-                                <div class="col-sm-7 text-sm-left"> <dd class="mb-1">  Chưa chọn độ nghiêm túc</dd></div>
-                            </dl>
-                            <dl class="row mb-0">
-                                <div class="col-sm-5 text-sm-left"><dt>Trạng thái (chỉ di trú):</dt> </div>
-                                <div class="col-sm-7 text-sm-left"> <dd class="mb-1">  Chưa chọn trạng thái</dd></div>
-                            </dl>             
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row  field-group">
+                                    <div class="col-md-6"><b>Loại khách:</b></div>
+                                    <div class="col-md-6">Khách hàng tiềm năng</div>
+                                    <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseloaikhach1"><i class="fa fa-edit"></i> Sửa</a>
+                                      
+                                    <div class="collapse gray-bg p-2 m-3 w-100 edit-panel" id="collapseloaikhach1">
+                                        <div class="">                                                           
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                        <option value="">Chọn dịch vụ</option>
+                                                        <option value="Di trú Canada">Di trú Canada</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Aland Islands">Aland Islands</option>
+                                                        <option value="Albania">Albania</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="btn-actions text-right">
+                                                <button type="button" class="btn btn-primary btn-xs">Cập nhật</button>
+                                                <button type="button" class="btn btn-white btn-xs" data-toggle="collapse" data-target="#collapseloaikhach1">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                </div>
+                                <div class="row  field-group">
+                                    <div class="col-md-6"><b>Độ nghiêm túc:</b></div>
+                                    <div class="col-md-6">Chưa chọn độ nghiêm túc</div>
+                                    <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapsedonghiemtuc1"><i class="fa fa-edit"></i> Sửa</a>
+                                        
+                                    <div class="collapse gray-bg p-2 m-3 w-100 edit-panel" id="collapsedonghiemtuc1">
+                                        <div class="">                                                           
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                        <option value="">Chọn dịch vụ</option>
+                                                        <option value="Di trú Canada">Di trú Canada</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Aland Islands">Aland Islands</option>
+                                                        <option value="Albania">Albania</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="btn-actions text-right">
+                                                <button type="button" class="btn btn-primary btn-xs">Cập nhật</button>
+                                                <button type="button" class="btn btn-white btn-xs" data-toggle="collapse" data-target="#collapsedonghiemtuc1">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row  field-group">
+                                    <div class="col-md-6"><b>Trạng thái (chỉ di trú):</b></div>
+                                    <div class="col-md-6">Chưa chọn trạng thái</div>
+                                    <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapsetrangthai1"><i class="fa fa-edit"></i> Sửa</a>
+                                
+                                    <div class="collapse gray-bg p-2 m-3 w-100 edit-panel" id="collapsetrangthai1">
+                                        <div class="">                                                           
+                                            <div class="form-group row align-items-center">
+                                                <div class="col-md-12">
+                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                        <option value="">Chọn dịch vụ</option>
+                                                        <option value="Di trú Canada">Di trú Canada</option>
+                                                        <option value="United Kingdom">United Kingdom</option>
+                                                        <option value="Afghanistan">Afghanistan</option>
+                                                        <option value="Aland Islands">Aland Islands</option>
+                                                        <option value="Albania">Albania</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="btn-actions text-right">
+                                                <button type="button" class="btn btn-primary btn-xs">Cập nhật</button>
+                                                <button type="button" class="btn btn-white btn-xs" data-toggle="collapse" data-target="#collapsetrangthai1">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                                    
+                            </div>
                         </div>
+
                     </div>
                 </div>
               
@@ -151,16 +365,17 @@
                <div id="vertical-timeline" class="light-timeline no-margins">
                  
                     <div class="vertical-timeline-block">
-                        <div class="vertical-timeline-icon navy-bg">
-                            <i class="fa fa-briefcase"></i>
+                        <div class="vertical-timeline-icon bg-danger">
+                            <i class="fa fa-users"></i>
                         </div>
 
                         <div class="vertical-timeline-content">
                             <h2>NGƯỜI THÂN, VỢ HOẶC CHỒNG</h2>
                             
-                            <div class="row">
+                            <div class="row ">
                                 <div class="col-md-12">
-                                    <div class="row mb-3 field-group">
+                                   
+                                    <div class="row field-group">
                                         <div class="col-md-6"><b>Sản phẩm:</b></div>
                                         <div class="col-md-6">Di trú Canada</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseTTSanPham"><i class="fa fa-edit"></i> Sửa</a>
@@ -188,7 +403,7 @@
                                         </div>
                                         <%-- end edit sản phẩm --%>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row field-group">
                                         <div class="col-md-6"><b>Loại khách:</b></div>
                                         <div class="col-md-6">Khách hàng tiềm năng</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseLoaiKhach"><i class="fa fa-edit"></i> Sửa</a>
@@ -215,7 +430,7 @@
                                         <%-- end edit loại khách --%>
                                     </div>
                                
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Độ nghiêm túc:</b></div>
                                         <div class="col-md-6">Chưa chọn độ nghiêm túc</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseDoNghiemTuc"><i class="fa fa-edit"></i> Sửa</a>
@@ -241,7 +456,7 @@
                                         </div>
                                         <%-- end edit độ nghiêm túc --%>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row field-group">
                                         <div class="col-md-6"><b>Trạng thái (chỉ di trú):</b></div>
                                         <div class="col-md-6">Chưa chọn trạng thái</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseTrangThai"><i class="fa fa-edit"></i> Sửa</a>
@@ -274,8 +489,8 @@
                     </div>
 
                     <div class="vertical-timeline-block">
-                        <div class="vertical-timeline-icon blue-bg">
-                            <i class="fa fa-file-text"></i>
+                        <div class="vertical-timeline-icon lazur-bg">
+                            <i class="fa fa-bullhorn"></i>
                         </div>
 
                         <div class="vertical-timeline-content">
@@ -283,11 +498,11 @@
                             
                             <div class="row mt-3">
                                 <div class="col-md-12">
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>ID Khách:</b></div>
                                         <div class="col-md-6">23224</div>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Văn phòng:</b></div>
                                         <div class="col-md-6">Hồ Chí Minh</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseVanPhong"><i class="fa fa-edit"></i> Sửa</a>
@@ -312,7 +527,7 @@
                                         </div>
                                         <%-- end edit văn phòng --%>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Ngày ký hợp đồng:</b></div>
                                         <div class="col-md-6">12/12/2018</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseNgayKyHopDong"><i class="fa fa-edit"></i> Sửa</a>
@@ -337,7 +552,7 @@
                                         <%-- end edit ngày ký hợp đồng --%>
                                     </div>
                                     
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Ngày liên hệ đầu tiên:</b></div>
                                         <div class="col-md-6">10/11/2018</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseNgayLienHeDau"><i class="fa fa-edit"></i> Sửa</a>
@@ -362,7 +577,7 @@
                                         </div>
                                         <%-- end edit ngày ký hợp đồng --%>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Đối tác giới thiệu khách</b></div>
                                         <div class="col-md-6">Di Trú HCM</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseDoiTacGioiThieuKhach"><i class="fa fa-edit"></i> Sửa</a>
@@ -387,7 +602,7 @@
                                         </div>
                                         <%-- end edit đối tác giới thiệu khách --%>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Nguồn khách:</b></div>
                                         <div class="col-md-6">Khách cũ giới thiệu</div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseNguonKhach"><i class="fa fa-edit"></i> Sửa</a>
@@ -420,8 +635,8 @@
                     </div>
 
                     <div class="vertical-timeline-block">
-                        <div class="vertical-timeline-icon lazur-bg">
-                            <i class="fa fa-coffee"></i>
+                        <div class="vertical-timeline-icon yellow-bg">
+                            <i class="fa fa-book"></i>
                         </div>
 
                         <div class="vertical-timeline-content">
@@ -429,7 +644,7 @@
                             
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-lg-12"> 
                                             <h4 class="font-bold"> Chọn template để gửi mail cho khách hàng  </h4>
                                         </div>  
@@ -464,7 +679,7 @@
 
                    <div class="vertical-timeline-block">
                         <div class="vertical-timeline-icon navy-bg">
-                            <i class="fa fa-comments"></i>
+                            <i class="fa fa-book"></i>
                         </div>
 
                         <div class="vertical-timeline-content">
@@ -472,7 +687,7 @@
                             
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Chọn template để gửi mail cho khách hàng:</b></div>
                                         <div class="col-md-6"></div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapsetemplate"><i class="fa fa-edit"></i> Sửa</a>
@@ -500,7 +715,7 @@
                                         </div>
                                         <%-- end edit sản phẩm --%>
                                     </div>
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Nhân viên CEC:</b></div>
                                         <div class="col-md-6"></div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseCEC"><i class="fa fa-edit"></i> Sửa</a>
@@ -529,7 +744,7 @@
                                         <%-- end edit loại khách --%>
                                     </div>
                                
-                                    <div class="row mb-3 field-group">
+                                    <div class="row  field-group">
                                         <div class="col-md-6"><b>Chọn form khảo sát để gửi cho khách hàng:</b></div>
                                         <div class="col-md-6"></div>
                                         <a class="btn btn-success btn-xs edit-field collapsed" data-toggle="collapse" href="#collapseFormkhaosat"><i class="fa fa-edit"></i> Sửa</a>
@@ -565,8 +780,8 @@
                     </div>
 
                     <div class="vertical-timeline-block">
-                        <div class="vertical-timeline-icon yellow-bg">
-                            <i class="fa fa-phone"></i>
+                        <div class="vertical-timeline-icon bg-success">
+                            <i class="fa fa-dollar"></i>
                         </div>
 
                         <div class="vertical-timeline-content">
@@ -879,6 +1094,7 @@
     <!-- Sweet alert -->
     <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
     <script>
+       
         $('.not-app').click(function () {
             swal({
                 type: "warning",
@@ -954,6 +1170,21 @@
                 checkboxClass: 'icheckbox_square-green',
                 radioClass: 'iradio_square-green',
             });
+            $(".clt_edit").click(function (e) {
+                $(this).addClass("d-none");
+                $(this).parent().find(".input-group").removeClass("d-none");
+                $(this).parent().find(".input-group").addClass("escape");
+                $(this).addClass("escape");
+            });
+
+            $(document).keyup(function (e) {
+                if (e.key === "Escape") { // escape key maps to keycode `27`
+                    //alert("ádas");
+                    $(".escape").toggleClass("d-none");
+                }
+            });
+
         });
+       
     </script>
 </asp:Content>
