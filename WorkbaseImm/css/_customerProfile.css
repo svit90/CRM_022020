@@ -9,11 +9,13 @@
 
 .field-group {
     position: relative;
+    margin-top: 0.5rem;
+    cursor: pointer;
 }
 
-    .field-group:hover .edit-field {
-        opacity: 1
-    }
+.field-group:hover .edit-field {
+    opacity: 1
+}
 
 .edit-field {
     opacity: 0;
@@ -34,4 +36,18 @@
 }
 .vertical-timeline-content .btn-actions .btn{
     float:none;
+}
+.input-type.form-control {
+    border-top: #ffff;
+    border-left: #ffff;
+    border-right: #fff;
+    height: 25px;
+    font-size: 13px;
+}
+select.form-control.input-type:not([size]):not([multiple]) {
+    height: 25px;
+    padding: 0px 10px;
+}
+.clt-name .btn {
+    padding: 0px 5px;
 }
