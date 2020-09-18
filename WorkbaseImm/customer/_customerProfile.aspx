@@ -5,6 +5,7 @@
     <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="../css/_customerProfile.css" rel="stylesheet" />
+
     <style>
 
         .vertical-timeline-block .vertical-timeline-content{
@@ -862,6 +863,23 @@
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a6.jpg"></a>
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a7.jpg"></a>
                 </div>
+                <div class="text-right">
+                    <a  class="btn btn-xs btn-primary" data-toggle="collapse" href="#employeesale">Edit</a>
+                </div>
+                <div class="collapse mt-3" id="employeesale">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                <option value="">Chọn dịch vụ</option>
+                                <option value="Di trú Canada">Di trú Canada</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Aland Islands">Aland Islands</option>
+                                <option value="Albania">Albania</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
        <div class="ibox">
@@ -879,6 +897,23 @@
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a5.jpg"></a>
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a6.jpg"></a>
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a7.jpg"></a>
+                </div>
+                <div class="text-right">
+                    <a  class="btn btn-xs btn-primary" data-toggle="collapse" href="#employeeprocess">Edit</a>
+                </div>
+                <div class="collapse mt-3" id="employeeprocess">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                <option value="">Chọn dịch vụ</option>
+                                <option value="Di trú Canada">Di trú Canada</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Aland Islands">Aland Islands</option>
+                                <option value="Albania">Albania</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

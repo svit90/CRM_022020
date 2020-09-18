@@ -4,6 +4,7 @@
     <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="../css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
     <link href="../css/plugins/jcrop/jquery.Jcrop.css" rel="stylesheet" type="text/css" /> 
+  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPageHeading" runat="server">
     <div class="row wrapper border-bottom white-bg page-heading">
@@ -28,255 +29,341 @@
     <form class="editInfo" runat="server">
         <div class="row">
             <div class="col-xl-5 col-lg-8 col-md-10 col-sm-12">
-                <div class="ibox">
-                    <div class="ibox-content">
-                        <div class="profile-section">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="d-flex align-items-center info-top">
-                                        <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
-                                            <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
-                                        </div>
 
-                                        <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content animated bounceInRight">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                        <div class="default-avatar text-center">
-                                                            <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
-                                                        </div>
-                                                        <div class="avatar-view d-none">
-                                                               <canvas id="canvas" class="rounded-circle "></canvas>
-                                                        </div>
-                                            
-                                                    </div>
-                                                    <div class="modal-body">
-                                                         <div class="avatar-edit dropzone ">
-                                                
-                                                             <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
-                                                
-                                                             <img id="Image1" src="" alt="" style="display: none" />
-                                                            <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
-                                               
-                                                            <input type="hidden" name="imgX1" id="imgX1" />
-                                                            <input type="hidden" name="imgY1" id="imgY1" />
-                                                            <input type="hidden" name="imgWidth" id="imgWidth" />
-                                                            <input type="hidden" name="imgHeight" id="imgHeight" />
-                                                            <input type="hidden" name="imgCropped" id="imgCropped" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                                         <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="sumary-info ml-3">
-                                            <p class="mb-0"><b>PHẠM HOÀNG ĐĂNG THANH</b></p>
-                                            <p class="mb-0">IT Executive</p>
-                                        </div>
-                                    </div>
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Profile Detail</h5>
+                    </div>
+                    <div>
+                        <div class="ibox-content no-padding border-left-right position-relative">
+                            <img alt="image" class="img-fluid w-100" src="../img/profile_big.jpg">
+                            <div class=" text-center info-top">
+                                <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
+                                    <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
+                                </div>
+
+                                
+                                <div class="sumary-info mt-2">
+                                   <h4><strong>PHẠM HOÀNG ĐĂNG THANH</strong></h4>
+                                    <p>IT Executive</p>
                                 </div>
                             </div>
-                            <div class="row mt-5 pb-5">
-                                <div class="col-md-12">
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Full Name:</b></div>
-                                            <div class="col-md-8">Phạm Hoàng Đăng Thanh
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editFullName" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editFullName">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_FullName" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_fullname" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Other Name:</b></div>
-                                            <div class="col-md-8">Paul
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editName" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editName">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_name" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_name" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Email:</b></div>
-                                            <div class="col-md-8">paul@imm.group
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editEmail" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editEmail">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_email" TextMode="Email" runat="server" class="form-control required email"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_email" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                     <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Phone number:</b></div>
-                                            <div class="col-md-8">0939 878 207
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editPhoneNumber" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editPhoneNumber">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_Phone" runat="server" class="form-control required number"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_phone" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Birthday:</b></div>
-                                            <div class="col-md-8 ">01/01/1900
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editBirthday" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4 dataDateTime" id="editBirthday">
-                                                    <div class="w-100">
-                                                        <div class="input-group date">
-                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <asp:TextBox ID="txt_date" runat="server" class="form-control required"></asp:TextBox>
-                                                        </div>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_date" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Position:</b></div>
-                                            <div class="col-md-8">IT Executive
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editPosition" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editPosition">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_position" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_position" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Office:</b></div>
-                                            <div class="col-md-8">
-                                            Ho Chi Minh
-                                            <a class="text-default edit-icon" data-toggle="collapse" href="#editOffice" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editOffice">
-                                                   <div class="w-100">
-                                                        <asp:TextBox ID="txt_office" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_office" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Group:</b></div>
-                                            <div class="col-md-8">
-                                               IMM Group<a class="text-default edit-icon" data-toggle="collapse" href="#editGroup" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editGroup">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_group" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_group" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Password App CRM:</b></div>
-                                            <div class="col-md-8">
-                                                Edit Password App CRM<a class="text-default edit-icon" data-toggle="collapse" href="#editPasswordCRM" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editPasswordCRM">
-                                                    <div class="w-100">
-                                                        <asp:TextBox ID="txt_passwordCRM" TextMode="Password" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_passwordCRM" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-bottom py-2">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Password Email:</b></div>
-                                            <div class="col-md-8">
-                                                Edit Password<a class="text-default edit-icon" data-toggle="collapse" href="#editPasswordEmail" role="button" ><i class="fa fa-edit ml-2"></i></a>
-                                                <div class="collapse my-4" id="editPasswordEmail">
-                                                     <div class="w-100">
-                                                        <asp:TextBox ID="txt_password" TextMode="Password" runat="server" class="form-control required"></asp:TextBox>
-                                                    </div>
-                                                    <div class="w-100 text-right">
-                                                         <asp:Button id="btn_password" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                         
-                                                 </div>
-                                   
-                                            </div>
-                                        </div>
-                           
-                                    </div>
-                                    <div class="border-bottom py-2 mb-4">
-                                        <div class="row">
-                                            <div class="col-md-4"><b>Signature:</b></div>
-                                            <div class="col-md-8">Edit Signature<a class="text-default edit-icon" data-toggle="collapse" href="#collapseSignature" role="button" ><i class="fa fa-edit ml-2"></i></a></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-8">
-                                                 <div class="collapse mt-4" id="collapseSignature">
-                                                    <div class="w-100">
-                                                        <div class="summernote">
-                                                           Trân trọng
-                                                        </div>
-                                                    </div>
-                                                     <div class="w-100 text-right">
-                                                         <asp:Button id="Button1" class="btn btn-primary btn-xs mt-2" runat="server" Text="Lưu"/>
-                                                    </div>
-                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        
+                        <div class="pt-100 ibox-content profile-content">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
+                            </p>
+                            <div class="collapse" id="seemoreprofile">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
+                                </p>
+                            </div>
+                            <div class="user-button">
+                                <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="collapse" data-target="#seemoreprofile"><i class="fa fa-envelope"></i> See More</button>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content animated bounceInRight">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <div class="default-avatar text-center">
+                                                    <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
+                                                </div>
+                                                <div class="avatar-view d-none">
+                                                        <canvas id="canvas" class="rounded-circle "></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="modal-body">
+                                                    <div class="avatar-edit dropzone ">
+                                                        <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
+                                                        <img id="Image1" src="" alt="" style="display: none" />
+                                                    <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
+                                               
+                                                    <input type="hidden" name="imgX1" id="imgX1" />
+                                                    <input type="hidden" name="imgY1" id="imgY1" />
+                                                    <input type="hidden" name="imgWidth" id="imgWidth" />
+                                                    <input type="hidden" name="imgHeight" id="imgHeight" />
+                                                    <input type="hidden" name="imgCropped" id="imgCropped" />
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                                    <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                
             </div>
+
+             <div class="col-xl-7 ">
+               
+                 <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Profile Detail</h5>
+                    </div>
+
+                    <div class="ibox-content">
+
+                        <div class="activity-stream">
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-address-book bg-primary"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Full Name:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">PHẠM HOÀNG ĐĂNG THANH</div> 
+                                        <div class="input-group d-none ">
+                                            <input type="text" placeholder="Họ và tên" name="hovaten" class="input-type required form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-address-book"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Other Name:</strong>
+                                    </div>
+                                   <div class="clt-name">
+                                        <div class="clt_edit">Paul</div> 
+                                        <div class="input-group d-none ">
+                                            <input type="text" placeholder="Tên tiếng anh" name="tentienganh" class="input-type required form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Email:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">paul@imm.group</div> 
+                                        <div class="input-group d-none ">
+                                            <input type="email" placeholder="Email" name="email" class="input-type required email form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Phone number:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">0939 878 207 </div> 
+                                        <div class="input-group d-none ">
+                                            <input type="text" placeholder="Số Điện thoại" name="phone" class="input-type required number form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-paper-plane bg-success"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Gender:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">Nam</div> 
+                                        <div class="input-group d-none ">
+                                            <select data-placeholder="Chọn Chức vụ" class="form-control">
+                                                <option value="HCM">Nam</option>
+                                                <option value="Hà Nội">Nữ</option>
+                                            </select>
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-birthday-cake "></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Birthday:</strong>
+                                    </div>
+                                    <div class="clt-name dataDateTime">
+                                        <div class="clt_edit">01/01/1900 </div> 
+                                        <div class="input-group date d-none ">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input type="text" placeholder="Ngày" class="input-type required form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                 <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-tag"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Position:</strong>
+                                    </div>
+                                     <div class="clt-name">
+                                        <div class="clt_edit">IT Executive </div> 
+                                        <div class="input-group d-none ">
+                                            <select data-placeholder="Chọn Chức vụ" class="form-control">
+                                                <option value="HCM">HCM</option>
+                                                <option value="Hà Nội">Hà Nội</option>
+                                            </select>
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-tag"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Office:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">Ho Chi Minh</div> 
+                                        <div class="input-group d-none ">
+                                            <select data-placeholder="Chọn Văn phòng" class="form-control">
+                                                <option value="HCM">HCM</option>
+                                                <option value="Hà Nội">Hà Nội</option>
+                                            </select>
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-circle bg-warning"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Group:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">IMM Group</div> 
+                                        <div class="input-group d-none ">
+                                            <select data-placeholder="Chọn bộ phận" class="form-control">
+                                                <option value="HCM">HCM</option>
+                                                <option value="Hà Nội">Hà Nội</option>
+                                            </select>
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-circle"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Password App CRM:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">***</div> 
+                                        <div class="input-group d-none ">
+                                            <input type="password" placeholder="" name="passwordcrm" class="input-type required form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-circle"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Password Email:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="clt_edit">***</div> 
+                                        <div class="input-group d-none ">
+                                            <input type="password" placeholder="" name="passwordemail" class="input-type required form-control" autocomplete="off">
+                                            <span class="input-group-append">
+                                                <button type="submit" class="btn btn btn-primary "><i class="fa fa-save"></i></button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-circle bg-primary"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Signature:</strong>
+                                    </div>
+                                    <div class="border">
+                                        <div class="summernote">
+                                            Trân trọng
+                                        </div>
+                                        <div class="text-right p-2">
+                                            <button type="submit" class="btn btn-xs btn-primary ">Lưu</button>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+             </div>
+
         </div>
    </form>
 </asp:Content>
@@ -371,6 +458,28 @@
                 height: 150
             });
             $(".editInfo").validate({});
+
+            $(".clt_edit").click(function (e) {
+                $(this).addClass("d-none");
+                $(this).parent().find(".input-group").removeClass("d-none");
+                $(this).parent().find(".input-group").addClass("escape");
+                $(this).addClass("escape");
+            });
+
+            $(document).keyup(function (e) {
+                if (e.key === "Escape") { // escape key maps to keycode `27`
+                    $(".escape").toggleClass("d-none");
+                    $(".escape").removeClass("escape");
+                }
+            });
+
+            $(document).mouseup(function (e) {
+                var container = $(".escape");
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    $(".escape").toggleClass("d-none");
+                    $(".escape").removeClass("escape");
+                }
+            });
 
         });
         
