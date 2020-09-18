@@ -51,3 +51,22 @@ select.form-control.input-type:not([size]):not([multiple]) {
 .clt-name .btn {
     padding: 0px 5px;
 }
+.clt-name .input-group .input-group-append {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+    height: 25px;
+}
+.clt-name .input-group .input-group-addon {
+    border-top: #ffff;
+    border-left: #ffff;
+    border-right: #fff;
+    font-size: 12px;
+    padding: 5px 2px 2px 2px;
+    line-height: 1;
+    border-bottom: 1px solid #e5e6e7;
+}
+.clt-name .input-group .input-group-addon:focus {
+    border-color: #1ab394;
+}
