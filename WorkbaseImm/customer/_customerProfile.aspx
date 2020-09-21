@@ -5,6 +5,7 @@
     <link href="../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="../css/plugins/iCheck/custom.css" rel="stylesheet">
     <link href="../css/_customerProfile.css" rel="stylesheet" />
+
     <style>
 
         .vertical-timeline-block .vertical-timeline-content{
@@ -31,6 +32,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
+    <form class="frmcustomer">
   <div class="row">
        <div class="col-lg-9">
        <div class="row m-t-lg">
@@ -46,24 +48,27 @@
                     <div class="col-sm-8 text-sm-left">
                         <div class="clt-name">
                            <dd class="mb-1 clt_edit">Vũ Sang</dd> 
+                           
                            <div class="input-group d-none">
-                                <input type="text" placeholder="Tên" class="input-type  form-control" autocomplete="off">
+                                <input type="text" placeholder="Tên" class="input-type required form-control" name="hovaten" autocomplete="off">
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button id="btn_name"  type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
+
                         </div>
                     </div>
                 </dl>
                 <dl class="row mb-1">
                     <div class="col-sm-4 text-sm-right"><dt>Ngày sinh:</dt> </div>
                     <div class="col-sm-8 text-sm-left"> 
-                        <div class="clt-name">
+                        <div class="clt-name dataDateTime">
                             <dd class="mb-1 clt_edit">11/11/1991</dd>
-                            <div class="input-group d-none">
-                                <input type="text" placeholder="Ngày" class="input-type  form-control" autocomplete="off">
+                            <div class="input-group date d-none ">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" placeholder="Ngày" class="input-type required form-control" autocomplete="off">
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -80,7 +85,7 @@
                                     <option value="Nữ">Nữ</option>
                                  </select>
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
                          </div>
@@ -92,9 +97,9 @@
                         <div class="clt-name">
                             <dd class="mb-1 clt_edit">vusang@gmail.com</dd>
                             <div class="input-group d-none">
-                                <input type="email" placeholder="Email" class="input-type  form-control" autocomplete="off">
+                                <input type="email" placeholder="Email" name="email" class="input-type required email form-control" autocomplete="off">
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -111,9 +116,9 @@
                         <div class="clt-name">
                             <dd class="mb-1 clt_edit">015924646546</dd>
                             <div class="input-group d-none">
-                                <input type="text" placeholder="Phone" class="input-type  form-control" autocomplete="off">
+                                <input type="text" placeholder="Phone" name="numberphone" class="input-type required number form-control" autocomplete="off">
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -125,9 +130,9 @@
                         <div class="clt-name">
                             <dd class="mb-1 clt_edit">99 Nguyễn Đình Chiểu. HCM</dd>
                             <div class="input-group d-none">
-                                <input type="text" placeholder="Địa chỉ" class="input-type  form-control" autocomplete="off">
+                                <input type="text" placeholder="Địa chỉ" name="address" class="input-type required form-control" autocomplete="off">
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -145,7 +150,7 @@
                                     <option value="Ly hôn">Ly hôn</option>
                                  </select>
                                 <span class="input-group-append">
-                                     <button type="button" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
+                                     <button type="submit" class="btn btn btn-primary "> <i class="fa fa-save"></i></button>
                                 </span>
                             </div>
                         </div>
@@ -188,7 +193,7 @@
                                         <div class="">                                                           
                                             <div class="form-group row align-items-center">
                                                 <div class="col-md-12">
-                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                    <select data-placeholder="Chọn dịch vụ" class="form-control">
                                                         <option value="">Chọn dịch vụ</option>
                                                         <option value="Di trú Canada">Di trú Canada</option>
                                                         <option value="United Kingdom">United Kingdom</option>
@@ -215,7 +220,7 @@
                                         <div class="">                                                           
                                             <div class="form-group row align-items-center">
                                                 <div class="col-md-12">
-                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                    <select data-placeholder="Chọn dịch vụ" class="form-control" >
                                                         <option value="">Chọn dịch vụ</option>
                                                         <option value="Di trú Canada">Di trú Canada</option>
                                                         <option value="United Kingdom">United Kingdom</option>
@@ -241,7 +246,7 @@
                                         <div class="">                                                           
                                             <div class="form-group row align-items-center">
                                                 <div class="col-md-12">
-                                                    <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                                    <select data-placeholder="Chọn dịch vụ" class="form-control" >
                                                         <option value="">Chọn dịch vụ</option>
                                                         <option value="Di trú Canada">Di trú Canada</option>
                                                         <option value="United Kingdom">United Kingdom</option>
@@ -858,6 +863,23 @@
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a6.jpg"></a>
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a7.jpg"></a>
                 </div>
+                <div class="text-right">
+                    <a  class="btn btn-xs btn-primary" data-toggle="collapse" href="#employeesale">Edit</a>
+                </div>
+                <div class="collapse mt-3" id="employeesale">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                <option value="">Chọn dịch vụ</option>
+                                <option value="Di trú Canada">Di trú Canada</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Aland Islands">Aland Islands</option>
+                                <option value="Albania">Albania</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
        <div class="ibox">
@@ -875,6 +897,23 @@
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a5.jpg"></a>
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a6.jpg"></a>
                     <a href=""><img alt="image" class="rounded-circle" src="../img/a7.jpg"></a>
+                </div>
+                <div class="text-right">
+                    <a  class="btn btn-xs btn-primary" data-toggle="collapse" href="#employeeprocess">Edit</a>
+                </div>
+                <div class="collapse mt-3" id="employeeprocess">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select data-placeholder="Chọn dịch vụ" class="chosen-select" multiple>
+                                <option value="">Chọn dịch vụ</option>
+                                <option value="Di trú Canada">Di trú Canada</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Aland Islands">Aland Islands</option>
+                                <option value="Albania">Albania</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1088,11 +1127,13 @@
             </div>
         </div>
     </div>
+</form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
     <%--https://crm.imm.group/customer/profile.aspx?cusid=23224&nation=CT01--%>
     <!-- Sweet alert -->
     <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../js/plugins/validate/jquery.validate.min.js"></script>
     <script>
        
         $('.not-app').click(function () {
@@ -1179,10 +1220,20 @@
 
             $(document).keyup(function (e) {
                 if (e.key === "Escape") { // escape key maps to keycode `27`
-                    //alert("ádas");
                     $(".escape").toggleClass("d-none");
+                    $(".escape").removeClass("escape");
                 }
             });
+
+            $(document).mouseup(function (e) {
+                var container = $(".escape");
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    $(".escape").toggleClass("d-none");
+                    $(".escape").removeClass("escape");
+                }
+            });
+            
+            $(".frmcustomer").validate({});
 
         });
        
