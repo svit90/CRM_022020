@@ -28,83 +28,7 @@
 
     <form class="editInfo" runat="server">
         <div class="row">
-            <div class="col-xl-5 col-lg-8 col-md-10 col-sm-12">
-
-
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <h5>Profile Detail</h5>
-                    </div>
-                    <div>
-                        <div class="ibox-content no-padding border-left-right position-relative">
-                            <img alt="image" class="img-fluid w-100" src="../img/profile_big.jpg">
-                            <div class=" text-center info-top">
-                                <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
-                                    <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png" />
-                                </div>
-
-                                
-                                <div class="sumary-info mt-2">
-                                   <h4><strong>PHẠM HOÀNG ĐĂNG THANH</strong></h4>
-                                    <p>IT Executive</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="pt-100 ibox-content profile-content">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
-                            </p>
-                            <div class="collapse" id="seemoreprofile">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
-                                </p>
-                            </div>
-                            <div class="user-button">
-                                <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="collapse" data-target="#seemoreprofile"><i class="fa fa-envelope"></i> See More</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content animated bounceInRight">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                <div class="default-avatar text-center">
-                                                    <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
-                                                </div>
-                                                <div class="avatar-view d-none">
-                                                        <canvas id="canvas" class="rounded-circle "></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="modal-body">
-                                                    <div class="avatar-edit dropzone ">
-                                                        <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
-                                                        <img id="Image1" src="" alt="" style="display: none" />
-                                                    <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
-                                               
-                                                    <input type="hidden" name="imgX1" id="imgX1" />
-                                                    <input type="hidden" name="imgY1" id="imgY1" />
-                                                    <input type="hidden" name="imgWidth" id="imgWidth" />
-                                                    <input type="hidden" name="imgHeight" id="imgHeight" />
-                                                    <input type="hidden" name="imgCropped" id="imgCropped" />
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                                    <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                
-            </div>
-
-             <div class="col-xl-7 ">
+            <div class=" col-xl-8 col-lg-12 col-md-12 offset-xl-2">
                
                  <div class="ibox ">
                     <div class="ibox-title">
@@ -116,7 +40,24 @@
                         <div class="activity-stream">
                             <div class="stream">
                                 <div class="stream-badge">
-                                    <i class="fa fa-address-book bg-primary"></i>
+                                    <i class="fa fa-camera-retro"></i>
+                                </div>
+                                <div class="stream-panel">
+                                    <div class="stream-info">
+                                       <strong>Avatar:</strong>
+                                    </div>
+                                    <div class="clt-name">
+                                        <div class="">
+                                            <div class="avatar cursor" data-toggle="modal" data-target="#editCodeMain">
+                                                <img class="rounded-circle" src="../img/avatar/r_cus_default_avatar.png">
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stream">
+                                <div class="stream-badge">
+                                    <i class="fa fa-address-book"></i>
                                 </div>
                                 <div class="stream-panel">
                                     <div class="stream-info">
@@ -193,7 +134,7 @@
                             </div>
                              <div class="stream">
                                 <div class="stream-badge">
-                                    <i class="fa fa-paper-plane bg-success"></i>
+                                    <i class="fa fa-user-circle-o"></i>
                                 </div>
                                 <div class="stream-panel">
                                     <div class="stream-info">
@@ -279,7 +220,7 @@
                             </div>
                             <div class="stream">
                                 <div class="stream-badge">
-                                    <i class="fa fa-circle bg-warning"></i>
+                                    <i class="fa fa-circle"></i>
                                 </div>
                                 <div class="stream-panel">
                                     <div class="stream-info">
@@ -339,7 +280,7 @@
                             </div>
                             <div class="stream">
                                 <div class="stream-badge">
-                                    <i class="fa fa-circle bg-primary"></i>
+                                    <i class="fa fa-circle "></i>
                                 </div>
                                 <div class="stream-panel">
                                     <div class="stream-info">
@@ -363,8 +304,44 @@
                 </div>
 
              </div>
+            
+
+             
 
         </div>
+        <div class="modal inmodal" id="editCodeMain" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <div class="default-avatar text-center">
+                            <img class="avatar rounded-circle" style="width:150px; height:150px;" src="../img/avatar/r_cus_default_avatar.png">
+                        </div>
+                        <div class="avatar-view d-none">
+                                <canvas id="canvas" class="rounded-circle "></canvas>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                            <div class="avatar-edit dropzone ">
+                                <input type="file" class="filetype" id="FileUpload_jcrop" accept=".jpg,.png,.jpeg" />
+                                <img id="Image1" src="" alt="" style="display: none" />
+                            <button class="btn btn-primary mt-3 btn-xs"  id="btnCrop"  type="button" style="display: none"><i class="fa fa-crop"></i>&nbsp;Crop</button>
+                                               
+                            <input type="hidden" name="imgX1" id="imgX1" />
+                            <input type="hidden" name="imgY1" id="imgY1" />
+                            <input type="hidden" name="imgWidth" id="imgWidth" />
+                            <input type="hidden" name="imgHeight" id="imgHeight" />
+                            <input type="hidden" name="imgCropped" id="imgCropped" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <asp:Button ID="btnUpload" runat="server" Text="Save" CssClass="ladda-button ladda-button-demo btn btn-primary" OnClick="Upload" Style="display: none" ClientIDMode="Static" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
    </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
@@ -473,13 +450,13 @@
                 }
             });
 
-            $(document).mouseup(function (e) {
-                var container = $(".escape");
-                if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    $(".escape").toggleClass("d-none");
-                    $(".escape").removeClass("escape");
-                }
-            });
+            //$(document).mouseup(function (e) {
+            //    var container = $(".escape");
+            //    if (!container.is(e.target) && container.has(e.target).length === 0) {
+            //        $(".escape").toggleClass("d-none");
+            //        $(".escape").removeClass("escape");
+            //    }
+            //});
 
         });
         
