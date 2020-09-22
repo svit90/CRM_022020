@@ -15,27 +15,7 @@ namespace WorkbaseImm.main
         {
             if (!Page.IsPostBack)
             {
-                if (Request.Cookies["USER_EMAIL"] != null && Request.Cookies["USER_PASS"] != null)
-                {
-                    if (Request["val"] == "logout")
-                    {
-                        Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Redirect("/default.aspx");
-                    }
-                    else
-                    {
-                        ScanFeedback(Server.UrlDecode(Request.Cookies["USER_ID"].Value));
-
-                    }
-                }
-
+                ScanFeedback(Server.UrlDecode(Request.Cookies["_id"].Value));
             }
         }
         protected void ScanFeedback(string _Token)

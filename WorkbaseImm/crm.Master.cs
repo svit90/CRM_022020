@@ -15,39 +15,23 @@ namespace WorkbaseImm
         {
             if (!Page.IsPostBack)
             {
-                if (Request.Cookies["USER_EMAIL"] != null && Request.Cookies["USER_PASS"] != null)
-                {
-                    if (Request["val"] == "logout")
-                    {
-                        Response.Cookies["USER_ID"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_NAME"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_EMAIL"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_PASS"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_ROLE"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_AVATAR"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_TEAM"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies["USER_LINKHOME"].Expires = DateTime.Now.AddDays(-1);
-                        Response.Redirect("/default.aspx");
-                    }
-                    else
-                    {
-                        loadInfoUser_masterpage();
-                        
-                    }
-                }
-
+                rptFeedback.DataSource = db._0620_Workbase_GetConversation_ByStaff(Server.UrlDecode(Request.Cookies["_token"].Value));
+                rptFeedback.DataBind();
             }
         }
 
         protected void loadInfoUser_masterpage()
         {
-            foreach (var u in db._012020_CRM_V3_FUNC_User_Login(Server.UrlDecode(Request.Cookies["USER_ROLE"].Value), Server.UrlDecode(Request.Cookies["USER_EMAIL"].Value), Server.UrlDecode(Request.Cookies["USER_PASS"].Value)))
+            Boolean flg = false;
+            foreach (var u in db._012020_CRM_V3_FUNC_User_Login(Server.UrlDecode(Request.Cookies["_role"].Value), Server.UrlDecode(Request.Cookies["_email"].Value), Server.UrlDecode(Request.Cookies["_verifycode"].Value)))
             {
+                flg = true;
                 lb_userName.InnerText = u.FullName;
                 lb_Position.InnerText = u.Position;
                 img_avatar.Src = "/uploads/blog/" + u.AvatarImg;
                 ScanFeedback(u.RowId.ToString());
             }
+            if(flg == false) { Response.Redirect("/default.aspx?val=logout&mes="); }
         }
 
         protected void ScanFeedback(string _Token)

@@ -892,4 +892,47 @@
       <Column Name="Email2StepEnroll" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.[_0620_Workbase_GetBasicCodeCommonByKey]" Method="_0620_Workbase_GetBasicCodeCommonByKey">
+    <Parameter Name="P_CODE1" Parameter="p_CODE1" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="_0620_Workbase_GetBasicCodeCommonByKeyResult">
+      <Column Name="BasicCode" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASS_CODE1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASS_CODE2" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASS_NAME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CLASS_KEYWORD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FLAG_ACTIVE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CLASS_URL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLASS_NOTE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CLASS_PREPARED1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLASS_PREPARED2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.[_0620_Workbase_User_AddNew]" Method="_0620_Workbase_User_AddNew">
+    <Parameter Name="FullName" Parameter="fullName" Type="System.String" DbType="NVarChar(250)" />
+    <Parameter Name="EngName" Parameter="engName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Birthday" Parameter="birthday" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Permiss" Parameter="permiss" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Position" Parameter="position" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Office" Parameter="office" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Deparment" Parameter="deparment" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CLASSIFICATION_SEARCH" Method="CLASSIFICATION_SEARCH">
+    <Parameter Name="P_CODE1" Parameter="p_CODE1" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="CLASSIFICATION_SEARCHResult">
+      <Column Name="CLASS_CODE" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASS_CODE1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASS_CODE2" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CLASS_NAME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CLASS_KEYWORD" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FLAG_ACTIVE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CLASS_URL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLASS_NOTE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CLASS_PREPARED1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CLASS_PREPARED2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

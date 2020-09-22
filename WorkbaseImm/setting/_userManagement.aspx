@@ -44,6 +44,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentAll" runat="server">
+    <form role="form" class="frmemployees" runat="server">
     <div class="ibox ">
         <div class="ibox-title">
             <h5>Quản lý nhân viên</h5>
@@ -54,7 +55,6 @@
             </div>
         </div>
         <div class="ibox-content">
-            <form role="form" class="frmemployees" runat="server">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
@@ -124,34 +124,19 @@
                         <div class="form-group">
                             <label class="">Văn phòng</label>
                             <asp:DropDownList ID="it_office" ClientIDMode="Static" runat="server" CssClass="form-control required" AppendDataBoundItems="true">
-                                <asp:ListItem Value="01" Text="Hồ Chí Minh"></asp:ListItem>
-                                <asp:ListItem Value="02" Text="Hà Nội"></asp:ListItem>
+                                <asp:ListItem Value="OFFICE01" Text="Hồ Chí Minh"></asp:ListItem>
+                                <asp:ListItem Value="OFFICE02" Text="Hà Nội"></asp:ListItem>
                             </asp:DropDownList> 
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label class="">Chọn team</label>
-                            <select class="form-control required" name="team">
-                                <option value="">--Chọn--</option>
-                                <option >Admin</option>
-                                <option>User</option>
-                            </select>
+                            <label class=""><small>*Click button below to add new user</small></label></br>
+                            <asp:Button ID="it_b_AddNewUser" ClientIDMode="Static" CssClass=" btn btn-primary btn-sm" runat="server" Text="Save" onclick="it_b_AddNewUser_Click" />
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="">Sản phẩm bán</label>
-                            <select class="form-control required" name="product">
-                                <option value="">--Chọn--</option>
-                                <option>Admin</option>
-                                <option>User</option>
-                            </select>
-                        </div>
-                    </div>
+                     </div>
                 </div>
-                <button class="btn btn-primary btn-sm" type="submit">Submit</button>
-            </form>
+            
         </div>
     </div>
     <div class="ibox ">
@@ -169,10 +154,10 @@
             </div>
            <div class="employee-list mt-4 animated fadeInRight">
                <div class="row">
-                   <asp:ListView runat="server" ID="_rpt_Alluser" OnItemCommand="_rpt_Alluser_ItemCommand">
+                   <asp:Repeater runat="server" ID="_rpt_showAlluser" OnItemCommand="_rpt_showAlluser_ItemCommand">
                         <ItemTemplate>
                            <div class="col-lg-4">
-                                <div class="contact-box">
+                                <div class="contact-box cursor" onclick="openEditUser('<%# Eval("RowId")%>')">
                                     <div class="row">
                                         <div class="col-4">
                                             <div class="text-center">
@@ -195,18 +180,18 @@
                                         </div>
                                     </div>
                                     <div class="control-employee">
-                                        <a class="btn btn-info btn-xs" href="#"><i class="fa fa-edit"></i> Sửa</a>
-                                        <a class="btn btn-danger btn-xs" href="#"><i class="fa fa-trash-o"></i> Xóa</a>
+                                        <asp:LinkButton ID="it_DelUser" class="btn btn-danger btn-xs" CommandName="delete" runat="server" CommandArgument='<%# Eval("RowId") %>' OnClientClick="return confirm('Bạn có muốn xoá nhân viên này?');"><i class="fa fa-trash-o"></i> Xoá</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
                         </ItemTemplate>
-                   </asp:ListView>
+                   </asp:Repeater>
                 </div>
            </div>
 
         </div>
     </div>
+    </form>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
      <script src="../js/plugins/dataTables/datatables.min.js"></script>
@@ -234,6 +219,10 @@
         });
         var yearsAgo = new Date();
         yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+
+        function openEditUser(_token) {
+            window.location.replace("/user/_dashboardEditInfo.aspx?token=" + _token);
+        }
 
         $(document).ready(function () {
 

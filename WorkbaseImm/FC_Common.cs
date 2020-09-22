@@ -498,8 +498,9 @@ namespace WorkbaseImm
         }
     }
 
-    public static class Lib
+    public class Lib
     {
+        
         public static bool CheckClientIp()
         {
             var result = GetClientIp().Result;
@@ -539,7 +540,30 @@ namespace WorkbaseImm
             }
         }
 
+        public static int checkEmailStaff(string staffemail)
+        {
+            DataClassesDataContext db = new DataClassesDataContext();
+            var qry = (from x in db.M_STAFFs
+                       where x.STAFF_EMAIL == staffemail
+                       select x).Count();
+            return qry;
+        }
 
+        public DateTime Convertbrd(string indate)
+        {
+            DateTime fullbrd = DateTime.Parse("01/01/1980");
+            try
+            {
+                indate = indate.Substring(3, 2) + "/" + indate.Substring(0, 2) + "/" + indate.Substring(6, 4);
+                DateTime dt = DateTime.Parse(indate);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+            }
+            return fullbrd;
+        }
     }
 
     public static class Error

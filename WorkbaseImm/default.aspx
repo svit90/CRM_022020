@@ -209,24 +209,25 @@
         }
     
         function checkError() {
-            var _errorCode = getParameterByName('mes');
+            var _errorCode = getCookie('mes');
             var _email = getParameterByName('e');
             if (_email !== "" && _email !== undefined && _email !== null) {
                 $("#email").val(_email);
                 controlbtn();
                 control_items();
             }
-            var flickerAPI = "https://api.immgroup.com/crm/message/VN/" + _errorCode;
+            var flickerAPI = "https://api.immgroup.com/crm/get/message/VN/" + _errorCode;
             $.getJSON(flickerAPI, {
                 format: "json"
             }).done(function (data) {
                 if (data[0].mess !== undefined && data[0].mess !== "") {             
                     showerror(data[0].mess, data[0].header, data[0].style, data[0].pos); 
+                    clearCookie('mes');
                 }
                 
             });
         }
-
+        
     </script>
     
     </form> 
