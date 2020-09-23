@@ -82,7 +82,7 @@
                 <button class="btn btn-danger  dim btn-large-dim btn-outline" type="button"><i class="fa fa-google"></i></button>Gmail
             </div>  
             <div class="col-lg-3">
-                <button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" onclick="openTab('http://webapplayers.com/inspinia_admin-v2.9.3/pin_board.html')"><i class="fa fa-thumb-tack"></i></button>Pin Board 
+                <button class="btn btn-warning  dim btn-large-dim btn-outline" type="button" onclick="openTab('https://webapplayers.com/inspinia_admin-v2.9.3/pin_board.html')"><i class="fa fa-thumb-tack"></i></button>Pin Board 
             </div>                
         </div>
     </div>
@@ -172,7 +172,7 @@
                                         <div class="input-group mt-2">
                                             <textarea class="form-control form-control-sm textarea-autosize" id="textareaExampleField" rows="1" placeholder="Add new task."></textarea>
                                             <span class="input-group-append"> 
-                                             <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
+                                             <button type="button" class="btn btn-sm btn-primary" onclick="AddTodolist()"><i class="fa fa-plus"></i></button>
                                             </span>
                                         </div>
                                     </div>
@@ -246,54 +246,74 @@
     </div>  
    
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">
-    
+<asp:Content ID="Content4" ContentPlaceHolderID="Footer" runat="server">    
     <!--  DataTables.net Plugin    -->
     <script src="../js/plugins/dataTables/datatables.min.js"></script>
     <script src="../js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        $('#datatables').DataTable({
-            "pagingType": "simple_numbers",
-            "lengthMenu": [
-                6
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Tìm...",
-            }
+            $('#datatables').DataTable({
+                "pagingType": "simple_numbers",
+                "lengthMenu": [
+                    6
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Tìm...",
+                }
 
+            });
+            formatTimeAgo("lastyourfeedback");   
+
+            $("#todo").sortable({
+                connectWith: ".connectList",
+                update: function (event, ui) {
+
+                    var todo = $("#todo").sortable("toArray");
+                    $('.output').html("ToDo: " + window.JSON.stringify(todo));
+                }
+            }).disableSelection();
         });
-        formatTimeAgo("lastyourfeedback");   
 
-        $("#todo").sortable({
-            connectWith: ".connectList",
-            update: function (event, ui) {
-
-                var todo = $("#todo").sortable("toArray");
-                $('.output').html("ToDo: " + window.JSON.stringify(todo));
+        function openTab(url) {
+            var win = window.open(url, '_blank');
+            if (win) {
+                //Browser has allowed it to be opened
+                win.focus();
+            } else {
+                //Browser has blocked it
+                alert('Please allow popups for this website');
             }
-        }).disableSelection();
-    });
+        } 
 
-    function openTab(url) {
-        var win = window.open(url, '_blank');
-        if (win) {
-            //Browser has allowed it to be opened
-            win.focus();
-        } else {
-            //Browser has blocked it
-            alert('Please allow popups for this website');
+        function AddTodolist() {
+            var person = {
+                Owner: 57,
+                TaskDetails: "Đay là task new",
+                Rate: 1,
+                Active: 1
+            }
+
+            $.ajax({
+                url: 'https://api.immgroup.com/crm/func/todo/addnew',         
+                type: 'POST',
+                dataType: 'json',
+                data: JSON.stringify(person),
+                contentType: 'application/json',
+                success: function (data) {
+                    alert(data.msg);
+                }
+            });
+
+         
         }
-    } 
 
-    // Initialize Textarea
-    !function (t, e, i, n) { function s(e, i) { this.element = e, this.$element = t(e), this.init() } var h = "textareaAutoSize", o = "plugin_" + h, r = function (t) { return t.replace(/\s/g, "").length > 0 }; s.prototype = { init: function () { var i = parseInt(this.$element.css("paddingBottom")) + parseInt(this.$element.css("paddingTop")) + parseInt(this.$element.css("borderTopWidth")) + parseInt(this.$element.css("borderBottomWidth")) || 0; r(this.element.value) && this.$element.height(this.element.scrollHeight - i), this.$element.on("input keyup", function (n) { var s = t(e), h = s.scrollTop(); t(this).height(0).height(this.scrollHeight - i), s.scrollTop(h) }) } }, t.fn[h] = function (e) { return this.each(function () { t.data(this, o) || t.data(this, o, new s(this, e)) }), this } }(jQuery, window, document);
+        // Initialize Textarea
+        !function (t, e, i, n) { function s(e, i) { this.element = e, this.$element = t(e), this.init() } var h = "textareaAutoSize", o = "plugin_" + h, r = function (t) { return t.replace(/\s/g, "").length > 0 }; s.prototype = { init: function () { var i = parseInt(this.$element.css("paddingBottom")) + parseInt(this.$element.css("paddingTop")) + parseInt(this.$element.css("borderTopWidth")) + parseInt(this.$element.css("borderBottomWidth")) || 0; r(this.element.value) && this.$element.height(this.element.scrollHeight - i), this.$element.on("input keyup", function (n) { var s = t(e), h = s.scrollTop(); t(this).height(0).height(this.scrollHeight - i), s.scrollTop(h) }) } }, t.fn[h] = function (e) { return this.each(function () { t.data(this, o) || t.data(this, o, new s(this, e)) }), this } }(jQuery, window, document);
 
-    $('.textarea-autosize').textareaAutoSize();
+        $('.textarea-autosize').textareaAutoSize();
 
     </script>
-
 </asp:Content>

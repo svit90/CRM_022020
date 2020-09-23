@@ -24,9 +24,9 @@ namespace WorkbaseImm.setting
                     it_permiss.DataTextField = "CLASS_NAME";
                     it_permiss.DataValueField = "BasicCode";
                     it_permiss.DataBind();
-                    it_deparment.DataSource = db.CLASSIFICATION_SEARCH("TEAM");
+                    it_deparment.DataSource = db._0620_Workbase_GetBasicCodeCommonByKey("TEAM");
                     it_deparment.DataTextField = "CLASS_NAME";
-                    it_deparment.DataValueField = "CLASS_CODE";
+                    it_deparment.DataValueField = "BasicCode";
                     it_deparment.DataBind();
                 }
                 else
@@ -81,22 +81,26 @@ namespace WorkbaseImm.setting
                                 it_position.Text,
                                 it_office.SelectedValue,
                                 it_deparment.SelectedValue
-                                );    
-                        Response.Redirect(Request.RawUrl + "?mes=004",false);
+                                );
+                        showError("004");
+                        Response.Redirect(Request.RawUrl,false);
                     }
                     else
-                    {
-                        Response.Redirect(Request.RawUrl + "?mes=005", false);
+                    {                        
+                        showError("005");
+                        Response.Redirect(Request.RawUrl, false);
                     }
 
                 }
                 catch (Exception ex)
                 {
+                    showError("006");
                     Response.Redirect(Request.RawUrl + "?mes=006", false);
                 }
             }
             else
             {
+                showError("007");
                 Response.Redirect(Request.RawUrl + "?mes=009", false);
             }
 

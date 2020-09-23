@@ -444,7 +444,7 @@
                     if (u.VerifyStatus !== "true") {
                         window.location.replace("/default.aspx?val=logout&mes=008");
                     } else {
-                        document.getElementById('img_avatar').src = "../img/avatar/" + u.AvatarImg;
+                        document.getElementById('img_avatar').src = "../img/a4.jpg";
                         $("#lb_userName").text(u.FullName);
                         $("#lb_Position").text(u.Position);
                     }
