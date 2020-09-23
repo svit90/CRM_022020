@@ -27,9 +27,13 @@
 .chat-message.right .message {
     border-right: 3px solid
 }
-.note-editing-area {
-    min-height: 200px;
-}
 .chatContent .note-editor.note-frame {
     border: 1px solid #dad8d8;
 }
+.chat-message{
+    display:inline-block;
+}
+.chat-message.right{
+    float:right;
+}
+

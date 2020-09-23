@@ -20,8 +20,8 @@ namespace WorkbaseImm.main
         }
         protected void ScanFeedback(string _Token)
         {
-            rpt_YourCusFollowing.DataSource = db._0620_Workbase_Get_Customer_Following_ByStaffId(_Token);
-            rpt_YourCusFollowing.DataBind();
+            //rpt_YourCusFollowing.DataSource = db._0620_Workbase_Get_Customer_Following_ByStaffId(_Token);
+            //rpt_YourCusFollowing.DataBind();
             //rpt_feedbackDetails.DataSource = db._0620_Workbase_GetConversation_ByCus(19438);
             //rpt_feedbackDetails.DataBind();
         }

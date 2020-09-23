@@ -354,7 +354,7 @@
 
     <!-- Custom and plugin javascript -->
     <script src="<%= ResolveClientUrl("~/js/plugins/pace/pace.min.js") %>"></script>
-    <script src="<%= ResolveClientUrl("~/js/jquery-ui.min.js") %>"></script>
+    <%--<script src="<%= ResolveClientUrl("~/js/jquery-ui.min.js") %>"></script>--%>
     <script src="<%= ResolveClientUrl("~/js/inspinia.js") %>"></script>
     <script src="<%= ResolveClientUrl("~/js/immgroup.js") %>"></script>
    <%-- <script src="<%= ResolveClientUrl("~/js/scroll.js") %>"></script>--%>
